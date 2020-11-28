@@ -1,4 +1,4 @@
-## Signal's tutorial
+## Signals tutorial
 
 This example creates a **Zone** that can be traversed by **Player** and **Objeto**. When this happens, **Panel** logs each trespass in two counters, one for **Player** and one for **Objeto**.
 
