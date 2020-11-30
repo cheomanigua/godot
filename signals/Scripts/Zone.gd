@@ -6,6 +6,8 @@ func _ready():
 	connect("body_entered",self,"_on_Zone_body_entered")
 
 func _on_Zone_body_entered(body):
+	#if body.has_method("player_spotted")
+	#if body.get_name() == "Player":
 	if body.is_in_group("players"):
 		print(str(self.get_name()) + "'s message: Player entered the ZONE")
 	else:

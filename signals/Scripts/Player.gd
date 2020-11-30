@@ -6,8 +6,9 @@ var velocity = Vector2()
 
 func _ready():
 	add_to_group("players")
-	var zone = get_tree().get_root().find_node("Zone", true, false)
-	zone.connect("body_entered",self,"player_spotted")
+#	var zone = get_tree().get_root().find_node("Zone", true, false)
+# warning-ignore:return_value_discarded
+	get_parent().get_node("Zone").connect("body_entered",self,"player_spotted")
 
 func player_spotted(body):
 	if body.is_in_group("players"):
