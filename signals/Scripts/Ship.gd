@@ -14,3 +14,6 @@ func _integrate_forces(_state):
 	if Input.is_action_pressed("ui_left"):
 		rotation_dir -= 1
 	applied_torque = rotation_dir * torque
+
+func grabbed():
+	print ("I've been grabbed by the Force")

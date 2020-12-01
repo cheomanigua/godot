@@ -3,9 +3,7 @@ extends Control
 var pcount = 0
 var ocount = 0
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-#	var zone = get_tree().get_root().find_node("Zone", true, false)
 # warning-ignore:return_value_discarded
 	get_parent().get_node("Zone").connect("body_entered",self,"increase_counter")
 	get_node("LPlayer").text = str(pcount)
