@@ -16,4 +16,4 @@ func _integrate_forces(_state):
 	applied_torque = rotation_dir * torque
 
 func grabbed():
-	print ("I've been grabbed by the Force")
+	print (str(get_name()) + "'s message: I've been grabbed by the Force")

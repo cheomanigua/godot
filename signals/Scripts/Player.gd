@@ -12,7 +12,7 @@ func _ready():
 
 func player_spotted(body):
 	if body.is_in_group("players"):
-		print(str(self.get_name()) + "'s message: The Zone knows that I entered the ZONE")
+		print(str(get_name()) + "'s message: The Zone knows that I entered the ZONE")
 	
 func get_input():
 	velocity = Vector2()

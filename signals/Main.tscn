@@ -9,10 +9,7 @@
 [node name="Main" type="Node2D"]
 
 [node name="Zone" parent="." instance=ExtResource( 2 )]
-position = Vector2( 472, 120 )
-space_override = 3
-gravity_distance_scale = 0.0
-gravity = 98.0
+position = Vector2( 466.601, 89.1315 )
 angular_damp = 1.0
 priority = 0.0
 
@@ -20,7 +17,7 @@ priority = 0.0
 position = Vector2( 473.168, 492.845 )
 
 [node name="Object" parent="." instance=ExtResource( 3 )]
-position = Vector2( 471.967, 361.092 )
+position = Vector2( 12.6705, 18.2737 )
 
 [node name="Panel" parent="." instance=ExtResource( 5 )]
 margin_left = -8.0

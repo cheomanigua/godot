@@ -10,7 +10,7 @@ var target = Vector2()
 const FOLLOW_SPEED = 4.0
 
 func _physics_process(delta):
-	self.position = self.position.linear_interpolate(target, delta * FOLLOW_SPEED)
+	position = position.linear_interpolate(target, delta * FOLLOW_SPEED)
 
 #func _physics_process(delta):
 #	velocity = position.direction_to(target) * speed

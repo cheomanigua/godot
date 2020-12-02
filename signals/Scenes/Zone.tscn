@@ -9,8 +9,6 @@ radius = 266.097
 
 [node name="Zone" type="Area2D"]
 gravity_point = true
-gravity_distance_scale = 500.0
-gravity = 1024.0
 linear_damp = 0.0
 angular_damp = 0.0
 priority = 1.0
