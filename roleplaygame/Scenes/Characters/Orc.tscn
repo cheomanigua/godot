@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Images/Characters/orc.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Characters/Orc.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7.3945, 7.9212 )
+
+[node name="Orc" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -0.28572, -17.9048 )
+scale = Vector2( 1.02604, 2.80556 )
+polygon = PoolVector2Array( -6.38726, 9.03253, 6.93781, 8.96578, 6.84654, 3.79216, -6.296, 3.8923 )
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource( 1 )
