@@ -2,6 +2,7 @@ tool
 extends Area2D
 
 export(Texture) onready var texture setget texture_set, texture_get
+export (String) var tag
 
 func texture_set(newtexture):
 	$Sprite.texture = newtexture
@@ -10,7 +11,10 @@ func texture_get():
 	return $Sprite.texture
 
 func _ready():
-	pickup(get_parent().get_name())
+	if tag:
+		pickup(tag)
+	else:
+		pickup(get_parent().get_name())
 
 func pickup(item):
 # warning-ignore:return_value_discarded

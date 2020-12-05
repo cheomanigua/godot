@@ -10,9 +10,12 @@ func add_item(item):
 		temp += 1
 		inventory[item] = temp
 		print("You own %d %s" % [inventory[item], item])
+		print(inventory)
+		
 	else:
 		inventory[item] = 1
 		print("You own %d %s" % [inventory[item], item])
+		print(inventory)
 		
 
 func _ready():

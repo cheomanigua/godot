@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Items/Potion.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Characters/Orc.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Images/Items/Potions/health_potion.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Structures/Door.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Images/Items/Potions/magicka_potion.png" type="Texture" id=4]
-[ext_resource path="res://Images/Items/Potions/strength_potion.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/Items/Coin.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Images/Items/Coins/coin.png" type="Texture" id=7]
 
@@ -27,20 +26,8 @@ position = Vector2( 44.5, 87.5 )
 
 [node name="Potions" type="Node" parent="."]
 
-[node name="Potion" parent="Potions" instance=ExtResource( 1 )]
-position = Vector2( 120, 31 )
-texture = ExtResource( 3 )
-
 [node name="Potion2" parent="Potions" instance=ExtResource( 1 )]
 position = Vector2( 23.5749, 49.9558 )
-texture = ExtResource( 4 )
-
-[node name="Potion3" parent="Potions" instance=ExtResource( 1 )]
-position = Vector2( 105.785, 93.1081 )
-texture = ExtResource( 5 )
-
-[node name="Potion4" parent="Potions" instance=ExtResource( 1 )]
-position = Vector2( 131.298, 67.5947 )
 texture = ExtResource( 4 )
 
 [node name="Coins" type="Node" parent="."]
@@ -48,3 +35,14 @@ texture = ExtResource( 4 )
 [node name="Coin" parent="Coins" instance=ExtResource( 6 )]
 position = Vector2( 42.5224, 20.1587 )
 texture = ExtResource( 7 )
+
+[node name="Unique" type="Node" parent="."]
+
+[node name="Doors" type="Node" parent="."]
+
+[node name="Door" parent="Doors" instance=ExtResource( 3 )]
+position = Vector2( 131.199, 78.8135 )
+key = "bronce key"
+
+[node name="Door2" parent="Doors" instance=ExtResource( 3 )]
+position = Vector2( 37.283, 123.176 )
