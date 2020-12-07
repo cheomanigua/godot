@@ -1,4 +1,4 @@
-extends "res://Scripts/Logic/_character.gd"
+extends "res://Scripts/Characters/_character.gd"
 
 var combat = load("res://Scripts/Logic/_combat.gd").new()
 
