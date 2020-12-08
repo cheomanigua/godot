@@ -14,7 +14,7 @@ func _on_Door_body_entered(body):
 				$CollisionShape2D.set_deferred("disabled", true)
 				get_node(".").hide()
 			else:
-				print("You need a %s" % [key])
+				Gui.message("You need a %s" % [key])
 		else:
 			$CollisionShape2D.set_deferred("disabled", true)
 			get_node(".").hide()
