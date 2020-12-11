@@ -13,11 +13,13 @@ func _on_Door_body_entered(body):
 			if Player.inventory.has(key):
 				$CollisionShape2D.set_deferred("disabled", true)
 				get_node(".").hide()
+				Gui.message("Door opened with %s" % [key])
 			else:
 				Gui.message("You need a %s" % [key])
 		else:
 			$CollisionShape2D.set_deferred("disabled", true)
 			get_node(".").hide()
+			Gui.message("No key needed")
 
 func _on_Door_body_exited(body):
 	if body.get_name() == "Player":

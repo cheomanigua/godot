@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 
 Player="*res://Scenes/Characters/Player.tscn"
 Gui="*res://Scenes/GUI.tscn"
+ImportData="*res://Scripts/Logic/ImportData.gd"
 
 [display]
 
@@ -81,6 +82,11 @@ right={
 inventory={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":73,"unicode":0,"echo":false,"script":null)
+ ]
+}
+character={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":67,"unicode":0,"echo":false,"script":null)
  ]
 }
 

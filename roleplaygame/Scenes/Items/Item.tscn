@@ -7,6 +7,7 @@ radius = 4.28324
 
 [node name="Item" type="Area2D"]
 script = ExtResource( 1 )
+amount = 0
 
 [node name="Sprite" type="Sprite" parent="."]
 

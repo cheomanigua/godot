@@ -2,23 +2,41 @@
 
 [ext_resource path="res://Scripts/Logic/_gui.gd" type="Script" id=1]
 
-[node name="GUI" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="GUI" type="Node2D"]
+z_index = 2
 script = ExtResource( 1 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
-margin_right = 72.0
-margin_bottom = 63.0
+[node name="inventory" type="Label" parent="Control"]
+margin_right = 40.0
+margin_bottom = 14.0
+rect_scale = Vector2( 0.5, 0.5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="."]
+[node name="character" type="Label" parent="Control"]
+margin_left = 204.578
+margin_top = 0.768284
+margin_right = 244.578
+margin_bottom = 14.7683
+rect_scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bottom_message" type="Label" parent="Control"]
 margin_left = 1.0
-margin_top = 273.0
-margin_right = 41.0
-margin_bottom = 287.0
+margin_top = 258.0
+margin_right = 100.0
+margin_bottom = 272.0
+rect_scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,13 +1,24 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Images/Characters/orc.png" type="Texture" id=1]
-[ext_resource path="res://Scripts/Characters/Orc.gd" type="Script" id=2]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends \"res://Scripts/Characters/_character.gd\"
+
+func _ready():
+# warning-ignore:return_value_discarded
+	$HitBox.connect(\"body_entered\",self,\"_on_Orc_body_entered\")
+
+func _on_Orc_body_entered(body):
+	if body.get_name() == \"Player\":
+		combat.combat(get_node(\".\"))
+"
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.3945, 7.9212 )
 
 [node name="Orc" type="KinematicBody2D"]
-script = ExtResource( 2 )
+script = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

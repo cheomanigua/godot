@@ -1,19 +1,18 @@
 extends "res://Scripts/Characters/_character.gd"
 
 #export (int) var speed = 300
-signal inventory_updated
 var inventory:Dictionary = {}
-	
-func add_item(item):
+
+func add_item(item,amount):
 	if inventory.has(item):
 		var temp = inventory[item]
-		temp += 1
+		temp += amount
 		inventory[item] = temp
 #		print("You have %d %s" % [inventory[item], item])
 	else:
-		inventory[item] = 1
+		inventory[item] = amount
 #		print("You have %d %s" % [inventory[item], item])
-	emit_signal("inventory_updated")
+	Gui.update_label()
 
 func _ready():
 	speed = 70
@@ -31,7 +30,9 @@ func get_input():
 	if (Input.is_key_pressed(KEY_ESCAPE)):
 		get_tree().quit()
 	if (Input.is_action_just_released("inventory")):
-		Gui.show_panel()
+		Gui.show_inventory()
+	if (Input.is_action_just_released("character")):
+		Gui.show_character()
 
 func _physics_process(_delta):
 	get_input()

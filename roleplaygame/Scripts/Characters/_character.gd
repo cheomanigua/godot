@@ -1,5 +1,5 @@
 extends KinematicBody2D
-
+var combat = load("res://Scripts/Logic/_combat.gd").new()
 var speed = 0
 var velocity = Vector2()
 var spritedir = "down"
