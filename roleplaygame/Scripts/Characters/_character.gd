@@ -4,13 +4,14 @@ var speed = 0
 var velocity = Vector2()
 var spritedir = "down"
 
-export (Dictionary) var stats = {
-	"strength" : 4,
-	"intelligence" : 4,
-	"dexterity" : 3,
-	"endurance" : 6,
-	"health" : 10,
-}
+#export (Dictionary) var creature_stats = {
+#	"strength" : 4,
+#	"intelligence" : 4,
+#	"dexterity" : 3,
+#	"endurance" : 6,
+#	"health" : 10,
+#}
+var creature_stats = {}
 
 func movement():
 	var motion = velocity.normalized() * speed

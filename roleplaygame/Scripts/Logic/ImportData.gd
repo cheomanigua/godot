@@ -19,4 +19,5 @@ func _ready():
 #	for key in creature_data.get(creature):
 #		print ("%s : %s" % [key, creature_data.get(creature)[key]])
 #	print("%s strength is %d" % [creature, creature_data.get(creature)["Strength"]])
+#	print(creature_data[creature])
 	

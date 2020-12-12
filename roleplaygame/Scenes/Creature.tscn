@@ -10,13 +10,6 @@ extents = Vector2( 7.48294, 7.9743 )
 
 [node name="Creature" type="KinematicBody2D"]
 script = ExtResource( 1 )
-stats = {
-"dexterity": 3,
-"endurance": 6,
-"health": 10,
-"intelligence": 4,
-"strength": 4
-}
 
 [node name="Sprite" type="Sprite" parent="."]
 

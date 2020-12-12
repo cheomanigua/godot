@@ -1,18 +1,9 @@
 # RPG Godot project 
 
-## Combat system
-
-Combat is separated in two stages:
-1. Attack: check if attack is successful. Modifiers are:
-  - \+ Attacker dexterity
-  - \- Target dexterity
-
-
-2. Damage
-
 ## Items
 
-- Items are **Area2D** scenes with the following children nodes: **Sprite** and **CollisionShape2D**
+- Items is a **Item.tscn** scene with a **Area2D** parent node and the following children nodes: **Sprite** and **CollisionShape2D**
+- No texture file must be added in the **Item.tscn**'s sprite node. Only add texture file in instanciated items sprite nodes. 
 - Items functionality is implemented by script **item.gd** 
 - The fundamental feature of an item is that it can be picked up by the player. When picked up, the item is added to a dictionary called `inventory`
 - Items have three custom properties that can be edited in the instanciated nodes:
@@ -45,6 +36,17 @@ func _on_body_entered(body,item):
             queue_free()
         queue_free()
 ```
+
+## Creatures
+
+- Creatures is a **Creature.tscn** scene with a **KinematicBody2D** parent node and the following children nodes: **Sprite**, **CollisionShape2D** and **Area2D** called *HitBox* with a child node of type **CollisionShape2D**
+- No texture file must be added in the **Creature.tscn**'s sprite node. Only add texture file in instanciated creatures sprite nodes. 
+- Creatures functionality is implemented by script **Creature.gd**
+- Creatures has a property called **Creature type** that can be selected from a drop down menu in the Inspector Panel. By default, the **Creature Type** is *Orc*
+- Creatures have five skill's properties: *Strength, Intelligence, Dexterity, Endurance* and *Health*
+- *Health* property is the sum of *Strength* and *Endurance*
+- Skill's property are parsed to a dictionary variable from a JSON file,
+- The file is located at [https://drive.google.com/file/d/14wp-Bb6rZby27-2HRgM0o01dv5klm_hL/view](https://drive.google.com/file/d/14wp-Bb6rZby27-2HRgM0o01dv5klm_hL/view)
 
 ## Doors
 
@@ -82,3 +84,17 @@ func _on_Door_body_exited(body):
 ```
 
 
+## Combat system
+
+### Actual combat system
+- When Player enters the creature's Zone2D collision shape, his chance to hit the creature is the percentage of Player's **Dexterity** skill. For instance: if Player's **Dexterity** skill is 4, there is a 40% chances to hit the creature.
+- When Player hits the creature, the damage provoked is a random generated number between 1 and Player's **Strength** skill.
+
+### Desired combat system
+Combat is separated in two stages:
+1. Attack: check if attack is successful. Modifiers are:
+  - \+ Attacker dexterity
+  - \- Target dexterity
+
+
+2. Damage

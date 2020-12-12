@@ -2,7 +2,13 @@ extends "res://Scripts/Characters/_character.gd"
 
 #export (int) var speed = 300
 var inventory:Dictionary = {}
-
+export (Dictionary) var stats = {
+	"Strength" : 4,
+	"Intelligence" : 4,
+	"Dexterity" : 3,
+	"Endurance" : 6,
+	"Health" : 10,
+}
 func add_item(item,amount):
 	if inventory.has(item):
 		var temp = inventory[item]

@@ -11,6 +11,9 @@ func texture_get():
 	return $Sprite.texture
 
 func _ready():
+	# Initialize creature stats dictionary based on json file data
+	for key in ImportData.creature_data.get(creature_type):
+		creature_stats = ImportData.creature_data.get(creature_type)
 # warning-ignore:return_value_discarded
 	$HitBox.connect("body_entered",self,"_on_Creature_body_entered")
 
