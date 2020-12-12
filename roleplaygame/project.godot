@@ -21,7 +21,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Player="*res://Scenes/Characters/Player.tscn"
+Player="*res://Scenes/Player.tscn"
 Gui="*res://Scenes/GUI.tscn"
 ImportData="*res://Scripts/Logic/ImportData.gd"
 

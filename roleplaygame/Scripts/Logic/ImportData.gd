@@ -8,6 +8,9 @@ func open_creatures():
 	var creaturedata_json = JSON.parse(creaturedata_file.get_as_text())
 	creaturedata_file.close()
 	creature_data = creaturedata_json.result
+
+func _ready():
+	open_creatures()
 	
 	# Testing
 #	print (creature_data.keys())

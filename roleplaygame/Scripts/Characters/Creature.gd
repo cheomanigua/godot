@@ -2,7 +2,7 @@ tool
 extends "res://Scripts/Characters/_character.gd"
 
 export(Texture) onready var texture setget texture_set, texture_get
-export(String) var creature_type
+export(String,"Human","Orc","Goblin") var creature_type = "Orc"
 
 func texture_set(newtexture):
 	$Sprite.texture = newtexture

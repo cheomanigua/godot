@@ -12,7 +12,7 @@ func combat(enemy):
 		# Player makes a random damage between 1 and his strength attribute
 		var damage = randi() % Player.stats["strength"] + 1
 		health -= damage
-		Gui.message("%s was hit by %s for %d hit points." % [enemy.get_name(), Player.get_name(), damage])
+		Gui.message("%s was hit by %s for %d hit points." % [enemy.creature_type, Player.get_name(), damage])
 
 	enemy.stats["health"]= health
 	status(enemy,health)
@@ -21,6 +21,6 @@ func status(enemy,health):
 	if health > 0:
 		print("%s health is %d" % [enemy.get_name(), health])
 	else:
-		Gui.message("%s died" % [enemy.get_name()])
+		Gui.message("%s died" % [enemy.creature_type])
 		enemy.queue_free()
 

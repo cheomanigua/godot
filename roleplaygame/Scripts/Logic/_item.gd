@@ -15,7 +15,9 @@ func _ready():
 	if item_name:
 		pickup(item_name)
 	else:
-		pickup(get_parent().get_name())
+		push_warning("You must fill out item_name for node %s/%s" % [get_parent().name, get_name()])
+		Gui.get_node("Control/Error_panel").show()
+		Gui.error("You must fill out item_name\nfor node %s/%s" % [get_parent().name, get_name()])
 
 func pickup(item):
 # warning-ignore:return_value_discarded
@@ -24,5 +26,8 @@ func pickup(item):
 func _on_body_entered(body,item):
 	if body.get_name() == "Player":
 		Player.add_item(item,amount)
-		Gui.message("%d %s picked up" % [amount,item])
+		if amount > 1:
+			Gui.message("%d %ss picked up" % [amount,item])
+		else:
+			Gui.message("%d %s picked up" % [amount,item])
 		queue_free()
