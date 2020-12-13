@@ -41,7 +41,7 @@ func character_info():
 
 func message(message):
 	$Control/bottom_message.text = message
-	yield(get_tree().create_timer(2.0), "timeout")
+	yield(get_tree().create_timer(5.0), "timeout")
 	$Control/bottom_message.text = ""
 
 func error(message):

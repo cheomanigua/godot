@@ -32,14 +32,15 @@ func get_input():
 
 	velocity.x = -int(LEFT) + int(RIGHT)
 	velocity.y = -int(UP) + int(DOWN)
-#	velocity = velocity.normalized() * speed
-	if (Input.is_key_pressed(KEY_ESCAPE)):
-		get_tree().quit()
-	if (Input.is_action_just_released("inventory")):
-		Gui.show_inventory()
-	if (Input.is_action_just_released("character")):
-		Gui.show_character()
 
+func _input(event):
+	if event.is_action_released("inventory"):
+		Gui.show_inventory()
+	if (event.is_action_released("character")):
+		Gui.show_character()
+	if (event.is_action_pressed("quit")):
+		get_tree().quit()
+	
 func _physics_process(_delta):
 	get_input()
 	movement()
