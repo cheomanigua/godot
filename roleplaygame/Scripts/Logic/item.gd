@@ -15,6 +15,7 @@ func _ready():
 	if item_name:
 		pickup(item_name)
 	else:
+		# If item_name is not filled in the inspector, throw a warning
 		push_warning("You must fill out item_name for node %s/%s" % [get_parent().name, get_name()])
 		Gui.get_node("Control/Error_panel").show()
 		Gui.error("You must fill out item_name\nfor node %s/%s" % [get_parent().name, get_name()])

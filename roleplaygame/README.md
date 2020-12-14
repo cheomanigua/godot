@@ -10,6 +10,7 @@
   1. **Textures**: Used in the editor in an instanciated item for adding a texture to the **Sprite** node.
   2. **Item Name**: Used to identify the item both in the inventory and when interacting with the environment.
   3. **Amount**: Used to quantify the number of items on an item instance.
+- If no **Item Name** is added, there will be an alert in the main editor window and an error message in Godot’s built-in debugger.
 - Items are instanciated from the parent scene "Item.tscn"
 - It is recommended to create an empty parent Node for instances that share the same **Item name**. For instance, create an empty Node and name it **Gems**. From **Gems** you can instanciate items that are going to use *Gem* as **Item Name**.
 
@@ -21,9 +22,9 @@
 ## Creatures
 
 - Creatures is a **Creature.tscn** scene with a **KinematicBody2D** parent node and the following children nodes: **Sprite**, **CollisionShape2D** and **Area2D** called *HitBox* with a child node of type **CollisionShape2D**
-- Creatures functionality is implemented by script **Creature.gd**
+- Creatures functionality is implemented by script **creature.gd**
 - No texture file must be added in the **Creature.tscn**'s sprite node. Only add texture file in instanciated creatures sprite nodes. 
-- Alternatively, you can initialize the texture automatically during runtime within **Creature.gd** script.
+- Alternatively, you can initialize the texture automatically during runtime within **creature.gd** script.
 - Creatures has a property called **Creature type** that can be selected from a drop down menu in the Inspector Panel. By default, the **Creature Type** is *Orc*
 - Creatures have five skill's properties: *Strength, Intelligence, Dexterity, Endurance* and *Health*
 - *Health* property is the sum of *Strength* and *Endurance*
@@ -55,4 +56,4 @@ Combat is separated in two stages:
 
 ## Singletons
 
-There are three singletons: **Player.tscn**, **GUI.tscn** and **ImportData.gd**
+There are three singletons: **Player.tscn**, **GUI.tscn** and **data.gd**

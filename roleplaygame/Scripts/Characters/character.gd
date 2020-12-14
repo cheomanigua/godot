@@ -1,16 +1,8 @@
 extends KinematicBody2D
-var combat = load("res://Scripts/Logic/_combat.gd").new()
+var Combat = load("res://Scripts/Logic/combat.gd").new()
 var speed = 0
 var velocity = Vector2()
 var spritedir = "down"
-
-#export (Dictionary) var creature_stats = {
-#	"strength" : 4,
-#	"intelligence" : 4,
-#	"dexterity" : 3,
-#	"endurance" : 6,
-#	"health" : 10,
-#}
 var creature_stats = {}
 
 func movement():
@@ -19,7 +11,7 @@ func movement():
 	move_and_slide(motion, Vector2())
 #	move_and_slide(velocity,Vector2())
 #	velocity = move_and_slide(velocity)
-#
+
 func sprite_input():
 	match velocity:
 		Vector2(-1,0):

@@ -1,4 +1,4 @@
-extends "res://Scripts/Characters/_character.gd"
+extends "res://Scripts/Characters/character.gd"
 
 #export (int) var speed = 300
 var inventory:Dictionary = {}
