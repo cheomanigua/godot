@@ -2,15 +2,15 @@ extends Node
 
 var creature_data
 
-func open_creatures():
-	var creaturedata_file = File.new()
-	creaturedata_file.open("res://Data/Creatures2.json", File.READ)
-	var creaturedata_json = JSON.parse(creaturedata_file.get_as_text())
-	creaturedata_file.close()
-	creature_data = creaturedata_json.result
+func open_creatures_file():
+	var creature_data_file = File.new()
+	creature_data_file.open("res://Data/Creatures.json", File.READ)
+	var creature_data_json = JSON.parse(creature_data_file.get_as_text())
+	creature_data_file.close()
+	creature_data = creature_data_json.result
 
 func _ready():
-	open_creatures()
+	open_creatures_file()
 	
 	# Testing
 #	print (creature_data.keys())

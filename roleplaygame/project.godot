@@ -23,7 +23,6 @@ config/icon="res://icon.png"
 
 Player="*res://Scenes/Player.tscn"
 Gui="*res://Scenes/GUI.tscn"
-Data="*res://Scripts/Logic/data.gd"
 
 [display]
 
