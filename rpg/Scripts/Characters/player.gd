@@ -22,6 +22,7 @@ func add_item(item,amount):
 
 func _ready():
 	speed = 70
+	print_stray_nodes()
 
 func get_input():
 	velocity = Vector2()
@@ -33,15 +34,16 @@ func get_input():
 	velocity.x = -int(LEFT) + int(RIGHT)
 	velocity.y = -int(UP) + int(DOWN)
 
-func _input(event):
+func _unhandled_input(event):
+#	get_input()                  
 	if event.is_action_released("inventory"):
 		Gui.show_inventory()
 	if (event.is_action_released("character")):
 		Gui.show_character()
 	if (event.is_action_pressed("quit")):
 		get_tree().quit()
-	
-func _physics_process(_delta):
+							  
+func _process(_delta):
 	get_input()
 	movement()
 	sprite_input()

@@ -20,4 +20,4 @@ func _ready():
 #		print ("%s : %s" % [key, creature_data.get(creature)[key]])
 #	print("%s strength is %d" % [creature, creature_data.get(creature)["Strength"]])
 #	print(creature_data[creature].Texture)
-	
+

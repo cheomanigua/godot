@@ -1,6 +1,7 @@
 tool
 extends "res://Scripts/Characters/character.gd"
-var data = preload("res://Scripts/Logic/data.gd").new()
+onready var data = preload("res://Scripts/Logic/data.gd").new()
+onready var combat = load("res://Scripts/Logic/combat.gd").new()
 
 export(String,"Human","Orc","Goblin") var creature_type = "Orc"
 
@@ -14,12 +15,15 @@ func texture_get():
 
 
 func _ready():
+	add_child(data)
+	add_child(combat)
 	combat.connect("enemy_hit",self,"show_hit")
 	# Initialize creature_stats dictionary based on json file data
 	data.open_creatures_file()
 	for key in data.creature_data.get(creature_type):
 		creature_stats = data.creature_data.get(creature_type)
-
+	data.queue_free()
+	
 	# Initialize creature texture based on json file data
 #	var texture = load("%s" % creature_stats.Texture)
 #	get_node("Sprite").texture = texture
@@ -28,6 +32,9 @@ func _ready():
 	# Initiate combat when creature is touched
 	$HitBox.connect("body_entered",self,"_on_Creature_body_entered")
 
+#func _exit_tree():
+#	data.queue_free()
+#	combat.queue_free()
 
 func _on_Creature_body_entered(body):
 	if body.get_name() == "Player":
@@ -36,3 +43,5 @@ func _on_Creature_body_entered(body):
 
 func show_hit(damage, crit):
 	$FCTMgr.show_value(damage, crit)
+
+
