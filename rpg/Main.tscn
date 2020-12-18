@@ -16,12 +16,11 @@
 
 [node name="Creature" parent="Creatures" instance=ExtResource( 5 )]
 position = Vector2( 139.849, 107.535 )
-creature_type = "Agoiru"
 texture = ExtResource( 2 )
 
 [node name="Creature2" parent="Creatures" instance=ExtResource( 5 )]
 position = Vector2( 81.5786, 191.233 )
-creature_type = "Adivía"
+creature_type = "Goblin"
 texture = ExtResource( 1 )
 
 [node name="Potions" type="Node" parent="."]

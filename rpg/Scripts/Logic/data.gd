@@ -13,6 +13,7 @@ func _ready():
 	open_creatures_file()
 	
 	# Testing
+#	print(creature_data)
 #	print (creature_data.keys())
 #	var creature = "Goblin"
 #	print ("%s stats are:" % [creature])
