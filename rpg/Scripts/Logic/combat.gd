@@ -21,7 +21,7 @@ func attack(enemy):
 		emit_signal("enemy_hit", damage, crit)
 #		Gui.message("%s was hit by %s for %d hit points." % [enemy.creature_type, Player.get_name(), damage])
 	else:
-		emit_signal("enemy_hit",damage,crit)
+		emit_signal("enemy_hit", damage, crit)
 #		Gui.message("%s Missed" % [Player.get_name()])
 
 	enemy.creature_stats["Health"]= health

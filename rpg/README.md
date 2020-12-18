@@ -44,6 +44,7 @@
 ### Actual combat system
 - When Player enters the creature's Zone2D collision shape, his chance to hit the creature is the percentage of Player's **Dexterity** skill. For instance: if Player's **Dexterity** skill is 4, there is a 40% chances to hit the creature.
 - When Player hits the creature, the damage provoked is a random generated number between 1 and Player's **Strength** skill.
+- When Player hits the creature, there is a 10% chance to inflict a critical. In this case, the damage doubles.
 
 ### Desired combat system
 Combat is separated in two stages:
@@ -56,4 +57,4 @@ Combat is separated in two stages:
 
 ## Singletons
 
-There are three singletons: **Player.tscn**, **GUI.tscn** and **data.gd**
+There are three singletons: **Player.tscn**, **GUI.tscn**

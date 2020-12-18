@@ -4,7 +4,7 @@
 [ext_resource path="res://Scenes/FCTMgr.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 6.67862, 2.57966 )
+extents = Vector2( 6.82659, 7.41286 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 7.48294, 7.9743 )
@@ -15,7 +15,6 @@ script = ExtResource( 1 )
 [node name="Sprite" type="Sprite" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2( 1.026, 2.806 )
 shape = SubResource( 1 )
 
 [node name="FCTMgr" parent="." instance=ExtResource( 2 )]
