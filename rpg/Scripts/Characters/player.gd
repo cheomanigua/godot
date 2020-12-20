@@ -46,11 +46,11 @@ func _unhandled_input(event):
 		Gui.show_inventory()
 	if (event.is_action_released("character")):
 		Gui.show_character()
-	if (event.is_action_pressed("quit")):
+	if (event.is_action_pressed("ui_cancel")):
 		get_tree().quit()
 
   
-func _process(_delta):
+func _physics_process(_delta):
 	get_input()
 	movement()
 	sprite_input()

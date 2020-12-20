@@ -24,7 +24,7 @@ func attack(enemy):
 		emit_signal("enemy_hit", damage, crit)
 #		Gui.message("%s Missed" % [Player.get_name()])
 
-	enemy.creature_stats["Health"]= health
+	enemy.creature_stats["Health"] = health
 	status(enemy,health)
 
 

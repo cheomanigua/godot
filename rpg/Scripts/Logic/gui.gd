@@ -1,4 +1,4 @@
-extends Node2D
+extends CanvasLayer
 var show_inv= true
 var show_ch = true
 var timer_bottom_message
@@ -28,7 +28,7 @@ func show_character():
 func update_label():
 	$Control/inventory.text =""
 	for key in Player.inventory:
-		$Control/inventory.text += "%ss : %d" % [key, Player.inventory[key]]
+		$Control/inventory.text += "%s : %d" % [key, Player.inventory[key]]
 		if (key != Player.inventory.keys().back()):
 				$Control/inventory.text += "\n"
 

@@ -25,3 +25,6 @@ margin_right = 32.0
 
 [node name="Ship" parent="." instance=ExtResource( 4 )]
 position = Vector2( 473.385, 430.809 )
+
+[node name="Camera2D" type="Camera2D" parent="Ship"]
+current = true

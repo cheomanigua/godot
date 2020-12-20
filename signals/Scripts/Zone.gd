@@ -9,8 +9,8 @@ func _on_Zone_body_entered(body):
 	#if body.has_method("player_spotted")
 	#if body.get_name() == "Player":
 	if body.is_in_group("players"):
-		print(str(get_name()) + "'s message: Player entered the ZONE")
+		print("%s's message: Player entered the ZONE" % get_name())
 	elif body.has_method("grabbed"):
 		body.grabbed()
 	else:
-		print(str(get_name()) + "'s message: Unknown object entered the ZONE")
+		print("%s's message: Unknown object entered the ZONE" % get_name())

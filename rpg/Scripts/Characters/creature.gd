@@ -4,10 +4,11 @@ onready var data = preload("res://Scripts/Logic/data.gd").new()
 onready var combat = load("res://Scripts/Logic/combat.gd").new()
 
 export(String,"Human","Orc","Goblin", "Adivía", "Agoiru") var creature_type = "Orc"
-var creature_stats = {}
+var creature_stats:Dictionary = {}
 
 ## Uncomment below if you want to add the sprite texture manually in the inspector ##
 export(Texture) onready var texture setget texture_set, texture_get
+
 func texture_set(newtexture):
 	$Sprite.texture = newtexture
 

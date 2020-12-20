@@ -2,7 +2,7 @@ extends KinematicBody2D
 #export (int) var speed = 200
 #var velocity = Vector2()
 #
-func _input(event):
+func _unhandled_input(event):
 	if event.is_action_pressed('click'):
 		target = get_global_mouse_position()
 

@@ -2,12 +2,12 @@
 
 ## Items
 
-- Items is a **Item.tscn** scene with a **Area2D** parent node and the following children nodes: **Sprite** and **CollisionShape2D**
+- Items is a **Item.tscn** scene with a **Sprite** parent node and the following children nodes: **Area2D** and **CollisionShape2D**
 - No texture file must be added in the **Item.tscn**'s sprite node. Only add texture file in instanciated items sprite nodes. 
 - Items functionality is implemented by script **item.gd** 
 - The fundamental feature of an item is that it can be picked up by the player. When picked up, the item is added to a dictionary called `inventory`
 - Items have three custom properties that can be edited in the instanciated nodes:
-  1. **Textures**: Used in the editor in an instanciated item for adding a texture to the **Sprite** node.
+  1. **Texture**: Used in the editor in an instanciated item for adding a texture to the **Sprite** node. Sprite sheets can be used as texture, so you need to set the values of Animation's *VFrames*, *HFrames* and *Frame*
   2. **Item Name**: Used to identify the item both in the inventory and when interacting with the environment.
   3. **Amount**: Used to quantify the number of items on an item instance.
 - If no **Item Name** is added, there will be an alert in the main editor window and an error message in Godot’s built-in debugger.

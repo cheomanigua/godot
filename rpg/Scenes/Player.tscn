@@ -139,14 +139,14 @@ tracks/0/keys = {
 extents = Vector2( 5.27841, 7.22974 )
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 48, 62 )
+position = Vector2( 159.839, 144.828 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 vframes = 2
 hframes = 8
-frame = 7
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 4.0
@@ -160,5 +160,8 @@ anims/walkright = SubResource( 7 )
 anims/walkup = SubResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1.05946, 0 )
+position = Vector2( -0.132431, -0.132431 )
 shape = SubResource( 9 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true

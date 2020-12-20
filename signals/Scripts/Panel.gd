@@ -14,5 +14,5 @@ func increase_counter(body):
 		pcount += 1
 		get_node("LPlayer").text = str(pcount)
 	else:
-		ocount += 	1
+		ocount += 1
 		get_node("LOther").text = str(ocount)
