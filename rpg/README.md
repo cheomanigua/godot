@@ -1,5 +1,11 @@
 # RPG Godot project 
 
+## Player
+- Player is a **Player.tscn** scene with a **KinematicBody2D** parent node and the following children nodes: **Sprite**, **Sprite2**, **AnimationPlayer**, **AnimationPlayer2**, **CollisionShape2D** and **Camera2D**
+- **Sprite** is a sprite sheet used for **AnimationPlayer**
+- **Sprite2** is a sprite sheet used for **AnimationPlayer2**
+- In order to swap between Animations, edit funcion `anim_switchi()` in script **character.gd** and hide the other sprite node.
+
 ## Items
 
 - Items is a **Item.tscn** scene with a **Sprite** parent node and the following children nodes: **Area2D** and **CollisionShape2D**
@@ -21,15 +27,18 @@
 
 ## Creatures
 
-- Creatures is a **Creature.tscn** scene with a **KinematicBody2D** parent node and the following children nodes: **Sprite**, **CollisionShape2D** and **Area2D** called *HitBox* with a child node of type **CollisionShape2D**
+- Creatures is a **Creature.tscn** scene with a **KinematicBody2D** parent node and
+the following children nodes: **Sprite**, **CollisionShape2D**, **Area2D** and **AnimationPlayer**
+- The **Area2D** is called *HitBox* and has child node of type **CollisionShape2D**
+used to detect when Player is attacking and initiate the combat process.
+- The **AnimationPlayer** has a basic *flip_h* key animation.
 - Creatures functionality is implemented by script **creature.gd**
-- No texture file must be added in the **Creature.tscn**'s sprite node. Only add texture file in instanciated creatures sprite nodes. 
-- Alternatively, you can initialize the texture automatically during runtime within **creature.gd** script.
-- Creatures has a property called **Creature type** that can be selected from a drop down menu in the Inspector Panel. By default, the **Creature Type** is *Orc*
+- Creatures has a property called **Creature type** that can be selected from a drop down menu in the Inspector Panel. By default, the **Creature Type** is *Orc*. This property is very important because it is used to automatically initialize the creature's instance texture and skills from a JSON file.
+- A placeholder texture file is added in the **Creature.tscn**'s sprite node. When instantiated, creatures get their texture from a JSON file where the *sprite sheet* resource path, *VFrames*, *HFrames* and *Frame* properties are fetched.
 - Creatures have five skill's properties: *Strength, Intelligence, Dexterity, Endurance* and *Health*
 - *Health* property is the sum of *Strength* and *Endurance*
-- Skill's property are parsed to a dictionary variable from a JSON file,
-- The file is located at [https://drive.google.com/file/d/14wp-Bb6rZby27-2HRgM0o01dv5klm_hL/view](https://drive.google.com/file/d/14wp-Bb6rZby27-2HRgM0o01dv5klm_hL/view)
+- Skill's property are parsed to a dictionary variable from a JSON file.
+- The file is located at [https://drive.google.com/file/d/1Fq4q-3b1RMubc4cYm9QwMyzznOpFjcK5/view](https://drive.google.com/file/d/1Fq4q-3b1RMubc4cYm9QwMyzznOpFjcK5/view)
 
 ## Doors
 
@@ -57,4 +66,4 @@ Combat is separated in two stages:
 
 ## Singletons
 
-There are three singletons: **Player.tscn**, **GUI.tscn**
+There are two singletons: **Player.tscn** and **GUI.tscn**
