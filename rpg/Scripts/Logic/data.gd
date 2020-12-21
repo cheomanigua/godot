@@ -4,7 +4,7 @@ var creature_data
 
 func open_creatures_file():
 	var creature_data_file = File.new()
-	creature_data_file.open("res://Data/Creatures2.json", File.READ)
+	creature_data_file.open("res://Data/creatures.json", File.READ)
 	var creature_data_json = JSON.parse(creature_data_file.get_as_text())
 	creature_data_file.close()
 	creature_data = creature_data_json.result

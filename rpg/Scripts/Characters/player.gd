@@ -4,11 +4,11 @@ extends "res://Scripts/Characters/character.gd"
 var inventory:Dictionary = {}
 
 export (Dictionary) var stats = {
-	"Strength" : 4,
-	"Intelligence" : 4,
-	"Dexterity" : 3,
-	"Endurance" : 6,
-	"Health" : 10,
+	"strength" : 4,
+	"intelligence" : 4,
+	"dexterity" : 3,
+	"endurance" : 6,
+	"health" : 10,
 }
 
 

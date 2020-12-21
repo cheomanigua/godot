@@ -4,6 +4,25 @@ var speed = 0
 var velocity = Vector2()
 var spritedir = "down"
 
+const CENTER = Vector2()
+const LEFT = Vector2(-1,0)
+const RIGHT = Vector2(1,0)
+const UP = Vector2(0,-1)
+const DOWN = Vector2(0,1)
+
+
+func creature_random_movement():
+	var d = randi() % 4 + 1
+	match d:
+		1:
+			return LEFT
+		2:
+			return RIGHT
+		3:
+			return UP
+		4:
+			return DOWN
+
 
 func movement():
 	var motion = velocity.normalized() * speed
@@ -27,5 +46,5 @@ func sprite_input():
 
 func anim_switch(animation):
 	var newanim = str(animation,spritedir)
-	if get_node("AnimationPlayer").current_animation != newanim:
-		get_node("AnimationPlayer").play(newanim)
+	if $AnimationPlayer.current_animation != newanim:
+		$AnimationPlayer.play(newanim)
