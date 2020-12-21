@@ -2,6 +2,7 @@ extends "res://Scripts/Characters/character.gd"
 
 #export (int) var speed = 300
 var inventory:Dictionary = {}
+var is_paused: bool = false
 
 export (Dictionary) var stats = {
 	"strength" : 4,
@@ -25,6 +26,7 @@ func add_item(item,amount):
 
 
 func _ready():
+	pause_mode = Node.PAUSE_MODE_PROCESS
 	speed = 70
 	print_stray_nodes()
 
@@ -48,7 +50,19 @@ func _unhandled_input(event):
 		Gui.show_character()
 	if (event.is_action_pressed("ui_cancel")):
 		get_tree().quit()
+	if (event.is_action_pressed("ui_accept")):
+		is_paused = !is_paused
+		pause()
+		print("Return key pressed")
+		
 
+func pause():
+	if is_paused:
+		get_tree().paused = true
+		set_physics_process(false)
+	else:
+		get_tree().paused = false
+		set_physics_process(true)
   
 func _physics_process(_delta):
 	get_input()

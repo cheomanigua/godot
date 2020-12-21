@@ -8,7 +8,10 @@ func _ready():
 	$Control/inventory.hide()
 	$Control/character.hide()
 	$Control/inventory.text = "No items"
-	$Control/bottom_message.text = "Press \"I\" to show the inventory\nPress \"C\" to show Player stats\nPress \"ESC\" to exit the game"
+	$Control/bottom_message.text = "Press \"I\" to show the inventory\n" \
+	+ "Press \"C\" to show Player stats\n" \
+	+ "Press \"ESC\" to exit the game\n" \
+	+ "Press \"SPACE BAR\" or \"RETURN\" to pause the game"
 	character_info()
 
 func show_inventory():
