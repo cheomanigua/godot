@@ -3,6 +3,7 @@ extends "res://Scripts/Characters/character.gd"
 #export (int) var speed = 300
 var inventory:Dictionary = {}
 var is_paused: bool = false
+var cogido: bool = false
 
 export (Dictionary) var stats = {
 	"strength" : 4,
@@ -50,19 +51,34 @@ func _unhandled_input(event):
 		Gui.show_character()
 	if (event.is_action_pressed("ui_cancel")):
 		get_tree().quit()
-	if (event.is_action_pressed("ui_accept")):
-		is_paused = !is_paused
+	if (event.is_action_released("ui_accept")):
 		pause()
-		print("Return key pressed")
-		
+	if (event.is_action_pressed("ui_up")):
+		pickup()
+
+
+func pickup():
+	for body in $Area2D.get_overlapping_areas():
+		if body.get_parent().is_in_group("items"):
+			var item = body.get_parent().item_name
+			var amount = body.get_parent().amount
+			add_item(item,amount)
+			body.get_parent().queue_free()
+			if amount > 1:
+				Gui.message("%d %ss picked up" % [amount,item])
+			else:
+				Gui.message("%d %s picked up" % [amount,item])
+
 
 func pause():
+	is_paused = !is_paused
 	if is_paused:
 		get_tree().paused = true
 		set_physics_process(false)
 	else:
 		get_tree().paused = false
 		set_physics_process(true)
+
   
 func _physics_process(_delta):
 	get_input()

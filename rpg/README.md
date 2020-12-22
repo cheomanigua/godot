@@ -4,7 +4,7 @@
 - Player is a **Player.tscn** scene with a **KinematicBody2D** parent node and the following children nodes: **Sprite**, **Sprite2**, **AnimationPlayer**, **AnimationPlayer2**, **CollisionShape2D** and **Camera2D**
 - **Sprite** is a sprite sheet used for **AnimationPlayer**
 - **Sprite2** is a sprite sheet used for **AnimationPlayer2**
-- In order to swap between Animations, edit funcion `anim_switchi()` in script **character.gd** and hide the other sprite node.
+- In order to swap between Animations, edit funcion `anim_switch()` in script **character.gd** and hide the other sprite node.
 
 ## Items
 
