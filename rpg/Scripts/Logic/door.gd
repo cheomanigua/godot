@@ -14,14 +14,14 @@ func _on_Door_body_entered(body):
 			if Player.inventory.has(key):
 				$CollisionShape2D.set_deferred("disabled", true)
 				hide()
-				Gui.message("Door opened with %s" % [key])
+				Notification.message("Door opened with %s" % [key])
 			else:
-				Gui.message("You need a %s" % [key])
+				Notification.message("You need a %s" % [key])
 		# Exectute if no key is needed to open the door
 		else:
 			$CollisionShape2D.set_deferred("disabled", true)
 			hide()
-			Gui.message("No key needed")
+			Notification.message("No key needed")
 
 func _on_Door_body_exited(body):
 	if body.get_name() == "Player":

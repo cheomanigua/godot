@@ -1,7 +1,7 @@
 #tool
 extends "res://Scripts/Characters/character.gd"
 onready var data = preload("res://Scripts/Logic/data.gd").new()
-onready var combat = load("res://Scripts/Logic/combat.gd").new()
+onready var combat = preload("res://Scripts/Logic/combat.gd").new()
 
 export(String,"Human","Orc","Goblin", "Adivía", "Agoiru") var creature_type = "Orc"
 var creature_stats:Dictionary = {}
@@ -25,14 +25,12 @@ func _ready():
 	add_child(combat)
 	
 	# Initialize creature_stats data (dictionary) based on json file data
-	data.open_creatures_file()
 	for key in data.creature_data.get(creature_type):
 		creature_stats = data.creature_data.get(creature_type)
 	data.queue_free()
 	
 	# Initialize creature texture based on json file data
-	var texture = load("%s" % creature_stats.texture)
-	$Sprite.texture = texture
+	$Sprite.texture = load("%s" % creature_stats.texture)
 	$Sprite.set_vframes(creature_stats["vframes"])
 	$Sprite.set_hframes(creature_stats["hframes"])
 	$Sprite.set_frame(creature_stats["frame"])

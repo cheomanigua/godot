@@ -21,7 +21,7 @@ run/main_scene="res://Main.tscn"
 [autoload]
 
 Player="*res://Scenes/Player.tscn"
-Gui="*res://Scenes/GUI.tscn"
+Notification="*res://Scenes/Notification.tscn"
 
 [display]
 

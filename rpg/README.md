@@ -66,4 +66,4 @@ Combat is separated in two stages:
 
 ## Singletons
 
-There are two singletons: **Player.tscn** and **GUI.tscn**
+There are two singletons: **Player.tscn** and **Notification.tscn**

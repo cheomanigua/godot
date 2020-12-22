@@ -26,6 +26,10 @@ func get_input():
 		velocity.y -= 1
 	velocity = velocity.normalized() * speed
 
+func _unhandled_key_input(event):
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().quit()
+
 func _physics_process(_delta):
 	get_input()
 	velocity = move_and_slide(velocity)

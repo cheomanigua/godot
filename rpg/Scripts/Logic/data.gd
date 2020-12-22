@@ -1,16 +1,16 @@
 extends Node
 
-var creature_data
+var creature_data: Dictionary = {}
 
-func open_creatures_file():
+func open_creatures_file() -> Dictionary:
 	var creature_data_file = File.new()
 	creature_data_file.open("res://Data/creatures.json", File.READ)
 	var creature_data_json = JSON.parse(creature_data_file.get_as_text())
 	creature_data_file.close()
-	creature_data = creature_data_json.result
+	return creature_data_json.result
 
 func _ready():
-	open_creatures_file()
+	creature_data = open_creatures_file()
 	
 	# Testing
 #	print(creature_data)

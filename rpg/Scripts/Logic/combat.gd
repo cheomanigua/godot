@@ -19,10 +19,10 @@ func attack(enemy):
 			damage *= 2
 		health -= damage
 		emit_signal("enemy_hit", damage, crit)
-#		Gui.message("%s was hit by %s for %d hit points." % [enemy.creature_type, Player.get_name(), damage])
+#		Notification.message("%s was hit by %s for %d hit points." % [enemy.creature_type, Player.get_name(), damage])
 	else:
 		emit_signal("enemy_hit", damage, crit)
-#		Gui.message("%s Missed" % [Player.get_name()])
+#		Notification.message("%s Missed" % [Player.get_name()])
 
 	enemy.creature_stats["health"] = health
 	status(enemy,health)
@@ -32,6 +32,6 @@ func status(enemy,health):
 	if health > 0:
 		print("%s health is %d" % [enemy.creature_type, health])
 	else:
-		Gui.message("%s died" % [enemy.creature_type])
+		Notification.message("%s died" % [enemy.creature_type])
 		enemy.queue_free()
 

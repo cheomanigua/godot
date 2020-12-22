@@ -3,7 +3,7 @@ extends "res://Scripts/Characters/character.gd"
 #export (int) var speed = 300
 var inventory:Dictionary = {}
 var is_paused: bool = false
-var cogido: bool = false
+signal inventory_updated
 
 export (Dictionary) var stats = {
 	"strength" : 4,
@@ -23,7 +23,8 @@ func add_item(item,amount):
 	else:
 		inventory[item] = amount
 #		print("You have %d %s" % [inventory[item], item])
-	Gui.update_label()
+#	Notification.update_label()
+	emit_signal("inventory_updated")
 
 
 func _ready():
@@ -44,14 +45,9 @@ func get_input():
 
 
 func _unhandled_input(event):
-#	get_input()                  
-	if event.is_action_released("inventory"):
-		Gui.show_inventory()
-	if (event.is_action_released("character")):
-		Gui.show_character()
 	if (event.is_action_pressed("ui_cancel")):
 		get_tree().quit()
-	if (event.is_action_released("ui_accept")):
+	if (event.is_action_pressed("ui_accept")):
 		pause()
 	if (event.is_action_pressed("ui_up")):
 		pickup()
@@ -65,9 +61,9 @@ func pickup():
 			add_item(item,amount)
 			body.get_parent().queue_free()
 			if amount > 1:
-				Gui.message("%d %ss picked up" % [amount,item])
+				Notification.message("%d %ss picked up" % [amount,item])
 			else:
-				Gui.message("%d %s picked up" % [amount,item])
+				Notification.message("%d %s picked up" % [amount,item])
 
 
 func pause():
