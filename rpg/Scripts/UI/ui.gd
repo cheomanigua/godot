@@ -3,7 +3,6 @@ extends CanvasLayer
 func _ready():
 	$Inventory.hide()
 	$Stats.hide()
-	pass # Replace with function body.
 
 
 func _unhandled_key_input(event):

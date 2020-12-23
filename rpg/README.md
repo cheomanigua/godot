@@ -48,6 +48,22 @@ used to detect when Player is attacking and initiate the combat process.
 - **key**: This string field will be filled if a unique item (a key) is needed in order to open the door. If key field is not filled, player can open the door without a key.
 
 
+## UI
+- UI is a **UI.tscn** scene with a **CanvasLayer** parent node with two **Control** children nodes. 
+- The two **Control** children nodes are separate instances of **Inventory.tscn** and **Stats.tscn**
+- **Inventory.tscn** and **Stats.tscn** have both a **Label** node as children
+- The Inventory and Stats are toggled by pressing "I" and "C".
+
+
+## Notifications
+- Notifications is a **Notification.tscn** scene with a **Control** child node.
+- The **Control** child node has two children nodes: a **Label** named *bottom_message* and a **Panel** named *Error_panel*.
+- The *Error_panel* **Label** has a **Label** child node called *Error_label*
+- The *bottom_message* shows general messages during the game
+- The *Error_label* shows an error when we don't fill the *item_name* property if an **Item.tscn** instance.
+
+
+
 ## Combat system
 
 ### Actual combat system
@@ -63,6 +79,10 @@ Combat is separated in two stages:
 
 
 2. Damage
+
+### Floating text
+When hitting or missing a strike, a floating pop up text appers on top of the creature. This floating text is implemented by **FTC.tscn** and **FTCMgr.tcsn**
+
 
 ## Singletons
 
