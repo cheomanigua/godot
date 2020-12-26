@@ -22,6 +22,7 @@ run/main_scene="res://Main.tscn"
 
 Player="*res://Scenes/Player.tscn"
 Notification="*res://Scenes/Notification.tscn"
+Data="*res://Scripts/Logic/data.gd"
 
 [display]
 

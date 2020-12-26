@@ -1,6 +1,6 @@
 #tool
 extends "res://Scripts/Characters/character.gd"
-onready var data = preload("res://Scripts/Logic/data.gd").new()
+#onready var data = preload("res://Scripts/Logic/data.gd").new()
 onready var combat = preload("res://Scripts/Logic/combat.gd").new()
 
 export(String,"Human","Orc","Goblin", "Adivía", "Agoiru") var creature_type = "Orc"
@@ -21,16 +21,16 @@ var movetimer = 0
 
 func _ready():
 	speed = 40
-	add_child(data)
+#	add_child(data)
 	add_child(combat)
 	
-	# Initialize creature_stats data (dictionary) based on json file data
-	for key in data.creature_data.get(creature_type):
-		creature_stats = data.creature_data.get(creature_type)
-	data.queue_free()
+	# Initialize creature_stats Data (dictionary) based on json file data
+	for key in Data.creature_data[creature_type]:
+		creature_stats = Data.creature_data[creature_type]
+#	data.queue_free()
 	
 	# Initialize creature texture based on json file data
-	$Sprite.texture = load("%s" % creature_stats.texture)
+	$Sprite.texture = load("%s" % creature_stats["texture"])
 	$Sprite.set_vframes(creature_stats["vframes"])
 	$Sprite.set_hframes(creature_stats["hframes"])
 	$Sprite.set_frame(creature_stats["frame"])

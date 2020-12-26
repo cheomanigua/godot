@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Item.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Images/Items/Money.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/UI/UI.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Creature.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Structures/Door.tscn" type="PackedScene" id=7]
 
 [node name="Main" type="Node"]
 
@@ -17,10 +18,13 @@ position = Vector2( 184.292, 125.483 )
 creature_type = "Adivía"
 
 [node name="Creature3" parent="Creatures" instance=ExtResource( 5 )]
-position = Vector2( 63.678, 151.329 )
+position = Vector2( 62.0906, 138.63 )
 creature_type = "Agoiru"
 
 [node name="Doors" type="Node" parent="."]
+
+[node name="Door" parent="Doors" instance=ExtResource( 7 )]
+position = Vector2( 111.912, 141.279 )
 
 [node name="Items" type="Node" parent="."]
 
