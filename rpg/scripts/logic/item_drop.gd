@@ -33,6 +33,7 @@ func _on_item_picked():
 		PlayerInventory.add_item(item_name, amount)
 		queue_free()
 		Notification.message("%d %s picked up" % [amount,item_name])
+		Notification.message("%s is a %s item and has a value of %s" % [item_name, Data.item_data[item_name]["rarity"], Data.item_data[item_name]["item_value"]])
 #	velocity = move_and_slide(velocity, Vector2.UP)
 
 
