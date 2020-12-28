@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/creature.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/structure/door.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/ui/user_interface.gd" type="Script" id=3]
+[ext_resource path="res://scenes/ui/inventory.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/item_drop.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/ui/stats.tscn" type="PackedScene" id=6]
+
+[node name="World" type="Node2D"]
+
+[node name="UserInterface" type="CanvasLayer" parent="."]
+script = ExtResource( 3 )
+
+[node name="Inventory" parent="UserInterface" instance=ExtResource( 4 )]
+visible = false
+
+[node name="Stats" parent="UserInterface" instance=ExtResource( 6 )]
+
+[node name="Creatures" type="Node" parent="."]
+
+[node name="Creature" parent="Creatures" instance=ExtResource( 1 )]
+position = Vector2( 246.781, 94.7525 )
+
+[node name="Creature2" parent="Creatures" instance=ExtResource( 1 )]
+position = Vector2( 174.157, 167.773 )
+creature_type = "Agoiru"
+
+[node name="Items" type="Node" parent="."]
+
+[node name="ItemDrop" parent="Items" instance=ExtResource( 5 )]
+position = Vector2( 167.538, 79.2855 )
+collision_layer = 2147483652
+collision_mask = 2
+item_name = "Gold"
+amount = 56
+
+[node name="ItemDrop2" parent="Items" instance=ExtResource( 5 )]
+position = Vector2( 126.007, 154.795 )
+collision_layer = 2147483652
+collision_mask = 2
+item_name = "Silver"
+amount = 23
+
+[node name="ItemDrop3" parent="Items" instance=ExtResource( 5 )]
+position = Vector2( 394.539, 100.995 )
+collision_layer = 2147483652
+collision_mask = 2
+item_name = "Gem4"
+amount = 5
+
+[node name="ItemDrop4" parent="Items" instance=ExtResource( 5 )]
+position = Vector2( 312.422, 148.66 )
+collision_layer = 2147483652
+collision_mask = 2
+item_name = "Gem4"
+amount = 5
+
+[node name="ItemDrop5" parent="Items" instance=ExtResource( 5 )]
+position = Vector2( 351.121, 166.122 )
+collision_layer = 2147483652
+collision_mask = 2
+item_name = "Gem4"
+amount = 6
+
+[node name="ItemDrop6" parent="Items" instance=ExtResource( 5 )]
+position = Vector2( 232.665, 176.033 )
+collision_layer = 2147483652
+collision_mask = 2
+item_name = "Gem7"
+
+[node name="ItemDrop7" parent="Items" instance=ExtResource( 5 )]
+position = Vector2( 442.205, 182.168 )
+collision_layer = 2147483652
+collision_mask = 2
+item_name = "Gem8"
+
+[node name="Doors" type="Node" parent="."]
+
+[node name="Door" parent="Doors" instance=ExtResource( 2 )]
+position = Vector2( 243.245, 132.936 )
+key = "Gem7"
