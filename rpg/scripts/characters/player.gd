@@ -38,6 +38,20 @@ func _unhandled_input(event):
 		get_tree().quit()
 	if (event.is_action_pressed("ui_accept")):
 		pause()
+	# Key for testing
+	if event.is_action_pressed("ui_down"):
+		# Testing
+		randomize()		
+		if Player.inventory.size() == 0:
+			print("No items yet")
+		else:
+			print("")
+			for key in Player.inventory:
+				print("%s: %s" % [Player.inventory[key][0],Player.inventory[key][1]])
+#			var rand = randi() % Player.inventory.size()
+#			var item = Player.inventory[rand][0]
+#			var amount = randi() % 5 + 1
+#			print("%s: %s" % [item, amount])
 
 
 func pickup_item():

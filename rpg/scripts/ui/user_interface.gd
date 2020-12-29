@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 func _ready():
+	$Inventory.hide()
 	$Stats.hide()
 	
 func _unhandled_input(event):

@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,4 +10,4 @@ func character_info():
 	for key in Player.stats:
 		$Label.text += "%s : %d" % [key, Player.stats[key]]
 		if (key != Player.stats.keys().back()):
-				$Label.text += "\n"
+			$Label.text += "\n"
