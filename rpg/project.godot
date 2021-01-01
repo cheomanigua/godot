@@ -24,6 +24,7 @@ PlayerInventory="*res://scripts/ui/player_inventory.gd"
 Player="*res://scenes/player.tscn"
 Data="*res://scripts/logic/data.gd"
 Notification="*res://scenes/notification.tscn"
+Global="*res://world.gd"
 
 [display]
 

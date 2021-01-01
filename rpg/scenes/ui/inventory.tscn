@@ -5,11 +5,6 @@
 [ext_resource path="res://scripts/ui/slot.gd" type="Script" id=3]
 [ext_resource path="res://scripts/ui/inventory.gd" type="Script" id=4]
 
-
-
-
-
-
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 18, 18 )
@@ -205,6 +200,48 @@ script = ExtResource( 3 )
 margin_left = 88.0
 margin_top = 66.0
 margin_right = 106.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 3 )
+
+[node name="GridContainerLoot" type="GridContainer" parent="."]
+margin_left = 158.0
+margin_top = 100.0
+margin_right = 176.0
+margin_bottom = 188.0
+custom_constants/vseparation = 4
+custom_constants/hseparation = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot1" type="Panel" parent="GridContainerLoot"]
+margin_right = 18.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 3 )
+
+[node name="Slot2" type="Panel" parent="GridContainerLoot"]
+margin_top = 22.0
+margin_right = 18.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 3 )
+
+[node name="Slot3" type="Panel" parent="GridContainerLoot"]
+margin_top = 44.0
+margin_right = 18.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 3 )
+
+[node name="Slot4" type="Panel" parent="GridContainerLoot"]
+margin_top = 66.0
+margin_right = 18.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 18, 18 )
 custom_styles/panel = SubResource( 1 )

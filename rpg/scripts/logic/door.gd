@@ -14,9 +14,9 @@ func _on_Door_body_entered(body):
 		if key:
 			var has_key: bool = false
 			# Loop through the inventory dictionary to check for the key
-			for i in Player.inventory:
+			for i in PlayerInventory.inventory:
 				# If key is found, door is opened
-				if Player.inventory[i][0] == key:
+				if PlayerInventory.inventory[i][0] == key:
 					has_key = true
 					$CollisionShape2D.set_deferred("disabled", true)
 					hide()

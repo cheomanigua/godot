@@ -1,8 +1,8 @@
 extends "res://scripts/characters/character.gd"
 
-signal item_picked
+#signal item_picked
 
-var inventory:Dictionary
+#var inventory:Dictionary
 var is_paused: bool = false
 
 export (Dictionary) var stats = {
@@ -59,7 +59,7 @@ func pickup_item():
 		var pickup_item = $PickupZone.items_in_range.values()[0]
 		pickup_item.pick_up_item(self)
 		$PickupZone.items_in_range.erase(pickup_item)
-		emit_signal("item_picked")
+		Global.emit_signal("item_picked")
 
 
 func pause():
