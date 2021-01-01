@@ -1,49 +1,81 @@
 extends Node2D
 
 const SlotClass = preload("res://scripts/ui/slot.gd")
-onready var inventory_slots = $GridContainer
+
 onready var loot_slots = $GridContainerLoot
+onready var inventory_slots = $GridContainer
 var holding_item = null
 
 func _ready():
-	var slots = inventory_slots.get_children()
+	var i_slots = inventory_slots.get_children()
 	var l_slots = loot_slots.get_children()
 	
-	for i in range(slots.size()):
-		slots[i].connect("gui_input", self, "slot_gui_input", [slots[i]])
-		slots[i].slot_index = i
-	initialize_inventory()
-	
+	for i in range(i_slots.size()):
+		i_slots[i].connect("gui_input", self, "slot_gui_input", [i_slots[i]])
+		i_slots[i].slot_index = i
+
 	for i in range(l_slots.size()):
 		l_slots[i].connect("gui_input", self, "loot_slot_gui_input", [l_slots[i]])
-		l_slots[i].slot_index = i
+		l_slots[i].loot_slot_index = i
+	
+	
 	initialize_inventory()
+	
+#	for e in range(l_slots.size()):
+#		l_slots[e].connect("gui_input", self, "loot_slot_gui_input", [l_slots[e]])
+#		l_slots[e].loot_slot_index = e
+#	initialize_inventory()
 
 func initialize_inventory():
-	var slots = inventory_slots.get_children()
+	var i_slots = inventory_slots.get_children()
 	var l_slots = loot_slots.get_children()
 	
-	for i in range(slots.size()):
+	for i in range(i_slots.size()):
 		if PlayerInventory.inventory.has(i):
-			slots[i].initialize_item(PlayerInventory.inventory[i][0], PlayerInventory.inventory[i][1])
+			i_slots[i].initialize_item(PlayerInventory.inventory[i][0], PlayerInventory.inventory[i][1])
 	
 	for i in range(l_slots.size()):
 		if PlayerInventory.loot_inventory.has(i):
-			slots[i].initialize_item(PlayerInventory.loot_inventory[i][0], PlayerInventory.loot_inventory[i][1])
-			
+			l_slots[i].initialize_item(PlayerInventory.loot_inventory[i][0], PlayerInventory.loot_inventory[i][1])
+
+func check():
+	if PlayerInventory.loot_inventory.size() == 0:
+		print("Loot:")
+		print("No items yet on Loot")
+	else:
+		print("")
+		print("Loot:")
+		for key in PlayerInventory.loot_inventory:
+			print("%s: %s" % [PlayerInventory.loot_inventory[key][0],PlayerInventory.loot_inventory[key][1]])
+	if PlayerInventory.inventory.size() == 0:
+		print("Inventory:")
+		print("No items yet on Inventory")
+	else:
+		print("")
+		print("Inventory:")
+		for key in PlayerInventory.inventory:
+			print("%s: %s" % [PlayerInventory.inventory[key][0],PlayerInventory.inventory[key][1]])
+############### INVENTORY CODE STARTS #################
+
 func slot_gui_input(event: InputEvent, slot: SlotClass):
 	if event is InputEventMouseButton:
+		# Clicking left mouse button while...
 		if event.button_index == BUTTON_LEFT && event.pressed:
+			# ... holding an item
 			if holding_item != null:
+				# ... holding an item against an empty slot
 				if !slot.item:
 					left_click_empty_slot(slot)
 				else:
+					# ... holding an item against a slot containing a different item
 					if holding_item.item_name != slot.item.item_name:
 						left_click_different_item(event, slot)
+					# .. holding an item againts a slot containing an equal item
 					else:
 						left_click_same_item(slot)
 			elif slot.item:
 				left_click_not_holding(slot)
+			check()
 
 func _input(_event):
 	if holding_item:
@@ -82,21 +114,30 @@ func left_click_not_holding(slot: SlotClass):
 	slot.pickFromSlot()
 	holding_item.global_position = get_global_mouse_position()
 
-############### LOOT CODE #################
+############### INVENTORY CODE ENDS #################
+
+############### LOOT CODE STARTS #################
 
 func loot_slot_gui_input(event: InputEvent, slot: SlotClass):
 	if event is InputEventMouseButton:
+		# Clicking left mouse button while...
 		if event.button_index == BUTTON_LEFT && event.pressed:
+			# ... holding an item
 			if holding_item != null:
+				# ... holding an item against an empty slot
 				if !slot.item:
 					loot_left_click_empty_slot(slot)
 				else:
+					# ... holding an item against a slot containing a different item
 					if holding_item.item_name != slot.item.item_name:
 						loot_left_click_different_item(event, slot)
+					# .. holding an item againts a slot containing an equal item
 					else:
 						loot_left_click_same_item(slot)
+			# ... not holding an item
 			elif slot.item:
 				loot_left_click_not_holding(slot)
+			check()
 
 func loot_left_click_empty_slot(slot: SlotClass):
 	PlayerInventory.loot_add_item_to_empty_slot(holding_item, slot)
@@ -130,3 +171,5 @@ func loot_left_click_not_holding(slot: SlotClass):
 	holding_item = slot.item
 	slot.pickFromSlot()
 	holding_item.global_position = get_global_mouse_position()
+
+############### LOOT CODE ENDS #################

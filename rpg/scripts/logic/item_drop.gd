@@ -29,6 +29,7 @@ func _on_item_picked():
 #		if distance < 4:
 
 		PlayerInventory.add_item(item_name, amount)
+#		PlayerInventory.loot_add_item(item_name, amount)
 		queue_free()
 		Notification.message("%d %s picked up" % [amount,item_name])
 #	velocity = move_and_slide(velocity, Vector2.UP)

@@ -12,9 +12,7 @@ signal item_picked
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	var overlay = load("res://debug_overlay.tscn").instance()
+	overlay.add_stats("Inventory", PlayerInventory, "inventory", false)
+	overlay.add_stats("Loot", PlayerInventory, "loot_inventory", false)
+	add_child(overlay) 

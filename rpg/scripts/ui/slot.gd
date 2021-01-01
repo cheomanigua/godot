@@ -9,6 +9,7 @@ var empty_style: StyleBoxTexture = null
 var ItemClass = preload("res://scenes/item.tscn")
 var item = null
 var slot_index
+var loot_slot_index
 
 func _ready():
 	default_style = StyleBoxTexture.new()

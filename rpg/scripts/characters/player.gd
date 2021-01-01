@@ -39,15 +39,28 @@ func _unhandled_input(event):
 	if (event.is_action_pressed("ui_accept")):
 		pause()
 	# Key for testing
-	if event.is_action_pressed("ui_down"):
+	if event.is_action_pressed("ui_left"):
 		# Testing
-		randomize()		
-		if Player.inventory.size() == 0:
-			print("No items yet")
+#		randomize()
+		if PlayerInventory.loot_inventory.size() == 0:
+			print("Loot:")
+			print("No items yet on Loot")
 		else:
 			print("")
-			for key in Player.inventory:
-				print("%s: %s" % [Player.inventory[key][0],Player.inventory[key][1]])
+			print("Loot:")
+			for key in PlayerInventory.loot_inventory:
+				print("%s: %s" % [PlayerInventory.loot_inventory[key][0],PlayerInventory.loot_inventory[key][1]])
+	if event.is_action_pressed("ui_right"):
+		# Testing
+#		randomize()
+		if PlayerInventory.inventory.size() == 0:
+			print("Inventory:")
+			print("No items yet on Inventory")
+		else:
+			print("")
+			print("Inventory:")
+			for key in PlayerInventory.inventory:
+				print("%s: %s" % [PlayerInventory.inventory[key][0],PlayerInventory.inventory[key][1]])
 #			var rand = randi() % Player.inventory.size()
 #			var item = Player.inventory[rand][0]
 #			var amount = randi() % 5 + 1

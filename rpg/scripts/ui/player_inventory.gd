@@ -7,6 +7,11 @@ const NUM_LOOT_INVENTORY_SLOTS = 4
 var inventory:Dictionary
 var loot_inventory:Dictionary
 
+#func _unhandled_key_input(event):
+#	if event.is_action_pressed("ui_down"):
+#		print("Inventory: %s" % inventory)
+#		print("Loot: %s" % loot_inventory)
+
 func add_item(item_name, item_quantity):
 	for item in inventory:
 		if inventory[item][0] == item_name:
@@ -28,12 +33,17 @@ func add_item(item_name, item_quantity):
 func remove_item(slot: SlotClass):
 # warning-ignore:return_value_discarded
 	inventory.erase(slot.slot_index)
+	print("")
+	print("Erased from inventory")
 
 func add_item_to_empty_slot(item: ItemClass, slot: SlotClass):
 	inventory[slot.slot_index] = [item.item_name, item.item_quantity]
+	print("")
+	print("Added to inventory")
 
 func add_item_quantity(slot: SlotClass, quantity_to_add: int):
 	inventory[slot.slot_index][1] += quantity_to_add
+	print("Inventory: Added on top")
 
 ######## LOOT #########
 
@@ -57,10 +67,15 @@ func loot_add_item(item_name, item_quantity):
 
 func loot_remove_item(slot: SlotClass):
 # warning-ignore:return_value_discarded
-	loot_inventory.erase(slot.slot_index)
+	loot_inventory.erase(slot.loot_slot_index)
+	print("")
+	print("Erased from loot")
 
 func loot_add_item_to_empty_slot(item: ItemClass, slot: SlotClass):
-	loot_inventory[slot.slot_index] = [item.item_name, item.item_quantity]
+	loot_inventory[slot.loot_slot_index] = [item.item_name, item.item_quantity]
+	print("")
+	print("Added to loot")
 
 func loot_add_item_quantity(slot: SlotClass, quantity_to_add: int):
-	loot_inventory[slot.slot_index][1] += quantity_to_add
+	loot_inventory[slot.loot_slot_index][1] += quantity_to_add
+	print("Loot: Added on top")
