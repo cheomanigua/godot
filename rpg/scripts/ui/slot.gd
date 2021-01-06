@@ -32,6 +32,7 @@ func refresh_style():
 
 func remove_from_slot():
 	remove_child(item)
+	item.free()
 	item = null
 	refresh_style()
 

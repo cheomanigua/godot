@@ -43,7 +43,10 @@ func inventory_closed():
 					i_slots[i].remove_from_slot()
 			_temp_inventory = Global.deep_copy(loot_inventory)
 			loot_inventory.clear()
+			# Disable and enable Player's $PickupZone in order to fetch items
+			# on the ground when opening the inventory again
 			Player.reset_pickup_zone()
+			print_stray_nodes()
 			
 			
 			

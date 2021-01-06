@@ -3,7 +3,6 @@
 [ext_resource path="res://scripts/ui/item.gd" type="Script" id=1]
 [ext_resource path="res://fonts/m5x7.ttf" type="DynamicFontData" id=2]
 
-
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 2 )
 
