@@ -6,10 +6,11 @@ var empty_tex = preload("res://images/ui/item_slot_empty_background.png")
 var default_style: StyleBoxTexture = null
 var empty_style: StyleBoxTexture = null
 
-var ItemClass = preload("res://scenes/item.tscn")
+var ItemClass = preload("res://scenes/ui/item.tscn")
 var item = null
 var slot_index
 var loot_slot_index
+var usage_slot_index
 
 func _ready():
 	default_style = StyleBoxTexture.new()
@@ -27,9 +28,18 @@ func refresh_style():
 		set('custom_styles/panel', empty_style)
 	else:
 		set('custom_styles/panel', default_style)
-		
-func pickFromSlot():
+
+
+func remove_from_slot():
 	remove_child(item)
+	item = null
+	refresh_style()
+
+func pickFromSlot():
+	# Remove item from the Slot node
+	remove_child(item)
+	# Add item to the Inventory node so we can move the item around
+	# the inventory using the mouse cursor
 	var inventoryNode = find_parent("Inventory")
 	inventoryNode.add_child(item)
 	item = null
@@ -37,9 +47,12 @@ func pickFromSlot():
 	
 func putIntoSlot(new_item):
 	item = new_item
+	# Put item in the center of the slot
 	item.position = Vector2(0, 0)
+	# Remove item from the Inventory node
 	var inventoryNode = find_parent("Inventory")
 	inventoryNode.remove_child(item)
+	## Add item to be a child of the Slot
 	add_child(item)
 	refresh_style()
 	

@@ -1,6 +1,6 @@
 extends Node2D
 
-var FCT = preload("res://scenes/fct.tscn")
+var FCT = preload("res://scenes/messaging/fct.tscn")
 
 export var travel = Vector2(0, -80)
 export var duration = 2

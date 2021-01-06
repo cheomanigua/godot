@@ -25,48 +25,41 @@ creature_type = "Agoiru"
 [node name="ItemDrop" parent="Items" instance=ExtResource( 5 )]
 position = Vector2( 167.538, 79.2855 )
 collision_layer = 2147483652
-collision_mask = 2
 item_name = "Gold"
 amount = 56
 
 [node name="ItemDrop2" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 126.007, 154.795 )
+position = Vector2( 113, 180 )
 collision_layer = 2147483652
-collision_mask = 2
 item_name = "Silver"
 amount = 23
 
 [node name="ItemDrop3" parent="Items" instance=ExtResource( 5 )]
 position = Vector2( 394.539, 100.995 )
 collision_layer = 2147483652
-collision_mask = 2
 item_name = "Gem4"
 amount = 5
 
 [node name="ItemDrop4" parent="Items" instance=ExtResource( 5 )]
 position = Vector2( 312.422, 148.66 )
 collision_layer = 2147483652
-collision_mask = 2
 item_name = "Gem4"
 amount = 5
 
 [node name="ItemDrop5" parent="Items" instance=ExtResource( 5 )]
 position = Vector2( 351.121, 166.122 )
 collision_layer = 2147483652
-collision_mask = 2
 item_name = "Gem4"
 amount = 6
 
 [node name="ItemDrop6" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 232.665, 176.033 )
+position = Vector2( 113, 180 )
 collision_layer = 2147483652
-collision_mask = 2
 item_name = "Gem7"
 
 [node name="ItemDrop7" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 122.694, 157.309 )
+position = Vector2( 126.681, 156.12 )
 collision_layer = 2147483652
-collision_mask = 2
 item_name = "Gem8"
 
 [node name="Doors" type="Node" parent="."]

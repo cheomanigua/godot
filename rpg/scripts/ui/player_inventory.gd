@@ -1,11 +1,19 @@
+## THIS SCRIPT IS USED TO PICK UP ITEMS FROM THE ENVIRONMENT
+## AND ADD THEM TO THE LOGICAL INVENTORY (CONTROLLER)
+
 extends Node
 
 const SlotClass = preload("res://scripts/ui/slot.gd")
-const ItemClass = preload("res://scripts/logic/item.gd")
+const ItemClass = preload("res://scripts/ui/item.gd")
 const NUM_INVENTORY_SLOTS = 20
 const NUM_LOOT_INVENTORY_SLOTS = 4
+const NUM_USAGE_INVENTORY_SLOTS = 1
+const NUM_TEMP_INVENTORY_SLOTS = 4
+
 var inventory:Dictionary
 var loot_inventory:Dictionary
+var usage_inventory:Dictionary
+var temp_inventory:Dictionary
 
 #func _unhandled_key_input(event):
 #	if event.is_action_pressed("ui_down"):
@@ -33,17 +41,12 @@ func add_item(item_name, item_quantity):
 func remove_item(slot: SlotClass):
 # warning-ignore:return_value_discarded
 	inventory.erase(slot.slot_index)
-	print("")
-	print("Erased from inventory")
 
 func add_item_to_empty_slot(item: ItemClass, slot: SlotClass):
 	inventory[slot.slot_index] = [item.item_name, item.item_quantity]
-	print("")
-	print("Added to inventory")
 
 func add_item_quantity(slot: SlotClass, quantity_to_add: int):
 	inventory[slot.slot_index][1] += quantity_to_add
-	print("Inventory: Added on top")
 
 ######## LOOT #########
 
@@ -64,18 +67,79 @@ func loot_add_item(item_name, item_quantity):
 			loot_inventory[i] = [item_name, item_quantity]
 			return
 
-
 func loot_remove_item(slot: SlotClass):
 # warning-ignore:return_value_discarded
 	loot_inventory.erase(slot.loot_slot_index)
-	print("")
-	print("Erased from loot")
 
 func loot_add_item_to_empty_slot(item: ItemClass, slot: SlotClass):
 	loot_inventory[slot.loot_slot_index] = [item.item_name, item.item_quantity]
-	print("")
-	print("Added to loot")
+	
 
 func loot_add_item_quantity(slot: SlotClass, quantity_to_add: int):
 	loot_inventory[slot.loot_slot_index][1] += quantity_to_add
-	print("Loot: Added on top")
+	for i in range(NUM_LOOT_INVENTORY_SLOTS):
+		if loot_inventory.has(i) == true:
+			print(slot)
+			return
+
+
+######## USAGE #########
+
+func usage_add_item(item_name, item_quantity):
+	for item in usage_inventory:
+		if usage_inventory[item][0] == item_name:
+			var stack_size = int(Data.item_data[item_name]["stack_size"])
+			var able_to_add = stack_size - usage_inventory[item][1]
+			if able_to_add >= item_quantity:
+				usage_inventory[item][1] += item_quantity
+				return
+			else:
+				usage_inventory[item][1] += able_to_add
+				item_quantity = item_quantity - able_to_add
+	# item doesn't exist in usage_inventory yet, so add it to an empty slot
+	for i in range(NUM_USAGE_INVENTORY_SLOTS):
+		if usage_inventory.has(i) == false:
+			usage_inventory[i] = [item_name, item_quantity]
+			return
+
+
+func usage_remove_item(slot: SlotClass):
+# warning-ignore:return_value_discarded
+	usage_inventory.erase(slot.usage_slot_index)
+
+func usage_add_item_to_empty_slot(item: ItemClass, slot: SlotClass):
+	usage_inventory[slot.usage_slot_index] = [item.item_name, item.item_quantity]
+
+func usage_add_item_quantity(slot: SlotClass, quantity_to_add: int):
+	usage_inventory[slot.usage_slot_index][1] += quantity_to_add
+
+
+######## TEMP #########
+
+func temp_add_item(item_name, item_quantity):
+	for item in temp_inventory:
+		if temp_inventory[item][0] == item_name:
+			var stack_size = int(Data.item_data[item_name]["stack_size"])
+			var able_to_add = stack_size - temp_inventory[item][1]
+			if able_to_add >= item_quantity:
+				temp_inventory[item][1] += item_quantity
+				return
+			else:
+				temp_inventory[item][1] += able_to_add
+				item_quantity = item_quantity - able_to_add
+	# item doesn't exist in temp_inventory yet, so add it to an empty slot
+	for i in range(NUM_TEMP_INVENTORY_SLOTS):
+		if temp_inventory.has(i) == false:
+			temp_inventory[i] = [item_name, item_quantity]
+			return
+
+
+func temp_remove_item(slot: SlotClass):
+# warning-ignore:return_value_discarded
+	temp_inventory.erase(slot.temp_slot_index)
+
+func temp_add_item_to_empty_slot(item: ItemClass, slot: SlotClass):
+	temp_inventory[slot.temp_slot_index] = [item.item_name, item.item_quantity]
+
+func temp_add_item_quantity(slot: SlotClass, quantity_to_add: int):
+	temp_inventory[slot.temp_slot_index][1] += quantity_to_add

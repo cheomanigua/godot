@@ -7,6 +7,8 @@ func _ready():
 	$Area2D.connect("body_entered",self,"_on_Door_body_entered")
 # warning-ignore:return_value_discarded
 	$Area2D.connect("body_exited",self,"_on_Door_body_exited")
+#	var my_door = Door.instance()
+
 
 func _on_Door_body_entered(body):
 	if body.get_name() == "Player":
@@ -14,9 +16,9 @@ func _on_Door_body_entered(body):
 		if key:
 			var has_key: bool = false
 			# Loop through the inventory dictionary to check for the key
-			for i in PlayerInventory.inventory:
+			for i in PlayerInventory.usage_inventory:
 				# If key is found, door is opened
-				if PlayerInventory.inventory[i][0] == key:
+				if PlayerInventory.usage_inventory[i][0] == key:
 					has_key = true
 					$CollisionShape2D.set_deferred("disabled", true)
 					hide()

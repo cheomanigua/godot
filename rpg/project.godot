@@ -23,7 +23,7 @@ run/main_scene="res://World.tscn"
 PlayerInventory="*res://scripts/ui/player_inventory.gd"
 Player="*res://scenes/player.tscn"
 Data="*res://scripts/logic/data.gd"
-Notification="*res://scenes/notification.tscn"
+Notification="*res://scenes/messaging/notification.tscn"
 Global="*res://world.gd"
 
 [display]

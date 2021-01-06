@@ -35,9 +35,10 @@ Items are divided in three categories:
 
 ## Inventory
 
-Inventory are divided in two elements:
-1. **inventory.tscn**/**inventory.gd**/**slot.gd**: Used as view and controller, is the user interface for the inventory system.
-2. **player_inventory.gd**: Used as a model to store the players item in a dictionary.
+Inventory are divided in three elements:
+1. **inventory.tscn**/**inventory.gd**/**slot.gd**: Used as view, is the user interface for the inventory system.
+2. **player_inventory.gd**: Used as a controller to store the players item in a dictionary.
+3. **items.json**: Used as model, it's a json file containing all the data model for the items
 
 ## Creatures
 
