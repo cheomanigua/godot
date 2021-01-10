@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scripts/logic/item_drop.gd" type="Script" id=2]
+[ext_resource path="res://scripts/logic/item_object.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4.41238, 4.98715 )
@@ -22,7 +22,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -1 ) ]
 }
 
-[node name="ItemDrop" type="KinematicBody2D"]
+[node name="ItemObject" type="KinematicBody2D"]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource( 2 )
@@ -40,3 +40,34 @@ anims/Float = SubResource( 2 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+margin_left = 4.62494
+margin_top = 4.20448
+margin_right = 19.6249
+margin_bottom = 18.2045
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Amount" type="Label" parent="Panel"]
+margin_left = 24.5169
+margin_top = 8.19874
+margin_right = 46.5169
+margin_bottom = 22.1987
+rect_scale = Vector2( 0.7, 0.7 )
+
+[node name="Name" type="Label" parent="Panel"]
+margin_left = 2.94314
+margin_top = 27.2556
+margin_right = 42.9431
+margin_bottom = 41.2556
+rect_scale = Vector2( 0.5, 0.5 )

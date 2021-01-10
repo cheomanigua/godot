@@ -10,11 +10,11 @@
 
 Items are divided in three categories:
 1. **items.json**: Used as the data model
-2. **item_drop.tscn**/**item_drop.gd**: Used for managing items in the environment
+2. **item_object.tscn**/**item_object.gd**: Used for managing items in the environment
 3. **item.tscn**/**item.gd**: Used for managing items in the inventory
 
-**item_drop.tscn** scene is composed of a **KinematicBody2D** as parent node and the following children nodes: **Sprite**, **Area2D** and **CollisionShape2D**
-- No texture file must be added in the **Sprite** node. Only add a texture file in the instanciated *item_drop*'s sprite node. 
+**item_object.tscn** scene is composed of a **KinematicBody2D** as parent node and the following children nodes: **Sprite**, **Area2D** and **CollisionShape2D**
+- No texture file must be added in the **Sprite** node. Only add a texture file in the instanciated *item_object*'s sprite node. 
 - Items functionality is implemented by script **item.gd** 
 - The fundamental feature of an item is that it can be picked up and dropped by the player. When picked up, the item is added to a dictionary called `inventory`
 - Items have three custom properties that can be edited in the instanciated nodes:
@@ -27,17 +27,17 @@ Items are divided in three categories:
 
 ### Pickup()
 
-- `pickup_item()` function in **player.gd** will be used to add the item to the inventory dictionary in **player_inventory.gd**.
+- `pickup_item()` function in **player.gd** will be used to add the item to the inventory dictionary in **inventory_controller.gd**.
 - **pickup_zone.gd** is used to pickup items only in the zone of influence of the player.
-- If no *Item Name* is added in an instance of **item_drop.tscn**, there will be an alert in the main editor window and an error message in Godot’s built-in debugger.
-- *Item amount* will contain the number of units of a given **item_drop.tscn** instance.
+- If no *Item Name* is added in an instance of **item_object.tscn**, there will be an alert in the main editor window and an error message in Godot’s built-in debugger.
+- *Item amount* will contain the number of units of a given **item_object.tscn** instance.
 
 
 ## Inventory
 
 Inventory are divided in three elements:
 1. **inventory.tscn**/**inventory.gd**/**slot.gd**: Used as view, is the user interface for the inventory system.
-2. **player_inventory.gd**: Used as a controller to store the players item in a dictionary.
+2. **inventory_controller.gd**: Used as a controller to store the players item in a dictionary.
 3. **items.json**: Used as model, it's a json file containing all the data model for the items
 
 ## Creatures

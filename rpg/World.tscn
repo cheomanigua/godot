@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/structure/door.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/ui/user_interface.tscn" type="PackedScene" id=3]
 [ext_resource path="res://world.gd" type="Script" id=4]
-[ext_resource path="res://scenes/item_drop.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/item_object.tscn" type="PackedScene" id=5]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 4 )
@@ -22,45 +22,25 @@ creature_type = "Agoiru"
 
 [node name="Items" type="Node" parent="."]
 
-[node name="ItemDrop" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 167.538, 79.2855 )
-collision_layer = 2147483652
+[node name="ItemObject" parent="Items" instance=ExtResource( 5 )]
+position = Vector2( 84.2273, 184.346 )
 item_name = "Gold"
-amount = 56
+amount = 2
 
-[node name="ItemDrop2" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 113, 180 )
-collision_layer = 2147483652
-item_name = "Silver"
-amount = 23
-
-[node name="ItemDrop3" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 394.539, 100.995 )
-collision_layer = 2147483652
-item_name = "Gem4"
-amount = 5
-
-[node name="ItemDrop4" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 312.422, 148.66 )
-collision_layer = 2147483652
-item_name = "Gem4"
-amount = 5
-
-[node name="ItemDrop5" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 351.121, 166.122 )
-collision_layer = 2147483652
-item_name = "Gem4"
-amount = 6
-
-[node name="ItemDrop6" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 113, 180 )
-collision_layer = 2147483652
-item_name = "Gem7"
-
-[node name="ItemDrop7" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 126.681, 156.12 )
-collision_layer = 2147483652
+[node name="ItemObject2" parent="Items" instance=ExtResource( 5 )]
+position = Vector2( 84.757, 184.406 )
 item_name = "Gem8"
+amount = 2
+
+[node name="ItemObject3" parent="Items" instance=ExtResource( 5 )]
+position = Vector2( 148.854, 209.773 )
+item_name = "Gold"
+amount = 2
+
+[node name="ItemObject4" parent="Items" instance=ExtResource( 5 )]
+position = Vector2( 148.854, 209.773 )
+item_name = "Gem8"
+amount = 2
 
 [node name="Doors" type="Node" parent="."]
 

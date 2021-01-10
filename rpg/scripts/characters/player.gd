@@ -32,42 +32,51 @@ func get_input():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_up"):
-		pickup_item()
+		grab_item()
 	if (event.is_action_pressed("ui_cancel")):
 		get_tree().quit()
 	if (event.is_action_pressed("ui_accept")):
 		pause()
+	if (event.is_action_pressed("ui_down")):
+		var node = $PickupZone.items_in_range
+		for i in node.size():
+			print(node.keys()[i].queue_free())
+
 
 func pickup_item():
-#	if $PickupZone.items_in_range.size() > 0:
-#		var pickup_item = $PickupZone.items_in_range.values()[0]
-#		pickup_item.pick_up_item(self)
-#		$PickupZone.items_in_range.erase(pickup_item)
-#		Global.emit_signal("item_picked")
-
+	# Be sure to set the $PickupZone's Collision Mask to point to ItemDrop
 	if $PickupZone.items_in_range.size() > 0:
 		var pickup_item = $PickupZone.items_in_range.values()
-		for i in pickup_item:
-			i.pick_up_item(self)
-			$PickupZone.items_in_range.erase(i)
+		for item in pickup_item:
+			item.pick_up_item(self)
+			$PickupZone.items_in_range.erase(item)
 			Global.emit_signal("item_picked")
+
+
+
+func grab_item():
+	if $PickupZone.items_in_range.size() > 0:
+		
+		# Grabbing only one item at once (bug when opening inventory)
+		var pickup_item = $PickupZone.items_in_range.values()[0]
+		pickup_item.pick_up_item(self)
+		$PickupZone.items_in_range.erase(pickup_item)
+		Global.emit_signal("item_grabbed")
+
+#		# Grabing grabbing all items at once (bug when opening inventory)
+#		var pickup_item = $PickupZone.items_in_range.values()
+#		for i in pickup_item:
+#			i.pick_up_item(self)
+#			$PickupZone.items_in_range.erase(i)
+#			Global.emit_signal("item_grabbed")
+#			i.free()
+
 
 func reset_pickup_zone():
 	$PickupZone/CollisionShape2D.disabled = true
 	$PickupZone/CollisionShape2D.disabled = false
-	
-func grab_item():
-	
-	if $PickupZone.items_in_range.size() > 0:
-		var pickup_item = $PickupZone.items_in_range.values()
-		print("grab_item:")
-		print(pickup_item)
-		for i in pickup_item:
-			i.pick_up_item(self)
-			$PickupZone.items_in_range.erase(i)
-			
-			Global.emit_signal("item_grabbed")
-	
+
+
 func pause():
 	is_paused = !is_paused
 	if is_paused:
@@ -88,9 +97,11 @@ func _physics_process(_delta):
 	else:
 		anim_switch("idle")
 
+
 func stop():
 	self.set_physics_process(false)
 	$AnimationPlayer.stop()
-	
+
+
 func resume():
 	self.set_physics_process(true)
