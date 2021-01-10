@@ -8,7 +8,6 @@ const ITEMS_IMAGE_PATH = IMAGE_PATH + "items/"
 signal item_picked
 # warning-ignore:unused_signal
 signal item_grabbed
-var picked_up:= false
 
 func _ready():
 	var overlay = load("res://debug_overlay.tscn").instance()

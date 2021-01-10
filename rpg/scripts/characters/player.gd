@@ -1,4 +1,5 @@
 extends "res://scripts/characters/character.gd"
+
 #signal item_picked
 
 #var inventory:Dictionary
@@ -48,22 +49,21 @@ func pickup_item():
 	if $PickupZone.items_in_range.size() > 0:
 		var pickup_item = $PickupZone.items_in_range.values()
 		for item in pickup_item:
-			item.pick_up_item(self)
+			item.pick_up_item()
 			$PickupZone.items_in_range.erase(item)
 			Global.emit_signal("item_picked")
-
 
 
 func grab_item():
 	if $PickupZone.items_in_range.size() > 0:
 		
-		# Grabbing only one item at once (bug when opening inventory)
+		# Grabbing only one item at once (undesired result when opening inventory)
 		var pickup_item = $PickupZone.items_in_range.values()[0]
-		pickup_item.pick_up_item(self)
+		pickup_item.pick_up_item()
 		$PickupZone.items_in_range.erase(pickup_item)
 		Global.emit_signal("item_grabbed")
 
-#		# Grabing grabbing all items at once (bug when opening inventory)
+#		# Grabing grabbing all items at once (undesired result when opening inventory)
 #		var pickup_item = $PickupZone.items_in_range.values()
 #		for i in pickup_item:
 #			i.pick_up_item(self)
@@ -71,6 +71,11 @@ func grab_item():
 #			Global.emit_signal("item_grabbed")
 #			i.free()
 
+func delete_item():
+#	if $PickupZone.items_in_range.size() > 0:
+		var deletable_item = $PickupZone.items_in_range.values()
+		for i in deletable_item:
+			i.queue_free()
 
 func reset_pickup_zone():
 	$PickupZone/CollisionShape2D.disabled = true

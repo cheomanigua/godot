@@ -30,7 +30,7 @@ Items are divided in three categories:
 - `pickup_item()` function in **player.gd** will be used to add the item to the inventory dictionary in **inventory_controller.gd**.
 - **pickup_zone.gd** is used to pickup items only in the zone of influence of the player.
 - If no *Item Name* is added in an instance of **item_object.tscn**, there will be an alert in the main editor window and an error message in Godot’s built-in debugger.
-- *Item amount* will contain the number of units of a given **item_object.tscn** instance.
+- *Item quantity* will contain the number of units of a given **item_object.tscn** instance.
 
 
 ## Inventory

@@ -34,9 +34,9 @@ var temp_inventory:Dictionary
 #			return
 
 
-func _ready():
-	add_item("Gold", 2)
-	add_item("Gem8", 2)
+#func _ready():
+#	add_item("Gold", 2)
+#	add_item("Gem8", 2)
 
 
 func add_item(item_name, item_quantity):
@@ -152,14 +152,3 @@ func temp_add_item(item_name, item_quantity):
 		if temp_inventory.has(i) == false:
 			temp_inventory[i] = [item_name, item_quantity]
 			return
-
-
-func temp_remove_item(slot: SlotClass):
-# warning-ignore:return_value_discarded
-	temp_inventory.erase(slot.temp_slot_index)
-
-func temp_add_item_to_empty_slot(item: ItemClass, slot: SlotClass):
-	temp_inventory[slot.temp_slot_index] = [item.item_name, item.item_quantity]
-
-func temp_add_item_quantity(slot: SlotClass, quantity_to_add: int):
-	temp_inventory[slot.temp_slot_index][1] += quantity_to_add
