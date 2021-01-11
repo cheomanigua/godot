@@ -4,11 +4,6 @@ const DATA_PATH = "res://data/"
 const IMAGE_PATH = "res://images/"
 const ITEMS_IMAGE_PATH = IMAGE_PATH + "items/"
 
-# warning-ignore:unused_signal
-signal item_picked
-# warning-ignore:unused_signal
-signal item_grabbed
-
 func _ready():
 	var overlay = load("res://debug_overlay.tscn").instance()
 	overlay.add_stats("Inventory", InventoryController, "inventory", false)

@@ -38,44 +38,21 @@ func _unhandled_input(event):
 		get_tree().quit()
 	if (event.is_action_pressed("ui_accept")):
 		pause()
-	if (event.is_action_pressed("ui_down")):
-		var node = $PickupZone.items_in_range
-		for i in node.size():
-			print(node.keys()[i].queue_free())
-
-
+	
+	
 func pickup_item():
 	# Be sure to set the $PickupZone's Collision Mask to point to ItemDrop
-	if $PickupZone.items_in_range.size() > 0:
-		var pickup_item = $PickupZone.items_in_range.values()
-		for item in pickup_item:
-			item.pick_up_item()
-			$PickupZone.items_in_range.erase(item)
-			Global.emit_signal("item_picked")
-
+	if $PickupZone.get_overlapping_bodies().size() > 0:
+		for item in $PickupZone.get_overlapping_bodies():
+			item.item_picked("picked")
 
 func grab_item():
-	if $PickupZone.items_in_range.size() > 0:
-		
-		# Grabbing only one item at once (undesired result when opening inventory)
-		var pickup_item = $PickupZone.items_in_range.values()[0]
-		pickup_item.pick_up_item()
-		$PickupZone.items_in_range.erase(pickup_item)
-		Global.emit_signal("item_grabbed")
+	# Be sure to set the $PickupZone's Collision Mask to point to ItemDrop
+	if $PickupZone.get_overlapping_bodies().size() > 0:
+		var item = $PickupZone.get_overlapping_bodies()[0]
+		item.item_picked("grabbed")
+		item.queue_free()
 
-#		# Grabing grabbing all items at once (undesired result when opening inventory)
-#		var pickup_item = $PickupZone.items_in_range.values()
-#		for i in pickup_item:
-#			i.pick_up_item(self)
-#			$PickupZone.items_in_range.erase(i)
-#			Global.emit_signal("item_grabbed")
-#			i.free()
-
-func delete_item():
-#	if $PickupZone.items_in_range.size() > 0:
-		var deletable_item = $PickupZone.items_in_range.values()
-		for i in deletable_item:
-			i.queue_free()
 
 func reset_pickup_zone():
 	$PickupZone/CollisionShape2D.disabled = true

@@ -28,7 +28,11 @@ item_name = "Silver"
 
 [node name="ItemObject2" parent="Items" instance=ExtResource( 5 )]
 position = Vector2( 84.2273, 184.346 )
-item_name = "Gem1"
+item_name = "Gem7"
+
+[node name="ItemObject3" parent="Items" instance=ExtResource( 5 )]
+position = Vector2( 83.1675, 183.816 )
+item_name = "Gem7"
 
 [node name="Doors" type="Node" parent="."]
 

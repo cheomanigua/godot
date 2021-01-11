@@ -99,7 +99,6 @@ func loot_add_item_quantity(slot: SlotClass, quantity_to_add: int):
 	loot_inventory[slot.loot_slot_index][1] += quantity_to_add
 	for i in range(NUM_LOOT_INVENTORY_SLOTS):
 		if loot_inventory.has(i) == true:
-			print(slot)
 			return
 
 

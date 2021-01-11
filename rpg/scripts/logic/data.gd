@@ -20,5 +20,3 @@ func open_items_file() -> Dictionary:
 func _ready():
 	creature_data = open_creatures_file()
 	item_data = open_items_file()
-	print(item_data["Gold"]["item_image"])
-
