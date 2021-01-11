@@ -1,10 +1,7 @@
 # RPG Godot project 
 
 ## Player
-- Player is a **Player.tscn** scene with a **KinematicBody2D** parent node and the following children nodes: **Sprite**, **Sprite2**, **AnimationPlayer**, **AnimationPlayer2**, **CollisionShape2D** and **Camera2D**
-- **Sprite** is a sprite sheet used for **AnimationPlayer**
-- **Sprite2** is a sprite sheet used for **AnimationPlayer2**
-- In order to swap between Animations, edit funcion `anim_switch()` in script **character.gd** and hide the other sprite node.
+- Player is a **Player.tscn** scene with a **KinematicBody2D** parent node and the following children nodes: **Sprite**, **AnimationPlayer**, **CollisionShape2D**, **Camera2D** and an **Area2D** called **PickupZone** used to interact with items in the environment.
 
 ## Items
 
@@ -20,15 +17,16 @@ Items are divided in three categories:
 - Items have three custom properties that can be edited in the instanciated nodes:
   1. **Texture**: Used in the editor in an instanciated item for adding a texture to the **Sprite** node. Sprite sheets may be used as texture also, so you need to set the values of Animation's *VFrames*, *HFrames* and *Frame*
   2. **Item Name**: Used to identify the item both in the inventory and when interacting with the environment.
-  3. **Amount**: Used to quantify the number of items on an item instance.
+  3. **Item Quantity**: Used to quantify the number of items on an item instance.
 - If no **Item Name** is added, there will be an alert in the main editor window and an error message in Godot’s built-in debugger.
-- Items are instanciated from the parent scene "Item.tscn"
+- Items are instanciated from the parent scene "item_object.tscn"
 - It is recommended to create an empty parent Node for instances that share the same **Item name**. For instance, create an empty Node and name it **Gems**. From **Gems** you can instanciate items that are going to use *Gem* as **Item Name**.
 
 ### Pickup()
 
-- `pickup_item()` function in **player.gd** will be used to add the item to the inventory dictionary in **inventory_controller.gd**.
-- **pickup_zone.gd** is used to pickup items only in the zone of influence of the player.
+- `pickup_item()` function in **player.gd** will be used to add **one** item to the inventory dictionary in **inventory_controller.gd**.
+- `grab_item()` function in **player.gd** will be used to add **all** items to the inventory dictionary in **inventory_controller.gd**.
+- `show_item()` function in **player.gd** will be used to fetch all items in the overlapping **Aread2D** of the player and show them in the inventory UI.
 - If no *Item Name* is added in an instance of **item_object.tscn**, there will be an alert in the main editor window and an error message in Godot’s built-in debugger.
 - *Item quantity* will contain the number of units of a given **item_object.tscn** instance.
 

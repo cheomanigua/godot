@@ -43,8 +43,11 @@ func _unhandled_input(event):
 func show_item():
 	# Be sure to set the $PickupZone's Collision Mask to point to ItemDrop
 	if $PickupZone.get_overlapping_bodies().size() > 0:
+		var i := 0
 		for item in $PickupZone.get_overlapping_bodies():
-			item.item_picked("shown")
+			if i < InventoryController.NUM_LOOT_INVENTORY_SLOTS:
+				item.item_picked("shown")
+				i += 1
 
 
 func pickup_item():
@@ -100,9 +103,11 @@ func resume():
 
 # Debugging
 func overlapping():
+# warning-ignore:unassigned_variable
 	var overlap: Array
 	for i in $PickupZone.get_overlapping_bodies().size():
 		var item = $PickupZone.get_overlapping_bodies()[i]
+# warning-ignore:unassigned_variable
 		var array: Array
 		array.push_front(item.item_quantity)
 		array.push_front(item.item_name)
