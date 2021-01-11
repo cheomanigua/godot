@@ -1,22 +1,23 @@
 extends CanvasLayer
 
 const ItemObject = preload("res://scenes/item_object.tscn")
-func _ready():
-	$Inventory.hide()
-	$Stats.hide()
+
 
 func _unhandled_input(event):
 	if event.is_action_pressed("inventory"):
-		Player.pickup_item()
 		$Inventory.visible = !$Inventory.visible
-		$Inventory.initialize_inventory()
 		if $Inventory.visible:
-			Player.stop()
+			inventory_open()
 		else:
 			inventory_closed()
-
 	if event.is_action_pressed("character"):
 		$Stats.visible = !$Stats.visible
+
+
+func inventory_open():
+	Player.show_item()
+	Player.stop()
+	$Inventory.initialize_inventory()
 
 
 func inventory_closed():

@@ -24,15 +24,18 @@ creature_type = "Agoiru"
 
 [node name="ItemObject" parent="Items" instance=ExtResource( 5 )]
 position = Vector2( 84.2273, 184.346 )
-item_name = "Silver"
+item_name = "Gold"
+item_quantity = 10
 
 [node name="ItemObject2" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 84.2273, 184.346 )
-item_name = "Gem7"
+position = Vector2( 83.6976, 183.287 )
+item_name = "Gem8"
+item_quantity = 2
 
 [node name="ItemObject3" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 83.1675, 183.816 )
-item_name = "Gem7"
+position = Vector2( 84.7567, 183.816 )
+item_name = "Gem8"
+item_quantity = 2
 
 [node name="Doors" type="Node" parent="."]
 

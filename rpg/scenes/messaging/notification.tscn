@@ -2,10 +2,6 @@
 
 [ext_resource path="res://scripts/messaging/notification.gd" type="Script" id=1]
 
-
-
-
-
 [node name="Notification" type="CanvasLayer"]
 script = ExtResource( 1 )
 
@@ -17,9 +13,10 @@ __meta__ = {
 }
 
 [node name="bottom_message" type="Label" parent="Control"]
-margin_top = 227.689
-margin_right = 99.0
-margin_bottom = 241.689
+margin_left = 0.629959
+margin_top = 218.87
+margin_right = 99.63
+margin_bottom = 232.87
 rect_scale = Vector2( 0.5, 0.5 )
 __meta__ = {
 "_edit_use_anchors_": false

@@ -34,9 +34,10 @@ var temp_inventory:Dictionary
 #			return
 
 
-#func _ready():
-#	add_item("Gold", 2)
-#	add_item("Gem8", 2)
+func _ready():
+	add_item("Gold", 10)
+	add_item("Gem8", 2)
+	add_item("Gem9", 5)
 
 
 func add_item(item_name, item_quantity):

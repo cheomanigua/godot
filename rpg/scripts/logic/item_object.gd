@@ -24,10 +24,10 @@ func _ready():
 
 func item_picked(mode):
 	if is_in_group("items"):
-		if mode == "picked":
+		if mode == "shown":
 			InventoryController.loot_add_item(item_name, item_quantity)
 			queue_free()
-		elif mode == "grabbed":
+		elif mode == "direct":
 			InventoryController.add_item(item_name, item_quantity)
 			queue_free()
 

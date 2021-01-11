@@ -33,6 +33,8 @@ func get_input():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_up"):
+		pickup_item()
+	if event.is_action_pressed("ui_down"):
 		grab_item()
 	if (event.is_action_pressed("ui_cancel")):
 		get_tree().quit()
@@ -40,19 +42,26 @@ func _unhandled_input(event):
 		pause()
 	
 	
-func pickup_item():
+func show_item():
 	# Be sure to set the $PickupZone's Collision Mask to point to ItemDrop
 	if $PickupZone.get_overlapping_bodies().size() > 0:
 		for item in $PickupZone.get_overlapping_bodies():
-			item.item_picked("picked")
+			item.item_picked("shown")
 
-func grab_item():
+
+func pickup_item():
 	# Be sure to set the $PickupZone's Collision Mask to point to ItemDrop
 	if $PickupZone.get_overlapping_bodies().size() > 0:
 		var item = $PickupZone.get_overlapping_bodies()[0]
-		item.item_picked("grabbed")
+		item.item_picked("direct")
 		item.queue_free()
 
+
+func grab_item():
+		# Be sure to set the $PickupZone's Collision Mask to point to ItemDrop
+	if $PickupZone.get_overlapping_bodies().size() > 0:
+		for item in $PickupZone.get_overlapping_bodies():
+			item.item_picked("direct")
 
 func reset_pickup_zone():
 	$PickupZone/CollisionShape2D.disabled = true
