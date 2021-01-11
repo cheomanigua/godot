@@ -10,6 +10,7 @@ func _ready():
 	overlay.add_stats("Loot", InventoryController, "loot_inventory", false)
 	overlay.add_stats("Usage", InventoryController, "usage_inventory", false)
 	overlay.add_stats("Temp", InventoryController, "temp_inventory", false)
+	overlay.add_stats("OverLap", Player, "overlapping", true)
 	add_child(overlay)
 	
 

@@ -1,8 +1,5 @@
 extends "res://scripts/characters/character.gd"
 
-#signal item_picked
-
-#var inventory:Dictionary
 var is_paused: bool = false
 
 export (Dictionary) var stats = {
@@ -40,8 +37,9 @@ func _unhandled_input(event):
 		get_tree().quit()
 	if (event.is_action_pressed("ui_accept")):
 		pause()
-	
-	
+	if event.is_action_pressed("ui_right"):
+		overlapping()
+
 func show_item():
 	# Be sure to set the $PickupZone's Collision Mask to point to ItemDrop
 	if $PickupZone.get_overlapping_bodies().size() > 0:
@@ -52,6 +50,7 @@ func show_item():
 func pickup_item():
 	# Be sure to set the $PickupZone's Collision Mask to point to ItemDrop
 	if $PickupZone.get_overlapping_bodies().size() > 0:
+		# Pick up one item in Player's reach
 		var item = $PickupZone.get_overlapping_bodies()[0]
 		item.item_picked("direct")
 		item.queue_free()
@@ -60,6 +59,7 @@ func pickup_item():
 func grab_item():
 		# Be sure to set the $PickupZone's Collision Mask to point to ItemDrop
 	if $PickupZone.get_overlapping_bodies().size() > 0:
+		# Grab all items in Player's reach
 		for item in $PickupZone.get_overlapping_bodies():
 			item.item_picked("direct")
 
@@ -96,3 +96,15 @@ func stop():
 
 func resume():
 	self.set_physics_process(true)
+
+
+# Debugging
+func overlapping():
+	var overlap: Array
+	for i in $PickupZone.get_overlapping_bodies().size():
+		var item = $PickupZone.get_overlapping_bodies()[i]
+		var array: Array
+		array.push_front(item.item_quantity)
+		array.push_front(item.item_name)
+		overlap.push_front(array)
+	return overlap
