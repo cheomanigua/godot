@@ -55,16 +55,24 @@ func pickup_item():
 	if $PickupZone.get_overlapping_bodies().size() > 0:
 		# Pick up one item in Player's reach
 		var item = $PickupZone.get_overlapping_bodies()[0]
-		item.item_picked("direct")
-		item.queue_free()
+		if InventoryController.inventory.size() < InventoryController.NUM_INVENTORY_SLOTS:
+			item.item_picked("direct")
+			item.queue_free()
 
 
 func grab_item():
 		# Be sure to set the $PickupZone's Collision Mask to point to ItemDrop
 	if $PickupZone.get_overlapping_bodies().size() > 0:
-		# Grab all items in Player's reach
-		for item in $PickupZone.get_overlapping_bodies():
-			item.item_picked("direct")
+		var o = $PickupZone.get_overlapping_bodies().size()
+		var i = InventoryController.inventory.size()
+		var s = InventoryController.NUM_INVENTORY_SLOTS
+		# Grab all items in Player's reach if there is enough space in inventory
+		if (s-i)/o >= 1:
+			for item in $PickupZone.get_overlapping_bodies():
+				item.item_picked("direct")
+				i += 1
+		else:
+			print("Alert: Not enough space in inventory. Pick one by one instead")
 
 func reset_pickup_zone():
 	$PickupZone/CollisionShape2D.disabled = true
