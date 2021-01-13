@@ -69,6 +69,7 @@ func add_item_to_empty_slot(item: ItemClass, slot: SlotClass):
 func add_item_quantity(slot: SlotClass, quantity_to_add: int):
 	inventory[slot.slot_index][1] += quantity_to_add
 
+
 ######## LOOT #########
 
 func loot_add_item(item_name, item_quantity):
@@ -88,13 +89,15 @@ func loot_add_item(item_name, item_quantity):
 			loot_inventory[i] = [item_name, item_quantity]
 			return
 
+
 func loot_remove_item(slot: SlotClass):
 # warning-ignore:return_value_discarded
 	loot_inventory.erase(slot.loot_slot_index)
 
+
 func loot_add_item_to_empty_slot(item: ItemClass, slot: SlotClass):
 	loot_inventory[slot.loot_slot_index] = [item.item_name, item.item_quantity]
-	
+
 
 func loot_add_item_quantity(slot: SlotClass, quantity_to_add: int):
 	loot_inventory[slot.loot_slot_index][1] += quantity_to_add
@@ -127,8 +130,10 @@ func usage_remove_item(slot: SlotClass):
 # warning-ignore:return_value_discarded
 	usage_inventory.erase(slot.usage_slot_index)
 
+
 func usage_add_item_to_empty_slot(item: ItemClass, slot: SlotClass):
 	usage_inventory[slot.usage_slot_index] = [item.item_name, item.item_quantity]
+
 
 func usage_add_item_quantity(slot: SlotClass, quantity_to_add: int):
 	usage_inventory[slot.usage_slot_index][1] += quantity_to_add

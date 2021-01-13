@@ -19,10 +19,10 @@ func _ready():
 
 func get_input():
 	velocity = Vector2()
-	var LEFT = Input.is_action_pressed('left')
-	var RIGHT = Input.is_action_pressed('right')
-	var UP = Input.is_action_pressed('up')
-	var DOWN = Input.is_action_pressed('down')
+	var LEFT = Input.is_key_pressed(KEY_A)
+	var RIGHT = Input.is_key_pressed(KEY_D)
+	var UP = Input.is_key_pressed(KEY_W)
+	var DOWN = Input.is_key_pressed(KEY_S)
 	
 	velocity.x = -int(LEFT) + int(RIGHT)
 	velocity.y = -int(UP) + int(DOWN)
@@ -37,16 +37,15 @@ func _unhandled_input(event):
 		get_tree().quit()
 	if (event.is_action_pressed("ui_accept")):
 		pause()
-	if event.is_action_pressed("ui_right"):
-		overlapping()
 
-func show_item():
+
+func show_loot():
 	# Be sure to set the $PickupZone's Collision Mask to point to ItemDrop
 	if $PickupZone.get_overlapping_bodies().size() > 0:
 		var i := 0
 		for item in $PickupZone.get_overlapping_bodies():
 			if i < InventoryController.NUM_LOOT_INVENTORY_SLOTS:
-				item.item_picked("shown")
+				item.fetch_item("shown")
 				i += 1
 
 
@@ -56,7 +55,7 @@ func pickup_item():
 		# Pick up one item in Player's reach
 		var item = $PickupZone.get_overlapping_bodies()[0]
 		if InventoryController.inventory.size() < InventoryController.NUM_INVENTORY_SLOTS:
-			item.item_picked("direct")
+			item.fetch_item("direct")
 			item.queue_free()
 
 
@@ -69,10 +68,11 @@ func grab_item():
 		# Grab all items in Player's reach if there is enough space in inventory
 		if (s-i)/o >= 1:
 			for item in $PickupZone.get_overlapping_bodies():
-				item.item_picked("direct")
+				item.fetch_item("direct")
 				i += 1
 		else:
 			print("Alert: Not enough space in inventory. Pick one by one instead")
+
 
 func reset_pickup_zone():
 	$PickupZone/CollisionShape2D.disabled = true

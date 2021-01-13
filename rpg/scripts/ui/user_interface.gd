@@ -7,15 +7,15 @@ func _unhandled_input(event):
 	if event.is_action_pressed("inventory"):
 		$Inventory.visible = !$Inventory.visible
 		if $Inventory.visible:
-			inventory_open()
+			inventory_opened()
 		else:
 			inventory_closed()
 	if event.is_action_pressed("character"):
 		$Stats.visible = !$Stats.visible
 
 
-func inventory_open():
-	Player.show_item()
+func inventory_opened():
+	Player.show_loot()
 	Player.stop()
 	$Inventory.initialize_inventory()
 
