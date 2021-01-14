@@ -2,26 +2,20 @@ extends KinematicBody2D
 
 var speed = 0
 var velocity = Vector2()
-var spritedir = "down"
 
-const CENTER = Vector2()
-const LEFT = Vector2(-1,0)
-const RIGHT = Vector2(1,0)
-const UP = Vector2(0,-1)
-const DOWN = Vector2(0,1)
 
 
 func creature_random_movement():
 	var d = randi() % 4 + 1
 	match d:
 		1:
-			return LEFT
+			return Vector2.LEFT
 		2:
-			return RIGHT
+			return Vector2.RIGHT
 		3:
-			return UP
+			return Vector2.UP
 		4:
-			return DOWN
+			return Vector2.DOWN
 
 
 func movement():
@@ -32,15 +26,18 @@ func movement():
 #	velocity = move_and_slide(velocity)
 
 
+### PLAYER ANIMATION FUNCTIONS START HERE###
+var spritedir = "down"
+
 func sprite_input():
 	match velocity:
-		Vector2(-1,0):
+		Vector2.LEFT:
 			spritedir = "left"
-		Vector2(1,0):
+		Vector2.RIGHT:
 			spritedir = "right"
-		Vector2(0,-1):
+		Vector2.UP:
 			spritedir = "up"
-		Vector2(0,1):
+		Vector2.DOWN:
 			spritedir = "down"
 
 
@@ -48,3 +45,5 @@ func anim_switch(animation):
 	var newanim = str(animation,spritedir)
 	if $AnimationPlayer.current_animation != newanim:
 		$AnimationPlayer.play(newanim)
+
+### PLAYER ANIMATION FUCTIONS ENDS HERE ###

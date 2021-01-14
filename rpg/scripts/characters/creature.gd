@@ -4,10 +4,15 @@ extends "res://scripts/characters/character.gd"
 onready var combat = preload("res://scripts/logic/combat.gd").new()
 
 export(String,"Human","Orc","Goblin", "Adivía", "Agoiru") var creature_type = "Orc"
-var creature_stats:Dictionary = {}
+var creature_stats:Dictionary
+
+enum states {PATROL, CHASE, ATTACK, DEAD}
+var state = states.PATROL
+var player = null
 
 var movetimer_length = 15
 var movetimer = 0
+
 
 ## Uncomment below if you want to add the sprite texture manually in the inspector ##
 #export(Texture) onready var texture setget texture_set, texture_get
@@ -38,27 +43,27 @@ func _ready():
 	# Initiaze animation
 	$AnimationPlayer.play("default")
 	
-	# Initialize creature movement
-	velocity = creature_random_movement()
-	
 	# Show floating text on creataure when hit or missed
 	combat.connect("enemy_hit",self,"show_hit")
 	
 # warning-ignore:return_value_discarded
-	# Initiate combat when creature is touched
-	$HitBox.connect("body_entered",self,"_on_Creature_body_entered")
+	# Start combat when creature is touched
+	$HitBox.connect("body_entered",self,"_on_HitBox_body_entered")
+	
+# warning-ignore:return_value_discarded
+	# Start chase state when player enters creature's detect area
+	$DetectArea.connect("body_entered",self,"_on_DetectArea_body_entered")
+# warning-ignore:return_value_discarded
+	# Start patrol state when player exits creature's detect area
+	$DetectArea.connect("body_exited",self,"_on_DetectArea_body_exited")
 
 
 func _physics_process(_delta):
+	state_switch()
 	movement()
-	if movetimer > 0:
-		movetimer -= 1
-	if movetimer == 0:
-		velocity = creature_random_movement()
-		movetimer = movetimer_length
 
 
-func _on_Creature_body_entered(body):
+func _on_HitBox_body_entered(body):
 	if body.get_name() == "Player":
 		combat.attack(self)
 
@@ -67,3 +72,37 @@ func show_hit(damage, crit):
 	$FCTMgr.show_value(damage, crit)
 
 
+### STATE MACHINE RELATED FUNCTIONS START HERE ###
+
+func _on_DetectArea_body_entered(body):
+	if body.get_name() == "Player":
+		state = states.CHASE
+		player = body
+
+
+func _on_DetectArea_body_exited(body):
+	if body.get_name() == "Player":
+		state = states.PATROL
+		player = null
+
+
+func state_switch():
+	match state:
+		states.PATROL:
+			patrol()
+		states.CHASE:
+			chase()
+
+
+func patrol():
+	if movetimer > 0:
+		movetimer -= 1
+	if movetimer == 0:
+		velocity = creature_random_movement()
+		movetimer = movetimer_length
+
+
+func chase():
+	velocity = (player.position - position).normalized() * speed
+
+### STATE MACHINE RELATED FUNCTIONS END HERE ###

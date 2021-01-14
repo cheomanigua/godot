@@ -69,7 +69,6 @@ func grab_item():
 		if (s-i)/o >= 1:
 			for item in $PickupZone.get_overlapping_bodies():
 				item.fetch_item("direct")
-				i += 1
 		else:
 			print("Alert: Not enough space in inventory. Pick one by one instead")
 

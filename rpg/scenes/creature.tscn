@@ -1,12 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://images/character/orc.png" type="Texture" id=1]
 [ext_resource path="res://scripts/characters/creature.gd" type="Script" id=2]
 [ext_resource path="res://scenes/messaging/fctmgr.tscn" type="PackedScene" id=3]
-
-
-
-
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6.5625, 7 )
@@ -31,6 +27,9 @@ tracks/0/keys = {
 "values": [ false, true ]
 }
 
+[sub_resource type="CircleShape2D" id=4]
+radius = 66.1211
+
 [node name="Creature" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
@@ -52,3 +51,8 @@ playback_speed = 2.0
 anims/default = SubResource( 3 )
 
 [node name="FCTMgr" parent="." instance=ExtResource( 3 )]
+
+[node name="DetectArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
+shape = SubResource( 4 )
