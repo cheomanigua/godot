@@ -222,6 +222,9 @@ margin_bottom = 18.0
 rect_min_size = Vector2( 18, 18 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Slot2" type="Panel" parent="GridContainerLoot"]
 margin_top = 22.0

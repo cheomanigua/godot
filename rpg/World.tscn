@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scenes/creature.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/structure/door.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/ui/user_interface.tscn" type="PackedScene" id=3]
 [ext_resource path="res://world.gd" type="Script" id=4]
@@ -12,13 +11,6 @@ script = ExtResource( 4 )
 [node name="UserInterface" parent="." instance=ExtResource( 3 )]
 
 [node name="Creatures" type="Node" parent="."]
-
-[node name="Creature" parent="Creatures" instance=ExtResource( 1 )]
-position = Vector2( 246.781, 94.7525 )
-
-[node name="Creature2" parent="Creatures" instance=ExtResource( 1 )]
-position = Vector2( 174.157, 167.773 )
-creature_type = "Agoiru"
 
 [node name="Items" type="Node" parent="."]
 
@@ -33,22 +25,22 @@ item_name = "Gem8"
 item_quantity = 2
 
 [node name="ItemObject3" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 84.7567, 183.816 )
-item_name = "Gem1"
+position = Vector2( 77.3405, 186.465 )
+item_name = "Gem9"
 item_quantity = 2
 
 [node name="ItemObject4" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 84.7567, 183.816 )
+position = Vector2( 47.6755, 215.6 )
 item_name = "Gem2"
 item_quantity = 2
 
 [node name="ItemObject5" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 84.7567, 183.816 )
+position = Vector2( 48.2052, 214.54 )
 item_name = "Gem3"
 item_quantity = 2
 
 [node name="ItemObject6" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 84.7567, 183.816 )
+position = Vector2( 47.6756, 215.07 )
 item_name = "Gem4"
 item_quantity = 2
 

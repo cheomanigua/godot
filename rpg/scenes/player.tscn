@@ -144,7 +144,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 12, 13 )
+extents = Vector2( 15.5449, 15.1749 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 62.2254, 145.664 )
@@ -178,6 +178,4 @@ collision_mask = 4
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupZone"]
-visible = false
-position = Vector2( 4, 5 )
 shape = SubResource( 10 )

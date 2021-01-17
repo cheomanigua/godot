@@ -1,4 +1,4 @@
-## THIS SCRIPT IS USED TO PICK UP ITEMS FROM THE ENVIRONMENT
+	## THIS SCRIPT IS USED TO PICK UP ITEMS FROM THE ENVIRONMENT
 ## AND ADD THEM TO THE LOGICAL INVENTORY (CONTROLLER)
 
 extends Node
@@ -38,6 +38,7 @@ func _ready():
 	add_item("Gold", 10)
 	add_item("Gem8", 2)
 #	add_item("Gem9", 5)
+#	loot_add_item("Gold",10)
 
 
 func add_item(item_name, item_quantity):

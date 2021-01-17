@@ -4,6 +4,7 @@
 extends Node2D
 
 const SlotClass = preload("res://scripts/ui/slot.gd")
+const ItemObject = preload("res://scenes/item_object.tscn")
 
 onready var loot_slots = $GridContainerLoot
 onready var usage_slots = $GridContainerUsage
@@ -145,6 +146,16 @@ func loot_slot_gui_input(event: InputEvent, slot: SlotClass):
 
 func loot_left_click_empty_slot(slot: SlotClass):
 	InventoryController.loot_add_item_to_empty_slot(holding_item, slot)
+	
+	# Drop item on the ground
+	var item_name = holding_item.item_name
+	var item_quantity = holding_item.item_quantity
+	var item_object = ItemObject.instance()
+	item_object.initialize(item_name, item_quantity)
+	add_child(item_object)
+	item_object.position = Player.position
+	print_stray_nodes()
+	
 	slot.putIntoSlot(holding_item)
 	holding_item = null
 
@@ -176,8 +187,10 @@ func loot_left_click_same_item(slot: SlotClass):
 func loot_left_click_not_holding(slot: SlotClass):
 	InventoryController.loot_remove_item(slot)
 	holding_item = slot.item
+	Global.emit_signal("item_picked", slot.item)
 	slot.pickFromSlot()
 	holding_item.global_position = get_global_mouse_position()
+
 
 func loot_remove_item_from_slot(slot: SlotClass):
 	slot.pickFromSlot()
