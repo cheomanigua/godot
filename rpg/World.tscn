@@ -22,7 +22,6 @@ item_quantity = 10
 [node name="ItemObject2" parent="Items" instance=ExtResource( 5 )]
 position = Vector2( 83.6976, 183.287 )
 item_name = "Gem8"
-item_quantity = 2
 
 [node name="ItemObject3" parent="Items" instance=ExtResource( 5 )]
 position = Vector2( 77.3405, 186.465 )
@@ -35,12 +34,12 @@ item_name = "Gem2"
 item_quantity = 2
 
 [node name="ItemObject5" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 48.2052, 214.54 )
+position = Vector2( 51.9935, 214.821 )
 item_name = "Gem3"
 item_quantity = 2
 
 [node name="ItemObject6" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 47.6756, 215.07 )
+position = Vector2( 43.747, 214.93 )
 item_name = "Gem4"
 item_quantity = 2
 

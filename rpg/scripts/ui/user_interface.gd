@@ -46,5 +46,6 @@ func inventory_closed():
 	# Disable and enable Player's $PickupZone in order to fetch items
 	# on the ground when opening the inventory again
 	InventoryController.loot_inventory.clear()
+	Global.item_position.clear()
 #	Player.reset_pickup_zone()
 	print_stray_nodes()

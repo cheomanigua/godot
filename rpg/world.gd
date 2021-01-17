@@ -6,6 +6,7 @@ const ITEMS_IMAGE_PATH = IMAGE_PATH + "items/"
 
 # warning-ignore:unused_signal
 signal item_picked
+var item_position: Dictionary
 
 func _ready():
 	var overlay = load("res://debug_overlay.tscn").instance()

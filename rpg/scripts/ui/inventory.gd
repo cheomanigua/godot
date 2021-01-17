@@ -152,8 +152,22 @@ func loot_left_click_empty_slot(slot: SlotClass):
 	var item_quantity = holding_item.item_quantity
 	var item_object = ItemObject.instance()
 	item_object.initialize(item_name, item_quantity)
-	add_child(item_object)
-	item_object.position = Player.position
+	if Player.get_node("PickupZone").get_overlapping_bodies().size() > 0:
+		# If holding item is not the same type as the overlapping ones,
+		# drop it in player's position
+		if !Global.item_position.has(item_name):
+			item_object.position = Player.position
+		# Otherwise
+		else:
+			for o in Player.get_node("PickupZone").get_overlapping_bodies():
+				if o.item_name == item_name:
+					item_object.position = o.position
+				else:
+					item_object.position = Global.item_position[item_name]
+		add_child(item_object)
+	else:
+		add_child(item_object)
+		item_object.position = Player.position
 	print_stray_nodes()
 	
 	slot.putIntoSlot(holding_item)
