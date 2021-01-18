@@ -7,8 +7,8 @@
 
 Items are divided in three categories:
 1. **items.json**: Used as the data model
-2. **item_object.tscn**/**item_object.gd**: Used for managing items in the environment
-3. **item.tscn**/**item.gd**: Used for managing items in the inventory
+2. **item_object.tscn**/**item_object.gd**: For managing items in the environment
+3. **item.tscn**/**item.gd**: For managing items in the inventory
 
 **item_object.tscn** scene is composed of a **KinematicBody2D** as parent node and the following children nodes: **Sprite**, **Area2D** and **CollisionShape2D**
 - No texture file must be added in the **Sprite** node. Only add a texture file in the instanciated *item_object*'s sprite node. 
@@ -20,13 +20,15 @@ Items are divided in three categories:
   3. **Item Quantity**: Used to quantify the number of items on an item instance.
 - If no **Item Name** is added, there will be an alert in the main editor window and an error message in Godot’s built-in debugger.
 - Items are instanciated from the parent scene "item_object.tscn"
+- When instanciated, items are automatically added to the group *Items*
 - It is recommended to create an empty parent Node for instances that share the same **Item name**. For instance, create an empty Node and name it **Gems**. From **Gems** you can instanciate items that are going to use *Gem* as **Item Name**.
 
 ### Pickup()
 
-- `pickup_item()` function in **player.gd** will be used to add **one** item to the inventory dictionary in **inventory_controller.gd**.
-- `grab_item()` function in **player.gd** will be used to add **all** items to the inventory dictionary in **inventory_controller.gd**.
-- `show_item()` function in **player.gd** will be used to fetch all items in the overlapping **Aread2D** of the player and show them in the inventory UI.
+- `pickup_item()` function in **player.gd** adds **one** item in the overlapping **Aread2D** of the player to the inventory dictionary in **inventory_controller.gd**.
+- `grab_item()` function in **player.gd** adds **all** items in the overlapping **Aread2D** of the player to the inventory dictionary in **inventory_controller.gd**.
+- `show_loot()` function in **player.gd** fetches all items in the overlapping **Aread2D** of the player and show them in the inventory UI.
+- `show_loot()` function in **player.gd** sets the dictionary `Global.item_position` for the function `_on_item_dropped` in **world.gd** to work correctly.
 - If no *Item Name* is added in an instance of **item_object.tscn**, there will be an alert in the main editor window and an error message in Godot’s built-in debugger.
 - *Item quantity* will contain the number of units of a given **item_object.tscn** instance.
 
@@ -41,9 +43,10 @@ Inventory are divided in three elements:
 ## Creatures
 
 - Creatures is a **Creature.tscn** scene with a **KinematicBody2D** parent node and
-the following children nodes: **Sprite**, **CollisionShape2D**, **Area2D** and **AnimationPlayer**
-- The **Area2D** is called *HitBox* and has child node of type **CollisionShape2D**
-used to detect when Player is attacking and initiate the combat process.
+the following children nodes: **Sprite**, **CollisionShape2D**, 2 **Area2D** and **AnimationPlayer**
+- The first **Area2D** is called *HitBox* and has child node of type **CollisionShape2D**
+- The second **Area2D** is called *DetectArea* and has child node of type **CollisionShape2D**
+used to detect when Player enters creature's detect area and trigger the state CHASE.
 - The **AnimationPlayer** has a basic *flip_h* key animation.
 - Creatures functionality is implemented by script **creature.gd**
 - Creatures has a property called **Creature type** that can be selected from a drop down menu in the Inspector Panel. By default, the **Creature Type** is *Orc*. This property is very important because it is used to automatically initialize the creature's instance texture and skills from a JSON file.
@@ -51,7 +54,8 @@ used to detect when Player is attacking and initiate the combat process.
 - Creatures have five skill's properties: *Strength, Intelligence, Dexterity, Endurance* and *Health*
 - *Health* property is the sum of *Strength* and *Endurance*
 - Skill's property are parsed to a dictionary variable from a JSON file.
-- The file is located at [https://drive.google.com/file/d/1Fq4q-3b1RMubc4cYm9QwMyzznOpFjcK5/view](https://drive.google.com/file/d/1Fq4q-3b1RMubc4cYm9QwMyzznOpFjcK5/view)
+- The file is located at [https://drive.google.com/file/d/1EngStPfZxbTGDxjVKbe7Zql3kBepNaq3/view](https://drive.google.com/file/d/1EngStPfZxbTGDxjVKbe7Zql3kBepNaq3/view)
+- Creatures have a basic AI by using FSM. Currently there are only two states: PATROL and CHASE.
 
 ## Doors
 

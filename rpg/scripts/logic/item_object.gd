@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 export (String) var item_name
 export (int) var item_quantity = 1
-var item_position = get_position()
 
 func initialize(name: String, quantity: int):
 	item_name = name

@@ -8,7 +8,7 @@ const ItemClass = preload("res://scripts/ui/item.gd")
 const NUM_INVENTORY_SLOTS = 20
 # Keep it at 25 to prevent items not being shown in Loot inventory when swapping
 const NUM_LOOT_INVENTORY_SLOTS = 25
-const NUM_USAGE_INVENTORY_SLOTS = 1
+const NUM_USAGE_INVENTORY_SLOTS = 2
 const NUM_TEMP_INVENTORY_SLOTS = 4
 
 var inventory:Dictionary

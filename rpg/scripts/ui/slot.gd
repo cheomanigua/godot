@@ -6,6 +6,8 @@ var empty_tex = preload("res://images/ui/item_slot_empty_background.png")
 var default_style: StyleBoxTexture = null
 var empty_style: StyleBoxTexture = null
 
+export(Global.SlotType) var slotType = Global.SlotType.SLOT_LHAND;
+
 var ItemClass = preload("res://scenes/ui/item.tscn")
 var item = null
 var slot_index

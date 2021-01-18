@@ -9,7 +9,20 @@ const ItemObject = preload("res://scenes/item_object.tscn")
 signal item_picked
 # warning-ignore:unused_signal
 signal item_dropped
+# Item position updated on player.gd on show_loot() method
 var item_position: Dictionary
+
+enum SlotType {
+	SLOT_DEFAULT = 0,
+	SLOT_HELMET,
+	SLOT_ARMOR,
+	SLOT_FEET,
+	SLOT_NECK,
+	SLOT_RING,
+	SLOT_RING2,
+	SLOT_LHAND,
+	SLOT_RHAND
+}
 
 func _ready():
 	var overlay = load("res://debug_overlay.tscn").instance()

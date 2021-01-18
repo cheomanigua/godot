@@ -56,6 +56,11 @@ func _input(_event):
 	if holding_item:
 		holding_item.global_position = get_global_mouse_position()
 
+func canEquip(item, slot):
+	var item_slot_type = Data.item_data[item.item_name]["slot_type"]
+	var slot_type = Global.SlotType.keys()[slot.slotType]
+	return item_slot_type == slot_type
+
 
 ############### INVENTORY CODE STARTS HERE #################
 
@@ -202,16 +207,17 @@ func usage_slot_gui_input(event: InputEvent, slot: SlotClass):
 		if event.button_index == BUTTON_LEFT && event.pressed:
 			# ... holding an item
 			if holding_item != null:
-				# ... holding an item against an empty slot
-				if !slot.item:
-					usage_left_click_empty_slot(slot)
-				else:
-					# ... holding an item against a slot containing a different item
-					if holding_item.item_name != slot.item.item_name:
-						usage_left_click_different_item(event, slot)
-					# .. holding an item againts a slot containing an equal item
+				if canEquip(holding_item, slot):
+					# ... holding an item against an empty slot
+					if !slot.item:
+						usage_left_click_empty_slot(slot)
 					else:
-						usage_left_click_same_item(slot)
+						# ... holding an item against a slot containing a different item
+						if holding_item.item_name != slot.item.item_name:
+							usage_left_click_different_item(event, slot)
+						# .. holding an item againts a slot containing an equal item
+						else:
+							usage_left_click_same_item(slot)
 			# ... not holding an item
 			elif slot.item:
 				usage_left_click_not_holding(slot)
