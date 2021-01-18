@@ -20,7 +20,7 @@ item_name = "Gold"
 item_quantity = 10
 
 [node name="ItemObject2" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 83.6976, 183.287 )
+position = Vector2( 96.3111, 130.731 )
 item_name = "Gem8"
 
 [node name="ItemObject3" parent="Items" instance=ExtResource( 5 )]

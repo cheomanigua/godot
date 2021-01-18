@@ -28,8 +28,6 @@ func inventory_opened():
 
 func inventory_closed():
 	Player.resume()
-	# Disable and enable Player's $PickupZone in order to fetch items
-	# on the ground when opening the inventory again
 	InventoryController.loot_inventory.clear()
 	Global.item_position.clear()
 	print_stray_nodes()
