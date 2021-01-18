@@ -113,6 +113,9 @@ func resume():
 func overlapping():
 # warning-ignore:unassigned_variable
 	var overlap: Dictionary
+	var i := 0
 	for item in $PickupZone.get_overlapping_bodies():
-		overlap[item.item_name] = item.item_quantity
+		overlap[i] = [item.item_name, item.item_quantity]
+		i += 1
+#		overlap[item.item_name] = item.item_quantity
 	return overlap

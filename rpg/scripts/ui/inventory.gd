@@ -146,31 +146,8 @@ func loot_slot_gui_input(event: InputEvent, slot: SlotClass):
 
 func loot_left_click_empty_slot(slot: SlotClass):
 	InventoryController.loot_add_item_to_empty_slot(holding_item, slot)
-	
-	# Drop item on the ground
-	var item_name = holding_item.item_name
-	var item_quantity = holding_item.item_quantity
-	var item_object = ItemObject.instance()
-	item_object.initialize(item_name, item_quantity)
-	if Player.get_node("PickupZone").get_overlapping_bodies().size() > 0:
-		# If holding item is not the same type as the overlapping ones,
-		# drop it in player's position
-		if !Global.item_position.has(item_name):
-			item_object.position = Player.position
-		# Otherwise
-		else:
-			for o in Player.get_node("PickupZone").get_overlapping_bodies():
-				if o.item_name == item_name:
-					item_object.position = o.position
-				else:
-					item_object.position = Global.item_position[item_name]
-		add_child(item_object)
-	else:
-		add_child(item_object)
-		item_object.position = Player.position
-	print_stray_nodes()
-	
 	slot.putIntoSlot(holding_item)
+	Global.emit_signal("item_dropped", holding_item)
 	holding_item = null
 
 
@@ -181,7 +158,9 @@ func loot_left_click_different_item(event: InputEvent, slot: SlotClass):
 	slot.pickFromSlot()
 	temp_item.global_position = event.global_position
 	slot.putIntoSlot(holding_item)
+	Global.emit_signal("item_dropped", holding_item)
 	holding_item = temp_item
+	Global.emit_signal("item_picked", holding_item)
 
 
 func loot_left_click_same_item(slot: SlotClass):
@@ -190,12 +169,14 @@ func loot_left_click_same_item(slot: SlotClass):
 	if able_to_add >= holding_item.item_quantity:
 		InventoryController.loot_add_item_quantity(slot, holding_item.item_quantity)
 		slot.item.add_item_quantity(holding_item.item_quantity)
+		Global.emit_signal("item_dropped", holding_item)
 		holding_item.queue_free()
 		holding_item = null
 	else:
 		InventoryController.loot_add_item_quantity(slot, able_to_add)
 		slot.item.add_item_quantity(able_to_add)
 		holding_item.decrease_item_quantity(able_to_add)
+		Global.emit_signal("item_dropped", holding_item)
 
 
 func loot_left_click_not_holding(slot: SlotClass):

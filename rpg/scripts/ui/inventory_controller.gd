@@ -6,7 +6,8 @@ extends Node
 const SlotClass = preload("res://scripts/ui/slot.gd")
 const ItemClass = preload("res://scripts/ui/item.gd")
 const NUM_INVENTORY_SLOTS = 20
-const NUM_LOOT_INVENTORY_SLOTS = 4
+# Keep it at 25 to prevent items not being shown in Loot inventory when swapping
+const NUM_LOOT_INVENTORY_SLOTS = 25
 const NUM_USAGE_INVENTORY_SLOTS = 1
 const NUM_TEMP_INVENTORY_SLOTS = 4
 
