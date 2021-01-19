@@ -43,6 +43,10 @@ position = Vector2( 43.747, 214.93 )
 item_name = "Gem4"
 item_quantity = 2
 
+[node name="ItemObject7" parent="Items" instance=ExtResource( 5 )]
+position = Vector2( 71.0559, 94.1806 )
+item_name = "Gem3"
+
 [node name="Doors" type="Node" parent="."]
 
 [node name="Door" parent="Doors" instance=ExtResource( 2 )]

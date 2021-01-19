@@ -6,7 +6,7 @@ var item_quantity
 func set_item(nm, qt):
 	item_name = nm
 	item_quantity = qt
-	$TextureRect.texture = load(Global.ITEMS_IMAGE_PATH + Data.item_data[item_name]["item_image"])
+	$TextureRect.texture = load(GlobalWorld.ITEMS_IMAGE_PATH + Data.item_data[item_name]["item_image"])
 	
 	var stack_size = int(Data.item_data[item_name]["stack_size"])
 	if stack_size == 1:

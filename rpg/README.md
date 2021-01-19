@@ -28,7 +28,7 @@ Items are divided in three categories:
 - `pickup_item()` function in **player.gd** adds **one** item in the overlapping **Aread2D** of the player to the inventory dictionary in **inventory_controller.gd**.
 - `grab_item()` function in **player.gd** adds **all** items in the overlapping **Aread2D** of the player to the inventory dictionary in **inventory_controller.gd**.
 - `show_loot()` function in **player.gd** fetches all items in the overlapping **Aread2D** of the player and show them in the inventory UI.
-- `show_loot()` function in **player.gd** sets the dictionary `Global.item_position` for the function `_on_item_dropped` in **world.gd** to work correctly.
+- `show_loot()` function in **player.gd** sets the dictionary `GlobalWorld.item_position` for the function `_on_item_dropped` in **world.gd** to work correctly.
 - If no *Item Name* is added in an instance of **item_object.tscn**, there will be an alert in the main editor window and an error message in Godot’s built-in debugger.
 - *Item quantity* will contain the number of units of a given **item_object.tscn** instance.
 

@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "Global",
+"language": "GDScript",
+"path": "res://Global.gd"
+} ]
 _global_script_class_icons={
-
+"Global": ""
 }
 
 [application]
@@ -23,8 +28,8 @@ run/main_scene="res://World.tscn"
 Player="*res://scenes/player.tscn"
 Data="*res://scripts/logic/data.gd"
 Notification="*res://scenes/messaging/notification.tscn"
-Global="*res://world.gd"
 InventoryController="*res://scripts/ui/inventory_controller.gd"
+GlobalWorld="*res://world.gd"
 
 [display]
 

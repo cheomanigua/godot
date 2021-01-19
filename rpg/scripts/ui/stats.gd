@@ -8,6 +8,7 @@ func _ready():
 func character_info():
 	$Label.text = ""
 	for key in Player.stats:
-		$Label.text += "%s : %d" % [key, Player.stats[key]]
+		var cap_key: String = key.capitalize()
+		$Label.text += "%s: %d" % [cap_key, Player.stats[key]]
 		if (key != Player.stats.keys().back()):
 			$Label.text += "\n"

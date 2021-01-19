@@ -12,17 +12,7 @@ signal item_dropped
 # Item position updated on player.gd on show_loot() method
 var item_position: Dictionary
 
-enum SlotType {
-	SLOT_DEFAULT = 0,
-	SLOT_HEAD,
-	SLOT_NECK,
-	SLOT_TORSO,
-	SLOT_LHAND,
-	SLOT_RHAND,
-	SLOT_RING,
-	SLOT_RING2,
-	SLOT_FEET,
-}
+
 
 func _ready():
 	var overlay = load("res://debug_overlay.tscn").instance()
@@ -52,8 +42,11 @@ func _on_item_dropped(item):
 				if o.item_name == item_name:
 					item_object.position = o.position
 				else:
-					item_object.position = Global.item_position[item_name]
+					item_object.position = GlobalWorld.item_position[item_name]
 		add_child(item_object)
 	else:
+		if !item_position.has(item_name):
+			item_object.position = Player.position
+		else:
+			item_object.position = GlobalWorld.item_position[item_name]
 		add_child(item_object)
-		item_object.position = Player.position

@@ -44,7 +44,7 @@ func show_loot():
 	if $PickupZone.get_overlapping_bodies().size() > 0:
 		var i := 0
 		for item in $PickupZone.get_overlapping_bodies():
-			Global.item_position[item.item_name] = item.position
+			GlobalWorld.item_position[item.item_name] = item.position
 			if i < InventoryController.NUM_LOOT_INVENTORY_SLOTS:
 				item.fetch_item("shown")
 				i += 1

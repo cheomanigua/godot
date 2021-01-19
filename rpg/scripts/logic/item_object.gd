@@ -10,9 +10,9 @@ func initialize(name: String, quantity: int):
 
 func _ready():
 	add_to_group("items")
-	$Sprite.texture = load(Global.ITEMS_IMAGE_PATH + Data.item_data[item_name]["item_image"])
+	$Sprite.texture = load(GlobalWorld.ITEMS_IMAGE_PATH + Data.item_data[item_name]["item_image"])
 # warning-ignore:return_value_discarded
-	Global.connect("item_picked",self,"_on_item_picked")
+	GlobalWorld.connect("item_picked",self,"_on_item_picked")
 
 
 func fetch_item(mode):

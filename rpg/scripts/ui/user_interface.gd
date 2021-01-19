@@ -6,6 +6,7 @@ const ItemObject = preload("res://scenes/item_object.tscn")
 func _unhandled_input(event):
 	if event.is_action_pressed("inventory"):
 		$Inventory.visible = !$Inventory.visible
+		$Stats.visible = !$Stats.visible
 		if $Inventory.visible:
 			inventory_opened()
 		else:
@@ -29,5 +30,5 @@ func inventory_opened():
 func inventory_closed():
 	Player.resume()
 	InventoryController.loot_inventory.clear()
-	Global.item_position.clear()
+	GlobalWorld.item_position.clear()
 	print_stray_nodes()
