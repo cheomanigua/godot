@@ -4,7 +4,7 @@ var slots = Array();
 
 func _ready():
 	slots.resize(10);
-	slots.insert(Global.SlotType.SLOT_HELMET, $SlotHead);
+	slots.insert(Global.SlotType.SLOT_HEAD, $SlotHead);
 	slots.insert(Global.SlotType.SLOT_NECK, $SlotNeck);
 #	slots.insert(Global.SlotType.SLOT_ARMOR, get_node("Left/SlotArmor"));
 #	slots.insert(Global.SlotType.SLOT_FEET, get_node("Left/SlotFeet"));

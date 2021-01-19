@@ -14,14 +14,14 @@ var item_position: Dictionary
 
 enum SlotType {
 	SLOT_DEFAULT = 0,
-	SLOT_HELMET,
-	SLOT_ARMOR,
-	SLOT_FEET,
+	SLOT_HEAD,
 	SLOT_NECK,
+	SLOT_TORSO,
+	SLOT_LHAND,
+	SLOT_RHAND,
 	SLOT_RING,
 	SLOT_RING2,
-	SLOT_LHAND,
-	SLOT_RHAND
+	SLOT_FEET,
 }
 
 func _ready():

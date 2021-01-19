@@ -278,7 +278,7 @@ margin_bottom = 40.0
 rect_min_size = Vector2( 18, 18 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
-slotType = 4
+slotType = 2
 
 [node name="Label" type="Label" parent="."]
 margin_left = 213.0
