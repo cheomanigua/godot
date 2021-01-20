@@ -12,6 +12,10 @@ onready var inventory_slots = $GridContainer
 var holding_item = null
 
 func _ready():
+# warning-ignore:return_value_discarded
+	GlobalWorld.connect("show_item_info",self,"_on_show_item_info")
+# warning-ignore:return_value_discarded
+	GlobalWorld.connect("hide_item_info",self,"_on_hide_item_info")
 	var i_slots = inventory_slots.get_children()
 	var l_slots = loot_slots.get_children()
 	var u_slots = usage_slots.get_children()
@@ -260,3 +264,11 @@ func usage_left_click_not_holding(slot: SlotClass):
 	holding_item.global_position = get_global_mouse_position()
 
 ############### USAGE CODE ENDS #################
+
+func _on_show_item_info(item_name):
+	var value = Data.item_data[item_name]["item_value"]
+	var rarity = Data.item_data[item_name]["rarity"]
+	$Label.text = "Name: %s\nValue: %d\nRarity: %s" % [item_name,value,rarity]
+
+func _on_hide_item_info():
+	$Label.text = ""

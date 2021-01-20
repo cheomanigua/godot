@@ -19,6 +19,10 @@ func _ready():
 	empty_style = StyleBoxTexture.new()
 	default_style.texture = default_tex
 	empty_style.texture = empty_tex
+# warning-ignore:return_value_discarded
+	connect("mouse_entered",self,"_on_mouse_entered")
+# warning-ignore:return_value_discarded
+	connect("mouse_exited",self,"_on_mouse_exited")
 	
 #	if randi() % 2 == 0:
 #		item = ItemClass.instance()
@@ -31,6 +35,13 @@ func refresh_style():
 	else:
 		set('custom_styles/panel', default_style)
 
+func _on_mouse_entered():
+	if item:
+		var item_name = item.item_name
+		GlobalWorld.emit_signal("show_item_info",item_name)
+
+func _on_mouse_exited():
+	GlobalWorld.emit_signal("hide_item_info")
 
 func remove_from_slot():
 	remove_child(item)
@@ -59,6 +70,7 @@ func putIntoSlot(new_item):
 	add_child(item)
 	refresh_style()
 	
+# warning-ignore:shadowed_variable
 func initialize_item(item_name, item_quantity):
 	if item == null:
 		item = ItemClass.instance()

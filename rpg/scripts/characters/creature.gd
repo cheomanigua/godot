@@ -1,7 +1,7 @@
 #tool
 extends "res://scripts/characters/character.gd"
 #onready var data = preload("res://Scripts/Logic/data.gd").new()
-onready var combat = preload("res://scripts/logic/combat.gd").new()
+onready var combat = load("res://scripts/logic/combat.gd").new()
 
 export(String,"Human","Orc","Goblin", "Adivía", "Agoiru") var creature_type = "Orc"
 var creature_stats:Dictionary

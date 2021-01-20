@@ -31,4 +31,3 @@ func inventory_closed():
 	Player.resume()
 	InventoryController.loot_inventory.clear()
 	GlobalWorld.item_position.clear()
-	print_stray_nodes()

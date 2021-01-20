@@ -45,7 +45,7 @@ item_quantity = 2
 
 [node name="ItemObject7" parent="Items" instance=ExtResource( 5 )]
 position = Vector2( 71.0559, 94.1806 )
-item_name = "Gem3"
+item_name = "Gem7"
 
 [node name="Doors" type="Node" parent="."]
 

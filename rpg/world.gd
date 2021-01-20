@@ -9,6 +9,10 @@ const ItemObject = preload("res://scenes/item_object.tscn")
 signal item_picked
 # warning-ignore:unused_signal
 signal item_dropped
+# warning-ignore:unused_signal
+signal show_item_info
+# warning-ignore:unused_signal
+signal hide_item_info
 # Item position updated on player.gd on show_loot() method
 var item_position: Dictionary
 

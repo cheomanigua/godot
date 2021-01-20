@@ -16,8 +16,8 @@ func _ready():
 #	slots.insert(GlobalWorld.SlotType.SLOT_RHAND, get_node("Right/SlotRHand"));
 
 func getSlotByType(type):
-	if type == GlobalWorld.SlotType.SLOT_RING:
-		return [slots[GlobalWorld.SlotType.SLOT_RING], slots[GlobalWorld.SlotType.SLOT_RING2]];
+	if type == Global.SlotType.SLOT_RING:
+		return [slots[Global.SlotType.SLOT_RING], slots[Global.SlotType.SLOT_RING2]];
 
 	return slots[type];
 
