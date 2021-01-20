@@ -265,10 +265,11 @@ func usage_left_click_not_holding(slot: SlotClass):
 
 ############### USAGE CODE ENDS #################
 
+
 func _on_show_item_info(item_name):
 	var value = Data.item_data[item_name]["item_value"]
 	var rarity = Data.item_data[item_name]["rarity"]
-	$Label.text = "Name: %s\nValue: %d\nRarity: %s" % [item_name,value,rarity]
+	$Label.text = "%s\n%d\n%s" % [item_name,value,rarity.capitalize()]
 
 func _on_hide_item_info():
 	$Label.text = ""

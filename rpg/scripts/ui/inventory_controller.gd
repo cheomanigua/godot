@@ -17,30 +17,10 @@ var usage_inventory:Dictionary
 var temp_inventory:Dictionary
 
 
-#func add_item(item_name, item_quantity):
-#	for item in inventory:
-#		if inventory[item][0] == item_name:
-#			var stack_size = int(Data.item_data[item_name]["stack_size"])
-#			var able_to_add = stack_size - inventory[item][1]
-#			if able_to_add >= item_quantity:
-#				inventory[item][1] += item_quantity
-#				return
-#			else:
-#				inventory[item][1] += able_to_add
-#				item_quantity = item_quantity - able_to_add
-#	# item doesn't exist in inventory yet, so add it to an empty slot
-#	for i in range(NUM_INVENTORY_SLOTS):
-#		if inventory.has(i) == false:
-#			inventory[i] = [item_name, item_quantity]
-#			return
-
-
 func _ready():
 	add_item("Gold", 10)
 	add_item("Gem8", 2)
 	add_item("Gem6", 2)
-#	add_item("Gem9", 5)
-#	loot_add_item("Gold",10)
 
 
 func add_item(item_name, item_quantity):
