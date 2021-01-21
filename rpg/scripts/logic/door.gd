@@ -15,10 +15,10 @@ func _on_Door_body_entered(body):
 		# Execute if a key is needed to open the door
 		if key:
 			var has_key: bool = false
-			# Loop through the inventory dictionary to check for the key
+			# Loop through the usage inventory dictionary to check for the correct item
 			for i in InventoryController.usage_inventory:
-				# If key is found, door is opened
-				if InventoryController.usage_inventory[i][0] == key:
+				# If key is found, door is opened... based on item's uniqueness first array value (item's unique name)
+				if InventoryController.usage_inventory[i][2]["name"] == key:
 					has_key = true
 					$CollisionShape2D.set_deferred("disabled", true)
 					hide()

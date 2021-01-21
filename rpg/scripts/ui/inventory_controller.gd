@@ -17,13 +17,13 @@ var usage_inventory:Dictionary
 var temp_inventory:Dictionary
 
 
-func _ready():
-	add_item("Gold", 10)
-	add_item("Gem8", 2)
-	add_item("Gem6", 2)
+#func _ready():
+#	add_item("Gold", 10, ["",0,0])
+#	add_item("Gem8", 2, "")
+#	add_item("Gem6", 2, "")
 
 
-func add_item(item_name, item_quantity):
+func add_item(item_name, item_quantity, item_uniqueness):
 	for item in inventory:
 		if inventory[item][0] == item_name:
 			var stack_size = int(Data.item_data[item_name]["stack_size"])
@@ -38,7 +38,7 @@ func add_item(item_name, item_quantity):
 	# item doesn't exist in inventory yet, so add it to an empty slot
 	for i in range(NUM_INVENTORY_SLOTS):
 		if inventory.has(i) == false:
-			inventory[i] = [item_name, item_quantity]
+			inventory[i] = [item_name, item_quantity, item_uniqueness]
 			return
 
 
@@ -47,7 +47,7 @@ func remove_item(slot: SlotClass):
 	inventory.erase(slot.slot_index)
 
 func add_item_to_empty_slot(item: ItemClass, slot: SlotClass):
-	inventory[slot.slot_index] = [item.item_name, item.item_quantity]
+	inventory[slot.slot_index] = [item.item_name, item.item_quantity, item.item_uniqueness]
 
 func add_item_quantity(slot: SlotClass, quantity_to_add: int):
 	inventory[slot.slot_index][1] += quantity_to_add
@@ -55,7 +55,7 @@ func add_item_quantity(slot: SlotClass, quantity_to_add: int):
 
 ######## LOOT #########
 
-func loot_add_item(item_name, item_quantity):
+func loot_add_item(item_name, item_quantity, item_uniqueness):
 	for item in loot_inventory:
 		if loot_inventory[item][0] == item_name:
 			var stack_size = int(Data.item_data[item_name]["stack_size"])
@@ -69,7 +69,7 @@ func loot_add_item(item_name, item_quantity):
 	# item doesn't exist in loot_inventory yet, so add it to an empty slot
 	for i in range(NUM_LOOT_INVENTORY_SLOTS):
 		if loot_inventory.has(i) == false:
-			loot_inventory[i] = [item_name, item_quantity]
+			loot_inventory[i] = [item_name, item_quantity,  item_uniqueness]
 			return
 
 
@@ -79,7 +79,7 @@ func loot_remove_item(slot: SlotClass):
 
 
 func loot_add_item_to_empty_slot(item: ItemClass, slot: SlotClass):
-	loot_inventory[slot.loot_slot_index] = [item.item_name, item.item_quantity]
+	loot_inventory[slot.loot_slot_index] = [item.item_name, item.item_quantity, item.item_uniqueness]
 
 
 func loot_add_item_quantity(slot: SlotClass, quantity_to_add: int):
@@ -91,7 +91,7 @@ func loot_add_item_quantity(slot: SlotClass, quantity_to_add: int):
 
 ######## USAGE #########
 
-func usage_add_item(item_name, item_quantity):
+func usage_add_item(item_name, item_quantity,  item_uniqueness):
 	for item in usage_inventory:
 		if usage_inventory[item][0] == item_name:
 			var stack_size = int(Data.item_data[item_name]["stack_size"])
@@ -105,7 +105,7 @@ func usage_add_item(item_name, item_quantity):
 	# item doesn't exist in usage_inventory yet, so add it to an empty slot
 	for i in range(NUM_USAGE_INVENTORY_SLOTS):
 		if usage_inventory.has(i) == false:
-			usage_inventory[i] = [item_name, item_quantity]
+			usage_inventory[i] = [item_name, item_quantity, item_uniqueness]
 			return
 
 
@@ -115,7 +115,7 @@ func usage_remove_item(slot: SlotClass):
 
 
 func usage_add_item_to_empty_slot(item: ItemClass, slot: SlotClass):
-	usage_inventory[slot.usage_slot_index] = [item.item_name, item.item_quantity]
+	usage_inventory[slot.usage_slot_index] = [item.item_name, item.item_quantity, item.item_uniqueness]
 
 
 func usage_add_item_quantity(slot: SlotClass, quantity_to_add: int):
@@ -124,7 +124,7 @@ func usage_add_item_quantity(slot: SlotClass, quantity_to_add: int):
 
 ######## TEMP #########
 
-func temp_add_item(item_name, item_quantity):
+func temp_add_item(item_name, item_quantity, item_uniqueness):
 	for item in temp_inventory:
 		if temp_inventory[item][0] == item_name:
 			var stack_size = int(Data.item_data[item_name]["stack_size"])
@@ -138,5 +138,5 @@ func temp_add_item(item_name, item_quantity):
 	# item doesn't exist in temp_inventory yet, so add it to an empty slot
 	for i in range(NUM_TEMP_INVENTORY_SLOTS):
 		if temp_inventory.has(i) == false:
-			temp_inventory[i] = [item_name, item_quantity]
+			temp_inventory[i] = [item_name, item_quantity, item_uniqueness]
 			return

@@ -38,7 +38,8 @@ func refresh_style():
 func _on_mouse_entered():
 	if item:
 		var item_name = item.item_name
-		GlobalWorld.emit_signal("show_item_info",item_name)
+		var item_uniqueness = item.item_uniqueness
+		GlobalWorld.emit_signal("show_item_info",item_name,item_uniqueness)
 
 func _on_mouse_exited():
 	GlobalWorld.emit_signal("hide_item_info")
@@ -71,12 +72,12 @@ func putIntoSlot(new_item):
 	refresh_style()
 	
 # warning-ignore:shadowed_variable
-func initialize_item(item_name, item_quantity):
+func initialize_item(item_name, item_quantity, item_uniqueness):
 	if item == null:
 		item = ItemClass.instance()
 		add_child(item)
-		item.set_item(item_name, item_quantity)
+		item.set_item(item_name, item_quantity, item_uniqueness)
 	else:
-		item.set_item(item_name, item_quantity)
+		item.set_item(item_name, item_quantity, item_uniqueness)
 	refresh_style()
 

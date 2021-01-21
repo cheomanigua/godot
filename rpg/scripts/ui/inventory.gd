@@ -44,15 +44,15 @@ func initialize_inventory():
 	
 	for i in range(i_slots.size()):
 		if InventoryController.inventory.has(i):
-			i_slots[i].initialize_item(InventoryController.inventory[i][0], InventoryController.inventory[i][1])
+			i_slots[i].initialize_item(InventoryController.inventory[i][0], InventoryController.inventory[i][1], InventoryController.inventory[i][2])
 	
 	for i in range(l_slots.size()):
 		if InventoryController.loot_inventory.has(i):
-			l_slots[i].initialize_item(InventoryController.loot_inventory[i][0], InventoryController.loot_inventory[i][1])
+			l_slots[i].initialize_item(InventoryController.loot_inventory[i][0], InventoryController.loot_inventory[i][1], InventoryController.loot_inventory[i][2])
 	
 	for i in range(u_slots.size()):
 		if InventoryController.usage_inventory.has(i):
-			u_slots[i].initialize_item(InventoryController.usage_inventory[i][0], InventoryController.usage_inventory[i][1])
+			u_slots[i].initialize_item(InventoryController.usage_inventory[i][0], InventoryController.usage_inventory[i][1], InventoryController.usage_inventory[i][2])
 
 
 func _input(_event):
@@ -266,10 +266,26 @@ func usage_left_click_not_holding(slot: SlotClass):
 ############### USAGE CODE ENDS #################
 
 
-func _on_show_item_info(item_name):
+func _on_show_item_info(item_name, item_uniqueness):
 	var value = Data.item_data[item_name]["item_value"]
 	var rarity = Data.item_data[item_name]["rarity"]
-	$Label.text = "%s\n%d\n%s" % [item_name,value,rarity.capitalize()]
-
+	if item_uniqueness.size() < 1:
+		$Label.text = "%s\n%d\n%s" % [item_name,value,rarity.capitalize()]
+	elif item_uniqueness.size() == 1:
+		var id = item_uniqueness[0]
+		$Label.text = "%s\n%d\n%s\n%s" % [item_name,value,rarity.capitalize(),id]
+	elif item_uniqueness.size() == 3:
+		var id = item_uniqueness[0]
+		var skill = item_uniqueness[1].capitalize()
+		var skill_value = item_uniqueness[2]
+		$Label.text = "%s\n%d\n%s\n%s\n%s: +%d" % [item_name,value,rarity.capitalize(),id, skill, skill_value]
+	elif item_uniqueness.size() == 5:
+		var id = item_uniqueness[0]
+		var skill = item_uniqueness[1].capitalize()
+		var skill_value = item_uniqueness[2]
+		var skill2 = item_uniqueness[3].capitalize()
+		var skill2_value = item_uniqueness[4]
+		$Label.text = "%s\n%d\n%s\n%s\n%s: +%d\n%s: +%d" % [item_name,value,rarity.capitalize(),id, skill, skill_value, skill2, skill2_value]
+		
 func _on_hide_item_info():
 	$Label.text = ""

@@ -15,40 +15,21 @@ script = ExtResource( 4 )
 [node name="Items" type="Node" parent="."]
 
 [node name="ItemObject" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 84.2273, 184.346 )
-item_name = "Gold"
-item_quantity = 10
+position = Vector2( 140.637, 111.377 )
+item_name = "Gem7"
+item_uniqueness = [ "Book of Heaven", "intelligence", 2 ]
 
 [node name="ItemObject2" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 96.3111, 130.731 )
-item_name = "Gem8"
+position = Vector2( 148.188, 124.119 )
+item_name = "Gold"
+item_uniqueness = [ "Key of Doors", "Dexterity", 1, "Strengh", 2 ]
 
 [node name="ItemObject3" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 77.3405, 186.465 )
-item_name = "Gem9"
-item_quantity = 2
-
-[node name="ItemObject4" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 47.6755, 215.6 )
-item_name = "Gem2"
-item_quantity = 2
-
-[node name="ItemObject5" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 51.9935, 214.821 )
-item_name = "Gem3"
-item_quantity = 2
-
-[node name="ItemObject6" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 43.747, 214.93 )
-item_name = "Gem4"
-item_quantity = 2
-
-[node name="ItemObject7" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 71.0559, 94.1806 )
-item_name = "Gem7"
+position = Vector2( 117.04, 87.7802 )
+item_name = "Silver"
 
 [node name="Doors" type="Node" parent="."]
 
 [node name="Door" parent="Doors" instance=ExtResource( 2 )]
 position = Vector2( 243.245, 132.936 )
-key = "Gem7"
+key = "Golden Key"

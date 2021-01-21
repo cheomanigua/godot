@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 export (String) var item_name
 export (int) var item_quantity = 1
+export (Array) var item_uniqueness
 
 func initialize(name: String, quantity: int):
 	item_name = name
@@ -18,9 +19,9 @@ func _ready():
 func fetch_item(mode):
 	if is_in_group("items"):
 		if mode == "shown":
-			InventoryController.loot_add_item(item_name, item_quantity)
+			InventoryController.loot_add_item(item_name, item_quantity,  item_uniqueness)
 		elif mode == "direct":
-			InventoryController.add_item(item_name, item_quantity)
+			InventoryController.add_item(item_name, item_quantity,  item_uniqueness)
 			queue_free()
 			
 

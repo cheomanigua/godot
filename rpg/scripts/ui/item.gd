@@ -2,10 +2,12 @@ extends Node2D
 
 var item_name
 var item_quantity
+var item_uniqueness: Array
 
-func set_item(nm, qt):
+func set_item(nm, qt, un):
 	item_name = nm
 	item_quantity = qt
+	item_uniqueness = un
 	$TextureRect.texture = load(GlobalWorld.ITEMS_IMAGE_PATH + Data.item_data[item_name]["item_image"])
 	
 	var stack_size = int(Data.item_data[item_name]["stack_size"])
