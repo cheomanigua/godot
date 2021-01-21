@@ -15,17 +15,17 @@ script = ExtResource( 4 )
 [node name="Items" type="Node" parent="."]
 
 [node name="ItemObject" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 140.637, 111.377 )
+position = Vector2( 67.9588, 74.094 )
 item_name = "Gem7"
 item_uniqueness = [ "Book of Heaven", "intelligence", 2 ]
 
 [node name="ItemObject2" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 148.188, 124.119 )
+position = Vector2( 75.0379, 83.0605 )
 item_name = "Gold"
-item_uniqueness = [ "Key of Doors", "Dexterity", 1, "Strengh", 2 ]
+item_uniqueness = [ "Key of Doors", "Dexterity", 1, "Strength", 2 ]
 
 [node name="ItemObject3" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 117.04, 87.7802 )
+position = Vector2( 57.1041, 68.9027 )
 item_name = "Silver"
 
 [node name="Doors" type="Node" parent="."]

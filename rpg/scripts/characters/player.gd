@@ -7,11 +7,12 @@ export (Dictionary) var stats = {
 	"intelligence" : 4,
 	"dexterity" : 3,
 	"endurance" : 6,
-	"health" : 10,
+	"health" : 0,
 }
 
 
 func _ready():
+	stats.health = stats.strength + stats.endurance
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	speed = 70
 	print_stray_nodes()
