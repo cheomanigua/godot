@@ -289,10 +289,30 @@ script = ExtResource( 3 )
 slotType = 8
 
 [node name="Label" type="Label" parent="."]
-margin_left = 201.202
-margin_top = 141.109
-margin_right = 241.202
-margin_bottom = 155.109
+margin_left = 200.0
+margin_top = 149.912
+margin_right = 240.0
+margin_bottom = 163.912
+rect_scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelAttack" type="Label" parent="."]
+margin_left = 200.0
+margin_top = 168.109
+margin_right = 240.0
+margin_bottom = 182.109
+rect_scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelDefense" type="Label" parent="."]
+margin_left = 200.0
+margin_top = 179.109
+margin_right = 240.0
+margin_bottom = 193.109
 rect_scale = Vector2( 0.5, 0.5 )
 __meta__ = {
 "_edit_use_anchors_": false

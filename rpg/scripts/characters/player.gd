@@ -8,6 +8,8 @@ export (Dictionary) var stats = {
 	"dexterity" : 3,
 	"endurance" : 6,
 	"health" : 0,
+	"attack" : 0,
+	"defense" : 0
 }
 
 
@@ -41,7 +43,7 @@ func _unhandled_input(event):
 
 
 func show_loot():
-	# Be sure to set the $PickupZone's Collision Mask to point to ItemDrop
+	# Be sure to set the $PickupZone's Collision Mask to point to ItemObject
 	if $PickupZone.get_overlapping_bodies().size() > 0:
 		var i := 0
 		for item in $PickupZone.get_overlapping_bodies():
@@ -52,7 +54,7 @@ func show_loot():
 
 
 func pickup_item():
-	# Be sure to set the $PickupZone's Collision Mask to point to ItemDrop
+	# Be sure to set the $PickupZone's Collision Mask to point to ItemObject
 	if $PickupZone.get_overlapping_bodies().size() > 0:
 		# Pick up one item in Player's reach
 		var item = $PickupZone.get_overlapping_bodies()[0]
@@ -62,7 +64,7 @@ func pickup_item():
 
 
 func grab_item():
-		# Be sure to set the $PickupZone's Collision Mask to point to ItemDrop
+		# Be sure to set the $PickupZone's Collision Mask to point to ItemObject
 	if $PickupZone.get_overlapping_bodies().size() > 0:
 		var o = $PickupZone.get_overlapping_bodies().size()
 		var i = InventoryController.inventory.size()
@@ -118,5 +120,4 @@ func overlapping():
 	for item in $PickupZone.get_overlapping_bodies():
 		overlap[i] = [item.item_name, item.item_quantity]
 		i += 1
-#		overlap[item.item_name] = item.item_quantity
 	return overlap

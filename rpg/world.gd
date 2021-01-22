@@ -22,7 +22,6 @@ signal equipment_removed
 var item_position: Dictionary
 
 
-
 func _ready():
 	var overlay = load("res://debug_overlay.tscn").instance()
 	overlay.add_stats("Inventory", InventoryController, "inventory", false)
@@ -40,6 +39,7 @@ func _on_item_dropped(item):
 	var item_object = ItemObject.instance()
 	item_object.initialize(item_name, item_quantity)
 
+	# If there are items within PickupZone
 	if Player.get_node("PickupZone").get_overlapping_bodies().size() > 0:
 		# If holding item is not the same type as the overlapping ones,
 		# drop it in player's position
@@ -51,11 +51,12 @@ func _on_item_dropped(item):
 				if o.item_name == item_name:
 					item_object.position = o.position
 				else:
-					item_object.position = GlobalWorld.item_position[item_name]
+					item_object.position = item_position[item_name]
 		add_child(item_object)
+	# If there are no items within PickupZone
 	else:
 		if !item_position.has(item_name):
 			item_object.position = Player.position
 		else:
-			item_object.position = GlobalWorld.item_position[item_name]
+			item_object.position = item_position[item_name]
 		add_child(item_object)

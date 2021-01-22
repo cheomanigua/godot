@@ -20,25 +20,70 @@ func character_info():
 
 func _on_equipment_added(slot):
 	var i = slot.usage_slot_index
+	
+	# Item Uniqueness properties
 	var item_uniqueness = InventoryController.usage_inventory[i][2]
-	if (item_uniqueness.size()) < 3:
-		pass
-	elif (item_uniqueness.size()) == 3:
+	if (item_uniqueness.size()) == 3:
 		Player.stats[item_uniqueness[1].to_lower()] += item_uniqueness[2]
 	elif (item_uniqueness.size()) == 5:
 		Player.stats[item_uniqueness[1].to_lower()] += item_uniqueness[2]
 		Player.stats[item_uniqueness[3].to_lower()] += item_uniqueness[4]
 	Player.stats.health = Player.stats.strength + Player.stats.endurance
+	
+	# Item JSON properties
+	var item_name = InventoryController.usage_inventory[i][0]
+	var attack = Data.item_data[item_name]["attack"]
+	var defense = Data.item_data[item_name]["defense"]
+	var strength = Data.item_data[item_name]["strength"]
+	var intelligence = Data.item_data[item_name]["intelligence"]
+	var dexterity =Data.item_data[item_name]["dexterity"]
+	var endurance = Data.item_data[item_name]["endurance"]
+	
+	if strength != null:
+		Player.stats.strength += strength
+	elif intelligence != null:
+		Player.stats.intelligence += intelligence
+	elif dexterity != null:
+		Player.stats.dexterity += dexterity
+	elif endurance != null:
+		Player.stats.endurance += endurance
+	elif attack != null:
+		Player.stats.attack += attack
+	elif defense != null:
+		Player.stats.defense += defense
+	
 	character_info()
 
 
 func _on_equipment_removed(item):
-	if (item.item_uniqueness.size()) < 3:
-		pass
-	elif (item.item_uniqueness.size()) == 3:
+	
+	# Item Uniqueness properties
+	if (item.item_uniqueness.size()) == 3:
 		Player.stats[item.item_uniqueness[1].to_lower()] -= item.item_uniqueness[2]
 	elif (item.item_uniqueness.size()) == 5:
 		Player.stats[item.item_uniqueness[1].to_lower()] -= item.item_uniqueness[2]
 		Player.stats[item.item_uniqueness[3].to_lower()] -= item.item_uniqueness[4]
 	Player.stats.health = Player.stats.strength + Player.stats.endurance
+	
+	# Item JSON properties
+	var attack = Data.item_data[item.item_name]["attack"]
+	var defense = Data.item_data[item.item_name]["defense"]
+	var strength = Data.item_data[item.item_name]["strength"]
+	var intelligence = Data.item_data[item.item_name]["intelligence"]
+	var dexterity =Data.item_data[item.item_name]["dexterity"]
+	var endurance = Data.item_data[item.item_name]["endurance"]
+	
+	if strength != null:
+		Player.stats.strength += strength
+	elif intelligence != null:
+		Player.stats.intelligence += intelligence
+	elif dexterity != null:
+		Player.stats.dexterity += dexterity
+	elif endurance != null:
+		Player.stats.endurance += endurance
+	elif attack != null:
+		Player.stats.attack += attack
+	elif defense != null:
+		Player.stats.defense += defense
+		
 	character_info()

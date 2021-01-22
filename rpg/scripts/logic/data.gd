@@ -12,7 +12,7 @@ func open_creatures_file() -> Dictionary:
 
 func open_items_file() -> Dictionary:
 	var item_data_file = File.new()
-	item_data_file.open(GlobalWorld.DATA_PATH + "items3.json", File.READ)
+	item_data_file.open(GlobalWorld.DATA_PATH + "items.json", File.READ)
 	var item_data_json = JSON.parse(item_data_file.get_as_text())
 	item_data_file.close()
 	return item_data_json.result

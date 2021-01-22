@@ -17,10 +17,9 @@ var usage_inventory:Dictionary
 var temp_inventory:Dictionary
 
 
-#func _ready():
-#	add_item("Gold", 10, ["",0,0])
-#	add_item("Gem8", 2, "")
-#	add_item("Gem6", 2, "")
+func _ready():
+	add_item("Gold", 10, [])
+	add_item("Azurite", 2, [])
 
 
 func add_item(item_name, item_quantity, item_uniqueness):

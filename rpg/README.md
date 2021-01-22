@@ -14,14 +14,24 @@ Items are divided in three categories:
 - No texture file must be added in the **Sprite** node. Only add a texture file in the instanciated *item_object*'s sprite node. 
 - Items functionality is implemented by script **item.gd** 
 - The fundamental feature of an item is that it can be picked up and dropped by the player. When picked up, the item is added to a dictionary called `inventory`
-- Items have three custom properties that can be edited in the instanciated nodes:
+- Items have four custom properties that can be edited in the instanciated nodes:
   1. **Texture**: Used in the editor in an instanciated item for adding a texture to the **Sprite** node. Sprite sheets may be used as texture also, so you need to set the values of Animation's *VFrames*, *HFrames* and *Frame*
   2. **Item Name**: Used to identify the item both in the inventory and when interacting with the environment.
   3. **Item Quantity**: Used to quantify the number of items on an item instance.
+  4. **Item Uniqueness**: This property is optional. Used to add an array of special attributes: special name, power ups.
 - If no **Item Name** is added, there will be an alert in the main editor window and an error message in Godot’s built-in debugger.
 - Items are instanciated from the parent scene "item_object.tscn"
 - When instanciated, items are automatically added to the group *Items*
 - It is recommended to create an empty parent Node for instances that share the same **Item name**. For instance, create an empty Node and name it **Gems**. From **Gems** you can instanciate items that are going to use *Gem* as **Item Name**.
+### Item Uniqueness
+- This optional property is used to provide an item with specific properties that are not available for ordinary items properties fetched via json file.
+- This property consist of an array that can have one or more elements:
+1. First element is the unique name of the item
+2. Second and third elements corresponds with the name of a skill and its value
+3. Forth and fith elements corresponds with the name of a skill and its value
+
+The best example of its use is in the `stats.gd` file, where it is used to powerup player's skills.
+
 
 ### Pickup()
 
@@ -39,6 +49,11 @@ Inventory are divided in three elements:
 1. **inventory.tscn**/**inventory.gd**/**slot.gd**: Used as view, is the user interface for the inventory system.
 2. **inventory_controller.gd**: Used as a controller to store the players item in a dictionary.
 3. **items.json**: Used as model, it's a json file containing all the data model for the items
+
+The Inventory UI is divided in three sections:
+1. The equipment section, which will allow to fit specific items in specific slots (head, neck, left hand, etc). This items will powerup the player stats.
+2. The info panel will show Player's stats and the item's characteristics
+3. The container slots will hold the player inventory and the area inventory (items in the ground, a chest, etc)
 
 ## Creatures
 
