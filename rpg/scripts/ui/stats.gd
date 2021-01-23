@@ -32,13 +32,13 @@ func _on_equipment_added(slot):
 	
 	# Item JSON properties
 	var item_name = InventoryController.usage_inventory[i][0]
-	var attack = Data.item_data[item_name]["attack"]
-	var defense = Data.item_data[item_name]["defense"]
-	var strength = Data.item_data[item_name]["strength"]
-	var intelligence = Data.item_data[item_name]["intelligence"]
-	var dexterity =Data.item_data[item_name]["dexterity"]
-	var endurance = Data.item_data[item_name]["endurance"]
-	
+	var attack = Data.item_data[item_name]["attack_bonus"]
+	var defense = Data.item_data[item_name]["defense_bonus"]
+	var strength = Data.item_data[item_name]["strength_bonus"]
+	var intelligence = Data.item_data[item_name]["intelligence_bonus"]
+	var dexterity = Data.item_data[item_name]["dexterity_bonus"]
+	var endurance = Data.item_data[item_name]["endurance_bonus"]
+
 	if strength != null:
 		Player.stats.strength += strength
 	elif intelligence != null:
@@ -66,12 +66,12 @@ func _on_equipment_removed(item):
 	Player.stats.health = Player.stats.strength + Player.stats.endurance
 	
 	# Item JSON properties
-	var attack = Data.item_data[item.item_name]["attack"]
-	var defense = Data.item_data[item.item_name]["defense"]
-	var strength = Data.item_data[item.item_name]["strength"]
-	var intelligence = Data.item_data[item.item_name]["intelligence"]
-	var dexterity =Data.item_data[item.item_name]["dexterity"]
-	var endurance = Data.item_data[item.item_name]["endurance"]
+	var attack = Data.item_data[item.item_name]["attack_bonus"]
+	var defense = Data.item_data[item.item_name]["defense_bonus"]
+	var strength = Data.item_data[item.item_name]["strength_bonus"]
+	var intelligence = Data.item_data[item.item_name]["intelligence_bonus"]
+	var dexterity = Data.item_data[item.item_name]["dexterity_bonus"]
+	var endurance = Data.item_data[item.item_name]["endurance_bonus"]
 	
 	if strength != null:
 		Player.stats.strength += strength

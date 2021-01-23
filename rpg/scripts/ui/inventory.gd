@@ -274,8 +274,8 @@ func usage_left_click_not_holding(slot: SlotClass):
 
 func _on_show_item_info(item_name, item_uniqueness):
 	var value = Data.item_data[item_name]["item_value"]
-	var attack = Data.item_data[item_name]["attack"]
-	var defense = Data.item_data[item_name]["defense"]
+	var attack = Data.item_data[item_name]["attack_bonus"]
+	var defense = Data.item_data[item_name]["defense_bonus"]
 	if item_uniqueness.size() < 1:
 		$Label.text = "%s\n%d" % [item_name,value]
 	elif item_uniqueness.size() == 1:

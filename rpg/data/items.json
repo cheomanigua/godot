@@ -9,8 +9,12 @@
     "frame": 9,
     "item_value": 1,
     "slot_type": null,
-    "attack": null,
-    "defense": null
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": null
   },
   "Silver": {
     "item_name": "Silver",
@@ -22,8 +26,12 @@
     "frame": 12,
     "item_value": 1,
     "slot_type": null,
-    "attack": null,
-    "defense": null
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": null
   },
   "Quartz": {
     "item_name": "Quartz",
@@ -35,8 +43,12 @@
     "frame": 16,
     "item_value": 50,
     "slot_type": null,
-    "attack": null,
-    "defense": null
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": null
   },
   "Zaphyr": {
     "item_name": "Zaphyr",
@@ -48,8 +60,12 @@
     "frame": 17,
     "item_value": 120,
     "slot_type": null,
-    "attack": null,
-    "defense": null
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": null
   },
   "Ruby": {
     "item_name": "Ruby",
@@ -61,8 +77,12 @@
     "frame": 18,
     "item_value": 120,
     "slot_type": null,
-    "attack": null,
-    "defense": null
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": null
   },
   "Garnet": {
     "item_name": "Garnet",
@@ -74,8 +94,12 @@
     "frame": 19,
     "item_value": 20,
     "slot_type": null,
-    "attack": null,
-    "defense": null
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": null
   },
   "Azurite": {
     "item_name": "Azurite",
@@ -87,8 +111,12 @@
     "frame": 20,
     "item_value": 50,
     "slot_type": null,
-    "attack": null,
-    "defense": null
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": null
   },
   "Obsidian": {
     "item_name": "Obsidian",
@@ -100,8 +128,12 @@
     "frame": 21,
     "item_value": 150,
     "slot_type": null,
-    "attack": null,
-    "defense": null
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": null
   },
   "Emerald": {
     "item_name": "Emerald",
@@ -113,8 +145,12 @@
     "frame": 22,
     "item_value": 130,
     "slot_type": null,
-    "attack": null,
-    "defense": null
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": null
   },
   "Turquoise": {
     "item_name": "Turquoise",
@@ -126,8 +162,12 @@
     "frame": 23,
     "item_value": 15,
     "slot_type": null,
-    "attack": null,
-    "defense": null
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": null
   },
   "Aquamarine": {
     "item_name": "Aquamarine",
@@ -139,8 +179,12 @@
     "frame": 25,
     "item_value": 15,
     "slot_type": null,
-    "attack": null,
-    "defense": null
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": null
   },
   "Topaz": {
     "item_name": "Topaz",
@@ -152,8 +196,12 @@
     "frame": 27,
     "item_value": 20,
     "slot_type": null,
-    "attack": null,
-    "defense": null
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": null
   },
   "Leather Jacket": {
     "item_name": "Leather Jacket",
@@ -165,8 +213,12 @@
     "frame": null,
     "item_value": 10,
     "slot_type": "SLOT_TORSO",
-    "attack": null,
-    "defense": 1
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": 1
   },
   "Karuta": {
     "item_name": "Karuta",
@@ -178,8 +230,12 @@
     "frame": null,
     "item_value": 20,
     "slot_type": "SLOT_TORSO",
-    "attack": null,
-    "defense": 2
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": 2
   },
   "Segmentata": {
     "item_name": "Segmentata",
@@ -191,8 +247,12 @@
     "frame": null,
     "item_value": 30,
     "slot_type": "SLOT_TORSO",
-    "attack": null,
-    "defense": 3
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": 3
   },
   "Chain Mail": {
     "item_name": "Chain Mail",
@@ -204,8 +264,12 @@
     "frame": null,
     "item_value": 40,
     "slot_type": "SLOT_TORSO",
-    "attack": null,
-    "defense": 4
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": 4
   },
   "Iron Curiass": {
     "item_name": "Iron Curiass",
@@ -217,8 +281,12 @@
     "frame": null,
     "item_value": 50,
     "slot_type": "SLOT_TORSO",
-    "attack": null,
-    "defense": 5
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": 5
   },
   "Bronze Curiass": {
     "item_name": "Bronze Curiass",
@@ -230,7 +298,11 @@
     "frame": null,
     "item_value": 60,
     "slot_type": "SLOT_TORSO",
-    "attack": null,
-    "defense": 6
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": 6
   }
 }
