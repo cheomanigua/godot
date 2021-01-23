@@ -74,16 +74,16 @@ func _on_equipment_removed(item):
 	var endurance = Data.item_data[item.item_name]["endurance_bonus"]
 	
 	if strength != null:
-		Player.stats.strength += strength
+		Player.stats.strength -= strength
 	elif intelligence != null:
-		Player.stats.intelligence += intelligence
+		Player.stats.intelligence -= intelligence
 	elif dexterity != null:
-		Player.stats.dexterity += dexterity
+		Player.stats.dexterity -= dexterity
 	elif endurance != null:
-		Player.stats.endurance += endurance
+		Player.stats.endurance -= endurance
 	elif attack != null:
-		Player.stats.attack += attack
+		Player.stats.attack -= attack
 	elif defense != null:
-		Player.stats.defense += defense
+		Player.stats.defense -= defense
 		
 	character_info()

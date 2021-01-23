@@ -297,23 +297,3 @@ rect_scale = Vector2( 0.5, 0.5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="LabelAttack" type="Label" parent="."]
-margin_left = 200.0
-margin_top = 168.109
-margin_right = 240.0
-margin_bottom = 182.109
-rect_scale = Vector2( 0.5, 0.5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="LabelDefense" type="Label" parent="."]
-margin_left = 200.0
-margin_top = 179.109
-margin_right = 240.0
-margin_bottom = 193.109
-rect_scale = Vector2( 0.5, 0.5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}

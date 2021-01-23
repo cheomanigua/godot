@@ -274,34 +274,45 @@ func usage_left_click_not_holding(slot: SlotClass):
 
 func _on_show_item_info(item_name, item_uniqueness):
 	var value = Data.item_data[item_name]["item_value"]
-	var attack = Data.item_data[item_name]["attack_bonus"]
-	var defense = Data.item_data[item_name]["defense_bonus"]
+	
 	if item_uniqueness.size() < 1:
 		$Label.text = "%s\n%d" % [item_name,value]
 	elif item_uniqueness.size() == 1:
 		var id = item_uniqueness[0]
-		$Label.text = "%s\n%d\n%s" % [item_name,value,id]
-	elif item_uniqueness.size() == 3:
+		$Label.text = "%s\n%d\n\"%s\"" % [item_name,value,id]
+	if item_uniqueness.size() == 3:
 		var id = item_uniqueness[0]
 		var skill = item_uniqueness[1].capitalize()
 		var skill_value = item_uniqueness[2]
-		$Label.text = "%s\n%d\n%s\n%s: +%d" % [item_name,value,id, skill, skill_value]
+		$Label.text = "%s\n%d\n\"%s\"\n%s: +%d" % [item_name,value,id, skill, skill_value]
 	elif item_uniqueness.size() == 5:
 		var id = item_uniqueness[0]
 		var skill = item_uniqueness[1].capitalize()
 		var skill_value = item_uniqueness[2]
 		var skill2 = item_uniqueness[3].capitalize()
 		var skill2_value = item_uniqueness[4]
-		$Label.text = "%s\n%d\n%s\n%s: +%d\n%s: +%d" % [item_name,value, id, skill, skill_value, skill2, skill2_value]
+		$Label.text = "%s\n%d\n\"%s\"\n%s: +%d\n%s: +%d" % [item_name,value, id, skill, skill_value, skill2, skill2_value]
+
+	var strength = Data.item_data[item_name]["strength_bonus"]
+	var intelligence = Data.item_data[item_name]["intelligence_bonus"]
+	var dexterity = Data.item_data[item_name]["dexterity_bonus"]
+	var endurance = Data.item_data[item_name]["endurance_bonus"]
+	var attack = Data.item_data[item_name]["attack_bonus"]
+	var defense = Data.item_data[item_name]["defense_bonus"]
 	
-	if attack != null:
-		$LabelAttack.text = "Attack +%d" % attack
-	
-	if defense != null:
-		$LabelDefense.text = "Defense +%d" % defense
-		
-		
+	if strength != null:
+		$Label.text += "\nStrength +%d" % strength
+	elif intelligence != null:
+		$Label.text += "\nIntelligence +%d" % intelligence
+	elif dexterity != null:
+		$Label.text += "\nDexterity +%d" % dexterity
+	elif endurance != null:
+		$Label.text += "\nEndurance +%d" % endurance
+	elif attack != null:
+		$Label.text += "\nAttack +%d" % attack
+	elif defense != null:
+		$Label.text += "\nDefense +%d" % defense
+
+
 func _on_hide_item_info():
 	$Label.text = ""
-	$LabelAttack.text = ""
-	$LabelDefense.text = ""
