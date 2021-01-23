@@ -41,15 +41,15 @@ func _on_equipment_added(slot):
 
 	if strength != null:
 		Player.stats.strength += strength
-	elif intelligence != null:
+	if intelligence != null:
 		Player.stats.intelligence += intelligence
-	elif dexterity != null:
+	if dexterity != null:
 		Player.stats.dexterity += dexterity
-	elif endurance != null:
+	if endurance != null:
 		Player.stats.endurance += endurance
-	elif attack != null:
+	if attack != null:
 		Player.stats.attack += attack
-	elif defense != null:
+	if defense != null:
 		Player.stats.defense += defense
 	
 	character_info()
@@ -75,15 +75,15 @@ func _on_equipment_removed(item):
 	
 	if strength != null:
 		Player.stats.strength -= strength
-	elif intelligence != null:
+	if intelligence != null:
 		Player.stats.intelligence -= intelligence
-	elif dexterity != null:
+	if dexterity != null:
 		Player.stats.dexterity -= dexterity
-	elif endurance != null:
+	if endurance != null:
 		Player.stats.endurance -= endurance
-	elif attack != null:
+	if attack != null:
 		Player.stats.attack -= attack
-	elif defense != null:
+	if defense != null:
 		Player.stats.defense -= defense
 		
 	character_info()

@@ -299,19 +299,38 @@ func _on_show_item_info(item_name, item_uniqueness):
 	var endurance = Data.item_data[item_name]["endurance_bonus"]
 	var attack = Data.item_data[item_name]["attack_bonus"]
 	var defense = Data.item_data[item_name]["defense_bonus"]
+	var plus : String
 	
 	if strength != null:
-		$Label.text += "\nStrength +%d" % strength
-	elif intelligence != null:
-		$Label.text += "\nIntelligence +%d" % intelligence
-	elif dexterity != null:
-		$Label.text += "\nDexterity +%d" % dexterity
-	elif endurance != null:
-		$Label.text += "\nEndurance +%d" % endurance
-	elif attack != null:
-		$Label.text += "\nAttack +%d" % attack
-	elif defense != null:
-		$Label.text += "\nDefense +%d" % defense
+		if strength > 0:
+			plus = "+"
+		$Label.text += "\nStrength %s%d" % [plus, strength]
+		plus = ""
+	if intelligence != null:
+		if intelligence > 0:
+			plus = "+"
+		$Label.text += "\nIntelligence %s%d" % [plus, intelligence]
+		plus = ""
+	if dexterity != null:
+		if dexterity > 0:
+			plus = "+"
+		$Label.text += "\nDexterity %s%d" % [plus, dexterity]
+		plus = ""
+	if endurance != null:
+		if endurance > 0:
+			plus = "+"
+		$Label.text += "\nEndurance %s%d" % [plus, endurance]
+		plus = ""
+	if attack != null:
+		if attack > 0:
+			plus = "+"
+		$Label.text += "\nAttack %s%d" % [plus, attack]
+		plus = ""
+	if defense != null:
+		if defense > 0:
+			plus = "+"
+		$Label.text += "\nDefense %s%d" % [plus, defense]
+		plus = ""
 
 
 func _on_hide_item_info():

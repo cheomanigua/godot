@@ -1,6 +1,9 @@
 extends KinematicBody2D
-
-export (String) var item_name
+export (String, "Gold","Silver","Quartz","Zaphyr","Ruby","Garnet","Azurite",
+	"Obsidian","Emerald","Turquoise","Aquamarine","Topaz",
+	"Leather Jacked", "Karuta", "Segmentata", "Chain Mail", "Iron Curiass", "Bronze Curiass",
+	"Round Shield", "Buckler Shield", "Heater Shield", "Kite Shield", "Pavise Shield") \
+	var item_name = "Gold"
 export (int) var item_quantity = 1
 export (Array) var item_uniqueness
 
