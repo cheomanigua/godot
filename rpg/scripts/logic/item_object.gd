@@ -1,8 +1,9 @@
 extends KinematicBody2D
 export (String, "Gold","Silver","Quartz","Zaphyr","Ruby","Garnet","Azurite",
 	"Obsidian","Emerald","Turquoise","Aquamarine","Topaz",
-	"Leather Jacked", "Karuta", "Segmentata", "Chain Mail", "Iron Curiass", "Bronze Curiass",
-	"Round Shield", "Buckler Shield", "Heater Shield", "Kite Shield", "Pavise Shield") \
+	"Leather Jacked","Karuta","Segmentata","Chain Mail","Iron Curiass","Bronze Curiass",
+	"Round Shield","Buckler Shield","Heater Shield","Kite Shield","Pavise Shield",
+	"Strength Potion","Intelligence Potion","Dexterity Potion","Endurance Potion","Healing Potion","Magicka Potion") \
 	var item_name = "Gold"
 export (int) var item_quantity = 1
 export (Array) var item_uniqueness

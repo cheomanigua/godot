@@ -12,9 +12,14 @@ export (Dictionary) var stats = {
 	"defense" : 0
 }
 
+func set_stats_value(key, value):
+	stats[key] = value
+	
+var max_health = stats.strength + stats.endurance
+
 
 func _ready():
-	stats.health = stats.strength + stats.endurance
+	stats.health = 8
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	speed = 70
 	print_stray_nodes()

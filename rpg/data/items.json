@@ -13,8 +13,10 @@
     "intelligence_bonus": null,
     "dexterity_bonus": null,
     "endurance_bonus": null,
+    "health_bonus": null,
     "attack_bonus": null,
-    "defense_bonus": null
+    "defense_bonus": null,
+    "duration": null
   },
   "Silver": {
     "item_name": "Silver",
@@ -30,8 +32,10 @@
     "intelligence_bonus": null,
     "dexterity_bonus": null,
     "endurance_bonus": null,
+    "health_bonus": null,
     "attack_bonus": null,
-    "defense_bonus": null
+    "defense_bonus": null,
+    "duration": null
   },
   "Quartz": {
     "item_name": "Quartz",
@@ -47,8 +51,10 @@
     "intelligence_bonus": null,
     "dexterity_bonus": null,
     "endurance_bonus": null,
+    "health_bonus": null,
     "attack_bonus": null,
-    "defense_bonus": null
+    "defense_bonus": null,
+    "duration": null
   },
   "Zaphyr": {
     "item_name": "Zaphyr",
@@ -64,8 +70,10 @@
     "intelligence_bonus": null,
     "dexterity_bonus": null,
     "endurance_bonus": null,
+    "health_bonus": null,
     "attack_bonus": null,
-    "defense_bonus": null
+    "defense_bonus": null,
+    "duration": null
   },
   "Ruby": {
     "item_name": "Ruby",
@@ -81,8 +89,10 @@
     "intelligence_bonus": null,
     "dexterity_bonus": null,
     "endurance_bonus": null,
+    "health_bonus": null,
     "attack_bonus": null,
-    "defense_bonus": null
+    "defense_bonus": null,
+    "duration": null
   },
   "Garnet": {
     "item_name": "Garnet",
@@ -98,8 +108,10 @@
     "intelligence_bonus": null,
     "dexterity_bonus": null,
     "endurance_bonus": null,
+    "health_bonus": null,
     "attack_bonus": null,
-    "defense_bonus": null
+    "defense_bonus": null,
+    "duration": null
   },
   "Azurite": {
     "item_name": "Azurite",
@@ -115,8 +127,10 @@
     "intelligence_bonus": null,
     "dexterity_bonus": null,
     "endurance_bonus": null,
+    "health_bonus": null,
     "attack_bonus": null,
-    "defense_bonus": null
+    "defense_bonus": null,
+    "duration": null
   },
   "Obsidian": {
     "item_name": "Obsidian",
@@ -132,8 +146,10 @@
     "intelligence_bonus": null,
     "dexterity_bonus": null,
     "endurance_bonus": null,
+    "health_bonus": null,
     "attack_bonus": null,
-    "defense_bonus": null
+    "defense_bonus": null,
+    "duration": null
   },
   "Emerald": {
     "item_name": "Emerald",
@@ -149,8 +165,10 @@
     "intelligence_bonus": null,
     "dexterity_bonus": null,
     "endurance_bonus": null,
+    "health_bonus": null,
     "attack_bonus": null,
-    "defense_bonus": null
+    "defense_bonus": null,
+    "duration": null
   },
   "Turquoise": {
     "item_name": "Turquoise",
@@ -166,8 +184,10 @@
     "intelligence_bonus": null,
     "dexterity_bonus": null,
     "endurance_bonus": null,
+    "health_bonus": null,
     "attack_bonus": null,
-    "defense_bonus": null
+    "defense_bonus": null,
+    "duration": null
   },
   "Aquamarine": {
     "item_name": "Aquamarine",
@@ -183,8 +203,10 @@
     "intelligence_bonus": null,
     "dexterity_bonus": null,
     "endurance_bonus": null,
+    "health_bonus": null,
     "attack_bonus": null,
-    "defense_bonus": null
+    "defense_bonus": null,
+    "duration": null
   },
   "Topaz": {
     "item_name": "Topaz",
@@ -200,8 +222,10 @@
     "intelligence_bonus": null,
     "dexterity_bonus": null,
     "endurance_bonus": null,
+    "health_bonus": null,
     "attack_bonus": null,
-    "defense_bonus": null
+    "defense_bonus": null,
+    "duration": null
   },
   "Leather Jacket": {
     "item_name": "Leather Jacket",
@@ -217,8 +241,10 @@
     "intelligence_bonus": null,
     "dexterity_bonus": null,
     "endurance_bonus": null,
+    "health_bonus": null,
     "attack_bonus": null,
-    "defense_bonus": 1
+    "defense_bonus": 1,
+    "duration": null
   },
   "Karuta": {
     "item_name": "Karuta",
@@ -234,8 +260,10 @@
     "intelligence_bonus": null,
     "dexterity_bonus": null,
     "endurance_bonus": null,
+    "health_bonus": null,
     "attack_bonus": null,
-    "defense_bonus": 2
+    "defense_bonus": 2,
+    "duration": null
   },
   "Segmentata": {
     "item_name": "Segmentata",
@@ -251,8 +279,10 @@
     "intelligence_bonus": null,
     "dexterity_bonus": null,
     "endurance_bonus": null,
+    "health_bonus": null,
     "attack_bonus": null,
-    "defense_bonus": 3
+    "defense_bonus": 3,
+    "duration": null
   },
   "Chain Mail": {
     "item_name": "Chain Mail",
@@ -268,8 +298,10 @@
     "intelligence_bonus": null,
     "dexterity_bonus": null,
     "endurance_bonus": null,
+    "health_bonus": null,
     "attack_bonus": -1,
-    "defense_bonus": 4
+    "defense_bonus": 4,
+    "duration": null
   },
   "Iron Curiass": {
     "item_name": "Iron Curiass",
@@ -285,8 +317,10 @@
     "intelligence_bonus": null,
     "dexterity_bonus": null,
     "endurance_bonus": null,
+    "health_bonus": null,
     "attack_bonus": -2,
-    "defense_bonus": 5
+    "defense_bonus": 5,
+    "duration": null
   },
   "Bronze Curiass": {
     "item_name": "Bronze Curiass",
@@ -302,8 +336,10 @@
     "intelligence_bonus": null,
     "dexterity_bonus": null,
     "endurance_bonus": null,
+    "health_bonus": null,
     "attack_bonus": -1,
-    "defense_bonus": 6
+    "defense_bonus": 6,
+    "duration": null
   },
   "Round Shield": {
     "item_name": "Round Shield",
@@ -319,8 +355,10 @@
     "intelligence_bonus": null,
     "dexterity_bonus": null,
     "endurance_bonus": null,
+    "health_bonus": null,
     "attack_bonus": null,
-    "defense_bonus": 2
+    "defense_bonus": 2,
+    "duration": null
   },
   "Buckler Shield": {
     "item_name": "Buckler Shield",
@@ -336,8 +374,10 @@
     "intelligence_bonus": null,
     "dexterity_bonus": null,
     "endurance_bonus": null,
+    "health_bonus": null,
     "attack_bonus": null,
-    "defense_bonus": 3
+    "defense_bonus": 3,
+    "duration": null
   },
   "Heater Shield": {
     "item_name": "Heater Shield",
@@ -353,8 +393,10 @@
     "intelligence_bonus": null,
     "dexterity_bonus": null,
     "endurance_bonus": null,
+    "health_bonus": null,
     "attack_bonus": -1,
-    "defense_bonus": 4
+    "defense_bonus": 4,
+    "duration": null
   },
   "Kite Shield": {
     "item_name": "Kite Shield",
@@ -370,8 +412,10 @@
     "intelligence_bonus": null,
     "dexterity_bonus": null,
     "endurance_bonus": null,
+    "health_bonus": null,
     "attack_bonus": -2,
-    "defense_bonus": 5
+    "defense_bonus": 5,
+    "duration": null
   },
   "Pavise Shield": {
     "item_name": "Pavise Shield",
@@ -387,7 +431,123 @@
     "intelligence_bonus": null,
     "dexterity_bonus": null,
     "endurance_bonus": null,
+    "health_bonus": null,
     "attack_bonus": -3,
-    "defense_bonus": 6
+    "defense_bonus": 6,
+    "duration": null
+  },
+  "Strength Potion": {
+    "item_name": "Strength Potion",
+    "item_image": "potion/strength_potion.png",
+    "stack_size": 1,
+    "sprite_sheet": "potion.png",
+    "vframes": null,
+    "hframes": null,
+    "frame": null,
+    "item_value": 10,
+    "slot_type": "SLOT_NECK",
+    "strength_bonus": 3,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "health_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": null,
+    "duration": 30
+  },
+  "Intelligence Potion": {
+    "item_name": "Intelligence Potion",
+    "item_image": "potion/intelligence_potion.png",
+    "stack_size": 1,
+    "sprite_sheet": "potion.png",
+    "vframes": null,
+    "hframes": null,
+    "frame": null,
+    "item_value": 10,
+    "slot_type": "SLOT_NECK",
+    "strength_bonus": null,
+    "intelligence_bonus": 3,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "health_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": null,
+    "duration": 30
+  },
+  "Dexterity Potion": {
+    "item_name": "Dexterity Potion",
+    "item_image": "potion/dexterity_potion.png",
+    "stack_size": 1,
+    "sprite_sheet": "potion.png",
+    "vframes": null,
+    "hframes": null,
+    "frame": null,
+    "item_value": 10,
+    "slot_type": "SLOT_NECK",
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": 3,
+    "endurance_bonus": null,
+    "health_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": null,
+    "duration": 30
+  },
+  "Endurance Potion": {
+    "item_name": "Endurance Potion",
+    "item_image": "potion/endurance_portion.png",
+    "stack_size": 1,
+    "sprite_sheet": "potion.png",
+    "vframes": null,
+    "hframes": null,
+    "frame": null,
+    "item_value": 10,
+    "slot_type": "SLOT_NECK",
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": 3,
+    "health_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": null,
+    "duration": 30
+  },
+  "Healing Potion": {
+    "item_name": "Healing Potion",
+    "item_image": "potion/healing_potion.png",
+    "stack_size": 1,
+    "sprite_sheet": "potion.png",
+    "vframes": null,
+    "hframes": null,
+    "frame": null,
+    "item_value": 10,
+    "slot_type": "SLOT_NECK",
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "health_bonus": 1,
+    "attack_bonus": null,
+    "defense_bonus": null,
+    "duration": null
+  },
+  "Magicka Potion": {
+    "item_name": "Magicka Potion",
+    "item_image": "potion/magicka_potion.png",
+    "stack_size": 1,
+    "sprite_sheet": "potion.png",
+    "vframes": null,
+    "hframes": null,
+    "frame": null,
+    "item_value": 10,
+    "slot_type": "SLOT_NECK",
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "health_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": null,
+    "duration": 30
   }
 }

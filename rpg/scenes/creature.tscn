@@ -31,6 +31,8 @@ tracks/0/keys = {
 radius = 66.1211
 
 [node name="Creature" type="KinematicBody2D"]
+collision_layer = 8
+collision_mask = 3
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

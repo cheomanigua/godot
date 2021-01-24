@@ -230,7 +230,7 @@ func usage_slot_gui_input(event: InputEvent, slot: SlotClass):
 func usage_left_click_empty_slot(slot: SlotClass):
 	InventoryController.usage_add_item_to_empty_slot(holding_item, slot)
 	slot.putIntoSlot(holding_item)
-	GlobalWorld.emit_signal("equipment_added", slot)
+	GlobalWorld.emit_signal("equipment_added", slot, holding_item)
 	holding_item = null
 
 
@@ -297,6 +297,7 @@ func _on_show_item_info(item_name, item_uniqueness):
 	var intelligence = Data.item_data[item_name]["intelligence_bonus"]
 	var dexterity = Data.item_data[item_name]["dexterity_bonus"]
 	var endurance = Data.item_data[item_name]["endurance_bonus"]
+	var health = Data.item_data[item_name]["health_bonus"]
 	var attack = Data.item_data[item_name]["attack_bonus"]
 	var defense = Data.item_data[item_name]["defense_bonus"]
 	var plus : String
@@ -320,6 +321,11 @@ func _on_show_item_info(item_name, item_uniqueness):
 		if endurance > 0:
 			plus = "+"
 		$Label.text += "\nEndurance %s%d" % [plus, endurance]
+		plus = ""
+	if health != null:
+		if health > 0:
+			plus = "+"
+		$Label.text += "\nHealth %s%d" % [plus, health]
 		plus = ""
 	if attack != null:
 		if attack > 0:

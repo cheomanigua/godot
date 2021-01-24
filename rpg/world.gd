@@ -32,7 +32,8 @@ func _ready():
 	add_child(overlay)
 # warning-ignore:return_value_discarded
 	connect("item_dropped",self,"_on_item_dropped")
-	
+
+
 func _on_item_dropped(item):
 	var item_name = item.item_name
 	var item_quantity = item.item_quantity

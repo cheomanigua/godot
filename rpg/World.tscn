@@ -16,15 +16,19 @@ script = ExtResource( 4 )
 
 [node name="ItemObject" parent="Items" instance=ExtResource( 5 )]
 position = Vector2( 67.9588, 74.094 )
-item_name = "Bronze Curiass"
+item_name = "Strength Potion"
 
 [node name="ItemObject2" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 91.0837, 98.1625 )
-item_name = "Pavise Shield"
+position = Vector2( 75.5098, 85.8922 )
+item_name = "Dexterity Potion"
 
 [node name="ItemObject3" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 30.6757, 77.8695 )
-item_name = "Aquamarine"
+position = Vector2( 54.2725, 74.566 )
+item_name = "Healing Potion"
+
+[node name="ItemObject4" parent="Items" instance=ExtResource( 5 )]
+position = Vector2( 45.7778, 85.8924 )
+item_name = "Round Shield"
 
 [node name="Doors" type="Node" parent="."]
 

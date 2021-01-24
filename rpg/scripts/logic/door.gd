@@ -17,12 +17,13 @@ func _on_Door_body_entered(body):
 			var has_key: bool = false
 			# Loop through the usage inventory dictionary to check for the correct item
 			for i in InventoryController.usage_inventory:
-				# If key is found, door is opened... based on item's uniqueness first array value (item's unique name)
-				if InventoryController.usage_inventory[i][2][0] == key:
-					has_key = true
-					$CollisionShape2D.set_deferred("disabled", true)
-					hide()
-					Notification.message("Door opened with %s" % [key])
+				if InventoryController.usage_inventory[i][2].size() > 0:
+					# If key is found, door is opened... based on item's uniqueness first array value (item's unique name)
+					if InventoryController.usage_inventory[i][2][0] == key:
+						has_key = true
+						$CollisionShape2D.set_deferred("disabled", true)
+						hide()
+						Notification.message("Door opened with %s" % [key])
 			# If no key is found, no door is opened
 			if !has_key:
 				Notification.message("You need a %s" % [key])
