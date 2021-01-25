@@ -12,8 +12,11 @@ export (Dictionary) var stats = {
 	"defense" : 0
 }
 
-func set_stats_value(key, value):
-	stats[key] = value
+func set_stats_value(key, value, duration):
+	if duration != null:
+		stats[key] = value
+	else:
+		stats[key] += value
 	
 var max_health = stats.strength + stats.endurance
 

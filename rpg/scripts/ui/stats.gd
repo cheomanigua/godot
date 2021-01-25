@@ -1,5 +1,5 @@
 extends Node2D
-#const SlotClass = preload("res://scripts/ui/slot.gd")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	character_info()
@@ -64,10 +64,6 @@ func _on_equipment_added(slot, item):
 			Player.stats.health = Player.max_health
 		item.queue_free()
 		slot.remove_from_slot()
-	if attack != null:
-		Player.stats.attack += attack
-	if defense != null:
-		Player.stats.defense += defense
 	
 	# Be sure that health is not bigger than max_health
 	if Player.stats.health > Player.max_health:
@@ -115,14 +111,12 @@ func consume_item(skill, value, bonus, duration, slot, item):
 	if duration != null:
 		var temp_value = value
 		value += bonus
-		Player.set_stats_value(skill, value)
+		Player.set_stats_value(skill, value, duration)
 		item.queue_free()
 		slot.remove_from_slot()
 		character_info()
-		$Label.add_color_override("font_color", Color(0,1,0,1))
 		yield(get_tree().create_timer(duration), "timeout")
-		Player.set_stats_value(skill, temp_value)
-		$Label.add_color_override("font_color", Color(1,1,1,1))
+		Player.set_stats_value(skill, temp_value, duration)
 		character_info()
 	else:
-		Player.set_stats_value(skill, value)
+		Player.set_stats_value(skill, bonus, duration)

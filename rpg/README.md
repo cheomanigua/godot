@@ -45,15 +45,21 @@ The best example of its use is in the `stats.gd` file, where it is used to power
 
 ## Inventory
 
-Inventory are divided in three elements:
+- Inventory are divided in three elements:
 1. **inventory.tscn**/**inventory.gd**/**slot.gd**: Used as view, is the user interface for the inventory system.
 2. **inventory_controller.gd**: Used as a controller to store the players item in a dictionary.
 3. **items.json**: Used as model, it's a json file containing all the data model for the items
 
-The Inventory UI is divided in three sections:
+- The Inventory UI is divided in three sections:
 1. The equipment section, which will allow to fit specific items in specific slots (head, neck, left hand, etc). This items will powerup the player stats.
-2. The info panel will show Player's stats and the item's characteristics
+2. The info panel will show Player's stats and the item's characteristics.
+  1. The Player's stats are handled by **Stats.tscn** and **stats.gd**
+  2. The item's characteristics are handled by **Inventory.tscn** and **inventory.gd**
 3. The container slots will hold the player inventory and the area inventory (items in the ground, a chest, etc)
+
+- Items in the equipment section are either placed or consumed:
+1. Placed items add permanent bonus until the item is removed from the equipment section
+2. Consumed items add temporal bonus (except for healing potions) and are removed automatically when used. The bonus are not accumulative. Consuming consecutively two items with a specific bonus will cause that the only bonus applied is the one of the last consumed item.
 
 ## Creatures
 
