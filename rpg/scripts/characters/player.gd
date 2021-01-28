@@ -22,7 +22,7 @@ var max_health = stats.strength + stats.endurance
 
 
 func _ready():
-	stats.health = 8
+	stats.health = 9
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	speed = 70
 	print_stray_nodes()
