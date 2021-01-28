@@ -23,7 +23,7 @@ func character_info():
 				$Label.text += "\n"
 
 
-func _on_equipment_added(slot, item):
+func _on_equipment_added(slot):
 	var i = slot.usage_slot_index
 	# Item Uniqueness properties
 	var item_uniqueness = InventoryController.usage_inventory[i][2]
@@ -43,7 +43,7 @@ func _on_equipment_added(slot, item):
 		# Dynamically creating variables of Player stats keys and assigning JSON file value
 		vars[key] = Data.item_data[item_name].values()[bonus_index]
 		if vars[key] != null:
-			use_item(key, Player.stats[key], vars[key], duration, slot, item)
+			use_item(key, Player.stats[key], vars[key], duration, slot)
 		bonus_index += 1
 	character_info()
 
@@ -70,12 +70,11 @@ func _on_equipment_removed(item):
 
 
 # Consume or equip item
-func use_item(skill, value, bonus, duration, slot, item):
+func use_item(skill, value, bonus, duration, slot):
 	if duration != null:
 		var temp_value = value
 		value += bonus
 		Player.set_stats_value(skill, value, duration)
-		item.queue_free()
 		slot.remove_from_slot()
 		InventoryController.usage_remove_item(slot)
 		character_info()
@@ -87,7 +86,7 @@ func use_item(skill, value, bonus, duration, slot, item):
 			Player.stats[skill] += bonus
 			if Player.stats[skill] > Player.max_health:
 				Player.stats[skill] = Player.max_health
-			item.queue_free()
+#			item.queue_free()
 			slot.remove_from_slot()
 			InventoryController.usage_remove_item(slot)
 		else:

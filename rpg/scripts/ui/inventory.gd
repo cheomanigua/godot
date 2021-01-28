@@ -230,7 +230,7 @@ func usage_slot_gui_input(event: InputEvent, slot: SlotClass):
 func usage_left_click_empty_slot(slot: SlotClass):
 	InventoryController.usage_add_item_to_empty_slot(holding_item, slot)
 	slot.putIntoSlot(holding_item)
-	GlobalWorld.emit_signal("equipment_added", slot, holding_item)
+	GlobalWorld.emit_signal("equipment_added", slot)
 	holding_item = null
 
 
@@ -241,7 +241,7 @@ func usage_left_click_different_item(event: InputEvent, slot: SlotClass):
 	slot.pickFromSlot()
 	temp_item.global_position = event.global_position
 	slot.putIntoSlot(holding_item)
-	GlobalWorld.emit_signal("equipment_added", slot, holding_item)
+	GlobalWorld.emit_signal("equipment_added", slot)
 	holding_item = temp_item
 	GlobalWorld.emit_signal("equipment_removed", holding_item)
 
@@ -252,7 +252,7 @@ func usage_left_click_same_item(slot: SlotClass):
 	if able_to_add >= holding_item.item_quantity:
 		InventoryController.usage_add_item_quantity(slot, holding_item.item_quantity)
 		slot.item.add_item_quantity(holding_item.item_quantity)
-		GlobalWorld.emit_signal("equipment_added", slot, holding_item)
+		GlobalWorld.emit_signal("equipment_added", slot)
 		holding_item.queue_free()
 		holding_item = null
 	else:
