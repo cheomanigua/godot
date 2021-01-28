@@ -273,6 +273,8 @@ func usage_left_click_not_holding(slot: SlotClass):
 
 
 func _on_show_item_info(item_name, item_uniqueness):
+	
+	# Item Uniqueness properties
 	var value = Data.item_data[item_name]["item_value"]
 	
 	if item_uniqueness.size() < 1:
@@ -293,50 +295,20 @@ func _on_show_item_info(item_name, item_uniqueness):
 		var skill2_value = item_uniqueness[4]
 		$Label.text = "%s\n%d\n\"%s\"\n%s: +%d\n%s: +%d" % [item_name,value, id, skill, skill_value, skill2, skill2_value]
 
-	var strength = Data.item_data[item_name]["strength_bonus"]
-	var intelligence = Data.item_data[item_name]["intelligence_bonus"]
-	var dexterity = Data.item_data[item_name]["dexterity_bonus"]
-	var endurance = Data.item_data[item_name]["endurance_bonus"]
-	var health = Data.item_data[item_name]["health_bonus"]
-	var attack = Data.item_data[item_name]["attack_bonus"]
-	var defense = Data.item_data[item_name]["defense_bonus"]
+	# Item JSON properties
+	var vars: Dictionary
 	var plus : String
-	
-	if strength != null:
-		if strength > 0:
-			plus = "+"
-		$Label.text += "\nStrength %s%d" % [plus, strength]
-		plus = ""
-	if intelligence != null:
-		if intelligence > 0:
-			plus = "+"
-		$Label.text += "\nIntelligence %s%d" % [plus, intelligence]
-		plus = ""
-	if dexterity != null:
-		if dexterity > 0:
-			plus = "+"
-		$Label.text += "\nDexterity %s%d" % [plus, dexterity]
-		plus = ""
-	if endurance != null:
-		if endurance > 0:
-			plus = "+"
-		$Label.text += "\nEndurance %s%d" % [plus, endurance]
-		plus = ""
-	if health != null:
-		if health > 0:
-			plus = "+"
-		$Label.text += "\nHealth %s%d" % [plus, health]
-		plus = ""
-	if attack != null:
-		if attack > 0:
-			plus = "+"
-		$Label.text += "\nAttack %s%d" % [plus, attack]
-		plus = ""
-	if defense != null:
-		if defense > 0:
-			plus = "+"
-		$Label.text += "\nDefense %s%d" % [plus, defense]
-		plus = ""
+	var bonus_index := 9 # this is the value of the JSON file, starting in strength_bonus
+	var duration = Data.item_data[item_name]["duration"]
+	for key in Player.stats:
+		# Dynamically creating variables of Player stats keys and assigning JSON file value
+		vars[key] = Data.item_data[item_name].values()[bonus_index]
+		if vars[key] != null:
+			if vars[key] > 0:
+				plus = "+"
+			$Label.text += "\n%s %s%d" % [key, plus, vars[key]]
+			plus =""
+		bonus_index += 1
 
 
 func _on_hide_item_info():

@@ -57,9 +57,21 @@ The best example of its use is in the `stats.gd` file, where it is used to power
   2. The item's characteristics are handled by **Inventory.tscn** and **inventory.gd**
 3. The container slots will hold the player inventory and the area inventory (items in the ground, a chest, etc)
 
+
 - Items in the equipment section are either placed or consumed:
 1. Placed items add permanent bonus until the item is removed from the equipment section
 2. Consumed items add temporal bonus (except for healing potions) and are removed automatically when used. The bonus are not accumulative. Consuming consecutively two items with a specific bonus will cause that the only bonus applied is the one of the last consumed item.
+
+### Stats
+When adding or removing an item from the Equipment section, **stats.gd** will calculate how this action affects Player's stats. There are three main functions:
+1. **character_info()**: Handles how the information is presented. It uses a *Label* node from **Stats.tscn**
+2. **on_equipment_added(slot, item)**: This function is divided in two sections, corresponding to whether the item is only using the item's properties defined in the JSON file (common properties), or the item is using also the properties defined in the *export* variable (unique properties) of **item_object.gd**. 
+2. **on_equipment_removed(item)**: This function is divided in two sections, corresponding to whether the item is only using the item's properties defined in the JSON file (common properties), or the item is using also the properties defined in the *export* variable (unique properties) of **item_object.gd**. 
+
+The two last functions use an index called **bonus** initialized with the number of the *value* of the JSON key-value pairs of file **items.json**. In this case, it starts with the value 
+*strength_bonus* with corresponds to the index **9**.
+
+The last functions dynamically generate a set of variables with the name of the Player's stats keys, and each generated variable is assigned with the value of the **items.json** index of **bonus**
 
 ## Creatures
 

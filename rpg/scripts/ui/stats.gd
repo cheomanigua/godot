@@ -38,13 +38,14 @@ func _on_equipment_added(slot, item):
 	var item_name = InventoryController.usage_inventory[i][0]
 # warning-ignore:unassigned_variable
 	var vars: Dictionary
-	var bonus := 9
+	var bonus_index := 9 # this is the value of the JSON file, starting in strength_bonus
 	var duration = Data.item_data[item_name]["duration"]
 	for key in Player.stats:
-		vars[key] = Data.item_data[item_name].values()[bonus]
+		# Dynamically creating variables of Player stats keys and assigning JSON file value
+		vars[key] = Data.item_data[item_name].values()[bonus_index]
 		if vars[key] != null:
-			consume_item(key, Player.stats[key], vars[key], duration, slot, item)
-		bonus += 1
+			use_item(key, Player.stats[key], vars[key], duration, slot, item)
+		bonus_index += 1
 	character_info()
 
 
@@ -60,16 +61,18 @@ func _on_equipment_removed(item):
 	# Item JSON properties
 # warning-ignore:unassigned_variable
 	var vars: Dictionary
-	var bonus := 9
+	var bonus_index := 9 # this is the value of the JSON file, starting in strength_bonus
 	for key in Player.stats:
-		vars[key] = Data.item_data[item.item_name].values()[bonus]
+		# Dynamically creating variables of Player stats keys and assigning JSON file value
+		vars[key] = Data.item_data[item.item_name].values()[bonus_index]
 		if vars[key] != null:
 			Player.stats[key] -= vars[key]
-		bonus += 1
+		bonus_index += 1
 	character_info()
 
 
-func consume_item(skill, value, bonus, duration, slot, item):
+# Consume or equip item
+func use_item(skill, value, bonus, duration, slot, item):
 	if duration != null:
 		var temp_value = value
 		value += bonus
