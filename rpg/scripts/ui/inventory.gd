@@ -81,7 +81,7 @@ func slot_gui_input(event: InputEvent, slot: SlotClass):
 					# ... holding an item against a slot containing a different item
 					if holding_item.item_name != slot.item.item_name:
 						left_click_different_item(event, slot)
-					# .. holding an item againts a slot containing an equal item
+					# ... holding an item againts a slot containing an equal item
 					else:
 						left_click_same_item(slot)
 			elif slot.item:
@@ -145,7 +145,7 @@ func loot_slot_gui_input(event: InputEvent, slot: SlotClass):
 					# ... holding an item against a slot containing a different item
 					if holding_item.item_name != slot.item.item_name:
 						loot_left_click_different_item(event, slot)
-					# .. holding an item againts a slot containing an equal item
+					# ... holding an item againts a slot containing an equal item
 					else:
 						loot_left_click_same_item(slot)
 			# ... not holding an item
@@ -219,7 +219,7 @@ func usage_slot_gui_input(event: InputEvent, slot: SlotClass):
 						# ... holding an item against a slot containing a different item
 						if holding_item.item_name != slot.item.item_name:
 							usage_left_click_different_item(event, slot)
-						# .. holding an item againts a slot containing an equal item
+						# ... holding an item againts a slot containing an equal item
 						else:
 							usage_left_click_same_item(slot)
 			# ... not holding an item
@@ -271,6 +271,9 @@ func usage_left_click_not_holding(slot: SlotClass):
 
 ############### USAGE CODE ENDS #################
 
+
+
+############### ITEM INFORMATION ON UI #################
 
 func _on_show_item_info(item_name, item_uniqueness):
 	

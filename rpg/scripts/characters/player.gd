@@ -9,7 +9,9 @@ export (Dictionary) var stats = {
 	"endurance" : 6,
 	"health" : 0,
 	"attack" : 0,
-	"defense" : 0
+	"defense" : 0,
+	"reach" : 0,
+	"damage" : 0
 }
 
 func set_stats_value(key, value, duration):
@@ -23,6 +25,7 @@ var max_health = stats.strength + stats.endurance
 
 func _ready():
 	stats.health = stats.strength + stats.endurance
+	stats.damage = (stats.strength + stats.dexterity) / 4
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	speed = 70
 	print_stray_nodes()

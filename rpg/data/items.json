@@ -16,6 +16,8 @@
     "health_bonus": null,
     "attack_bonus": null,
     "defense_bonus": null,
+    "reach": null,
+    "damage": null,
     "duration": null
   },
   "Silver": {
@@ -35,6 +37,8 @@
     "health_bonus": null,
     "attack_bonus": null,
     "defense_bonus": null,
+    "reach": null,
+    "damage": null,
     "duration": null
   },
   "Quartz": {
@@ -54,6 +58,8 @@
     "health_bonus": null,
     "attack_bonus": null,
     "defense_bonus": null,
+    "reach": null,
+    "damage": null,
     "duration": null
   },
   "Zaphyr": {
@@ -73,6 +79,8 @@
     "health_bonus": null,
     "attack_bonus": null,
     "defense_bonus": null,
+    "reach": null,
+    "damage": null,
     "duration": null
   },
   "Ruby": {
@@ -92,6 +100,8 @@
     "health_bonus": null,
     "attack_bonus": null,
     "defense_bonus": null,
+    "reach": null,
+    "damage": null,
     "duration": null
   },
   "Garnet": {
@@ -111,6 +121,8 @@
     "health_bonus": null,
     "attack_bonus": null,
     "defense_bonus": null,
+    "reach": null,
+    "damage": null,
     "duration": null
   },
   "Azurite": {
@@ -130,6 +142,8 @@
     "health_bonus": null,
     "attack_bonus": null,
     "defense_bonus": null,
+    "reach": null,
+    "damage": null,
     "duration": null
   },
   "Obsidian": {
@@ -149,6 +163,8 @@
     "health_bonus": null,
     "attack_bonus": null,
     "defense_bonus": null,
+    "reach": null,
+    "damage": null,
     "duration": null
   },
   "Emerald": {
@@ -168,6 +184,8 @@
     "health_bonus": null,
     "attack_bonus": null,
     "defense_bonus": null,
+    "reach": null,
+    "damage": null,
     "duration": null
   },
   "Turquoise": {
@@ -187,6 +205,8 @@
     "health_bonus": null,
     "attack_bonus": null,
     "defense_bonus": null,
+    "reach": null,
+    "damage": null,
     "duration": null
   },
   "Aquamarine": {
@@ -206,6 +226,8 @@
     "health_bonus": null,
     "attack_bonus": null,
     "defense_bonus": null,
+    "reach": null,
+    "damage": null,
     "duration": null
   },
   "Topaz": {
@@ -225,6 +247,8 @@
     "health_bonus": null,
     "attack_bonus": null,
     "defense_bonus": null,
+    "reach": null,
+    "damage": null,
     "duration": null
   },
   "Leather Jacket": {
@@ -244,6 +268,8 @@
     "health_bonus": null,
     "attack_bonus": null,
     "defense_bonus": 1,
+    "reach": null,
+    "damage": null,
     "duration": null
   },
   "Karuta": {
@@ -263,6 +289,8 @@
     "health_bonus": null,
     "attack_bonus": null,
     "defense_bonus": 2,
+    "reach": null,
+    "damage": null,
     "duration": null
   },
   "Segmentata": {
@@ -282,6 +310,8 @@
     "health_bonus": null,
     "attack_bonus": null,
     "defense_bonus": 3,
+    "reach": null,
+    "damage": null,
     "duration": null
   },
   "Chain Mail": {
@@ -301,6 +331,8 @@
     "health_bonus": null,
     "attack_bonus": -1,
     "defense_bonus": 4,
+    "reach": null,
+    "damage": null,
     "duration": null
   },
   "Iron Curiass": {
@@ -320,6 +352,8 @@
     "health_bonus": null,
     "attack_bonus": -2,
     "defense_bonus": 5,
+    "reach": null,
+    "damage": null,
     "duration": null
   },
   "Bronze Curiass": {
@@ -339,6 +373,8 @@
     "health_bonus": null,
     "attack_bonus": -1,
     "defense_bonus": 6,
+    "reach": null,
+    "damage": null,
     "duration": null
   },
   "Round Shield": {
@@ -358,6 +394,8 @@
     "health_bonus": null,
     "attack_bonus": null,
     "defense_bonus": 2,
+    "reach": null,
+    "damage": null,
     "duration": null
   },
   "Buckler Shield": {
@@ -377,6 +415,8 @@
     "health_bonus": null,
     "attack_bonus": null,
     "defense_bonus": 3,
+    "reach": null,
+    "damage": null,
     "duration": null
   },
   "Heater Shield": {
@@ -396,6 +436,8 @@
     "health_bonus": null,
     "attack_bonus": -1,
     "defense_bonus": 4,
+    "reach": null,
+    "damage": null,
     "duration": null
   },
   "Kite Shield": {
@@ -415,6 +457,8 @@
     "health_bonus": null,
     "attack_bonus": -2,
     "defense_bonus": 5,
+    "reach": null,
+    "damage": null,
     "duration": null
   },
   "Pavise Shield": {
@@ -434,6 +478,8 @@
     "health_bonus": null,
     "attack_bonus": -3,
     "defense_bonus": 6,
+    "reach": null,
+    "damage": null,
     "duration": null
   },
   "Strength Potion": {
@@ -453,6 +499,8 @@
     "health_bonus": null,
     "attack_bonus": null,
     "defense_bonus": null,
+    "reach": null,
+    "damage": null,
     "duration": 30
   },
   "Intelligence Potion": {
@@ -472,6 +520,8 @@
     "health_bonus": null,
     "attack_bonus": null,
     "defense_bonus": null,
+    "reach": null,
+    "damage": null,
     "duration": 30
   },
   "Dexterity Potion": {
@@ -491,6 +541,8 @@
     "health_bonus": null,
     "attack_bonus": null,
     "defense_bonus": null,
+    "reach": null,
+    "damage": null,
     "duration": 30
   },
   "Endurance Potion": {
@@ -510,6 +562,8 @@
     "health_bonus": null,
     "attack_bonus": null,
     "defense_bonus": null,
+    "reach": null,
+    "damage": null,
     "duration": 30
   },
   "Healing Potion": {
@@ -529,6 +583,8 @@
     "health_bonus": 1,
     "attack_bonus": null,
     "defense_bonus": null,
+    "reach": null,
+    "damage": null,
     "duration": null
   },
   "Magicka Potion": {
@@ -548,6 +604,218 @@
     "health_bonus": null,
     "attack_bonus": null,
     "defense_bonus": null,
-    "duration": 30
+    "reach": null,
+    "damage": null,
+    "duration": null
+  },
+  "Club": {
+    "item_name": "Club",
+    "item_image": "weapon/club.png",
+    "stack_size": 1,
+    "sprite_sheet": "shortwep.png",
+    "vframes": null,
+    "hframes": null,
+    "frame": null,
+    "item_value": 10,
+    "slot_type": "SLOT_LHAND",
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "health_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": null,
+    "reach": 30,
+    "damage": 1,
+    "duration": null
+  },
+  "Pike": {
+    "item_name": "Pike",
+    "item_image": "weapon/pike.png",
+    "stack_size": 1,
+    "sprite_sheet": "shortwep.png",
+    "vframes": null,
+    "hframes": null,
+    "frame": null,
+    "item_value": 10,
+    "slot_type": "SLOT_LHAND",
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "health_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": null,
+    "reach": 20,
+    "damage": 1,
+    "duration": null
+  },
+  "Mace": {
+    "item_name": "Mace",
+    "item_image": "weapon/mace.png",
+    "stack_size": 1,
+    "sprite_sheet": "shortwep.png",
+    "vframes": null,
+    "hframes": null,
+    "frame": null,
+    "item_value": 10,
+    "slot_type": "SLOT_LHAND",
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "health_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": null,
+    "reach": 40,
+    "damage": 1,
+    "duration": null
+  },
+  "Flail": {
+    "item_name": "Flail",
+    "item_image": "weapon/flail.png",
+    "stack_size": 1,
+    "sprite_sheet": "shortwep.png",
+    "vframes": null,
+    "hframes": null,
+    "frame": null,
+    "item_value": 10,
+    "slot_type": "SLOT_LHAND",
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "health_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": null,
+    "reach": 50,
+    "damage": 2,
+    "duration": null
+  },
+  "Dagger": {
+    "item_name": "Dagger",
+    "item_image": "weapon/dagger.png",
+    "stack_size": 1,
+    "sprite_sheet": "shortwep.png",
+    "vframes": null,
+    "hframes": null,
+    "frame": null,
+    "item_value": 10,
+    "slot_type": "SLOT_LHAND",
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "health_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": null,
+    "reach": 20,
+    "damage": 1,
+    "duration": null
+  },
+  "Sword": {
+    "item_name": "Sword",
+    "item_image": "weapon/sword.png",
+    "stack_size": 1,
+    "sprite_sheet": "medwep.png",
+    "vframes": null,
+    "hframes": null,
+    "frame": null,
+    "item_value": 20,
+    "slot_type": "SLOT_LHAND",
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "health_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": null,
+    "reach": 50,
+    "damage": 2,
+    "duration": null
+  },
+  "Axe": {
+    "item_name": "Axe",
+    "item_image": "weapon/axe.png",
+    "stack_size": 1,
+    "sprite_sheet": "medwep.png",
+    "vframes": null,
+    "hframes": null,
+    "frame": null,
+    "item_value": 20,
+    "slot_type": "SLOT_LHAND",
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "health_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": null,
+    "reach": 40,
+    "damage": 3,
+    "duration": null
+  },
+  "Double Axe": {
+    "item_name": "Double Axe",
+    "item_image": "weapon/double_axe.png",
+    "stack_size": 1,
+    "sprite_sheet": "medwep.png",
+    "vframes": null,
+    "hframes": null,
+    "frame": null,
+    "item_value": 20,
+    "slot_type": "SLOT_LHAND",
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "health_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": null,
+    "reach": 50,
+    "damage": 4,
+    "duration": null
+  },
+  "Hammer": {
+    "item_name": "Hammer",
+    "item_image": "weapon/hammer.png",
+    "stack_size": 1,
+    "sprite_sheet": "longwep.png",
+    "vframes": null,
+    "hframes": null,
+    "frame": null,
+    "item_value": 30,
+    "slot_type": "SLOT_LHAND",
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "health_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": null,
+    "reach": 50,
+    "damage": 4,
+    "duration": null
+  },
+  "Halberd": {
+    "item_name": "Halberd",
+    "item_image": "weapon/halberd.png",
+    "stack_size": 1,
+    "sprite_sheet": "longwep.png",
+    "vframes": null,
+    "hframes": null,
+    "frame": null,
+    "item_value": 30,
+    "slot_type": "SLOT_LHAND",
+    "strength_bonus": null,
+    "intelligence_bonus": null,
+    "dexterity_bonus": null,
+    "endurance_bonus": null,
+    "health_bonus": null,
+    "attack_bonus": null,
+    "defense_bonus": null,
+    "reach": 70,
+    "damage": 3,
+    "duration": null
   }
 }

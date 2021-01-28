@@ -14,10 +14,10 @@ region_rect = Rect2( 0, 0, 18, 18 )
 script = ExtResource( 4 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 117.558
-margin_top = 77.7939
-margin_right = 377.558
-margin_bottom = 192.794
+margin_left = 118.058
+margin_top = 78.0439
+margin_right = 383.058
+margin_bottom = 263.044
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -288,11 +288,41 @@ custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 slotType = 8
 
+[node name="SlotNeck" type="Panel" parent="GridContainerUsage"]
+margin_left = 2.15021
+margin_top = 121.745
+margin_right = 20.1502
+margin_bottom = 139.745
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 3 )
+slotType = 8
+
+[node name="SlotRing" type="Panel" parent="GridContainerUsage"]
+margin_left = 22.25
+margin_top = 121.713
+margin_right = 40.25
+margin_bottom = 139.713
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 3 )
+slotType = 8
+
+[node name="SlotRing2" type="Panel" parent="GridContainerUsage"]
+margin_left = 43.0998
+margin_top = 121.659
+margin_right = 61.0998
+margin_bottom = 139.659
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 3 )
+slotType = 8
+
 [node name="Label" type="Label" parent="."]
 margin_left = 200.0
-margin_top = 149.912
+margin_top = 206.0
 margin_right = 240.0
-margin_bottom = 163.912
+margin_bottom = 220.0
 rect_scale = Vector2( 0.5, 0.5 )
 __meta__ = {
 "_edit_use_anchors_": false
