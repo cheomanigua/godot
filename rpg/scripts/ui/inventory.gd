@@ -296,17 +296,17 @@ func _on_show_item_info(item_name, item_uniqueness):
 		$Label.text = "%s\n%d\n\"%s\"\n%s: +%d\n%s: +%d" % [item_name,value, id, skill, skill_value, skill2, skill2_value]
 
 	# Item JSON properties
+# warning-ignore:unassigned_variable
 	var vars: Dictionary
 	var plus : String
 	var bonus_index := 9 # this is the value of the JSON file, starting in strength_bonus
-	var duration = Data.item_data[item_name]["duration"]
 	for key in Player.stats:
 		# Dynamically creating variables of Player stats keys and assigning JSON file value
 		vars[key] = Data.item_data[item_name].values()[bonus_index]
 		if vars[key] != null:
 			if vars[key] > 0:
 				plus = "+"
-			$Label.text += "\n%s %s%d" % [key, plus, vars[key]]
+			$Label.text += "\n%s %s%d" % [key.capitalize(), plus, vars[key]]
 			plus =""
 		bonus_index += 1
 

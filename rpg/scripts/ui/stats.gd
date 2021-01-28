@@ -25,7 +25,6 @@ func character_info():
 
 func _on_equipment_added(slot, item):
 	var i = slot.usage_slot_index
-	
 	# Item Uniqueness properties
 	var item_uniqueness = InventoryController.usage_inventory[i][2]
 	if (item_uniqueness.size()) == 3:
@@ -50,7 +49,6 @@ func _on_equipment_added(slot, item):
 
 
 func _on_equipment_removed(item):
-	
 	# Item Uniqueness properties
 	if (item.item_uniqueness.size()) == 3:
 		Player.stats[item.item_uniqueness[1].to_lower()] -= item.item_uniqueness[2]
@@ -79,6 +77,7 @@ func use_item(skill, value, bonus, duration, slot, item):
 		Player.set_stats_value(skill, value, duration)
 		item.queue_free()
 		slot.remove_from_slot()
+		InventoryController.usage_remove_item(slot)
 		character_info()
 		yield(get_tree().create_timer(duration), "timeout")
 		Player.set_stats_value(skill, temp_value, duration)
@@ -90,5 +89,6 @@ func use_item(skill, value, bonus, duration, slot, item):
 				Player.stats[skill] = Player.max_health
 			item.queue_free()
 			slot.remove_from_slot()
+			InventoryController.usage_remove_item(slot)
 		else:
 			Player.set_stats_value(skill, bonus, duration)
