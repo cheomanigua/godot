@@ -86,7 +86,6 @@ func use_item(skill, value, bonus, duration, slot):
 			Player.stats[skill] += bonus
 			if Player.stats[skill] > Player.max_health:
 				Player.stats[skill] = Player.max_health
-#			item.queue_free()
 			slot.remove_from_slot()
 			InventoryController.usage_remove_item(slot)
 		else:

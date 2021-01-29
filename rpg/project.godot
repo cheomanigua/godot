@@ -26,10 +26,10 @@ run/main_scene="res://World.tscn"
 [autoload]
 
 Player="*res://scenes/player.tscn"
-Data="*res://scripts/logic/data.gd"
 Notification="*res://scenes/messaging/notification.tscn"
 InventoryController="*res://scripts/ui/inventory_controller.gd"
 GlobalWorld="*res://world.gd"
+Data="*res://scripts/logic/data.gd"
 
 [display]
 

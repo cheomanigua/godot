@@ -14,13 +14,14 @@ export (Dictionary) var stats = {
 	"damage" : 0
 }
 
+var max_health = stats.strength + stats.endurance
+
+
 func set_stats_value(key, value, duration):
 	if duration != null:
 		stats[key] = value
 	else:
 		stats[key] += value
-	
-var max_health = stats.strength + stats.endurance
 
 
 func _ready():
