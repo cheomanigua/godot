@@ -6,15 +6,13 @@ extends Node
 const SlotClass = preload("res://scripts/ui/slot.gd")
 const ItemClass = preload("res://scripts/ui/item.gd")
 const NUM_INVENTORY_SLOTS = 20
-# Keep it at 25 to prevent items not being shown in Loot inventory when swapping
-const NUM_LOOT_INVENTORY_SLOTS = 25
-const NUM_USAGE_INVENTORY_SLOTS = 2
-const NUM_TEMP_INVENTORY_SLOTS = 4
+const NUM_LOOT_INVENTORY_SLOTS = 5 # Keep it at 25 to prevent items not being shown in Loot inventory when swapping
+#const NUM_USAGE_INVENTORY_SLOTS = 5
 
 var inventory:Dictionary
 var loot_inventory:Dictionary
 var usage_inventory:Dictionary
-var temp_inventory:Dictionary
+#var temp_inventory:Dictionary
 
 
 func _ready():
@@ -90,22 +88,22 @@ func loot_add_item_quantity(slot: SlotClass, quantity_to_add: int):
 
 ######## USAGE #########
 
-func usage_add_item(item_name, item_quantity,  item_uniqueness):
-	for item in usage_inventory:
-		if usage_inventory[item][0] == item_name:
-			var stack_size = int(Data.item_data[item_name]["stack_size"])
-			var able_to_add = stack_size - usage_inventory[item][1]
-			if able_to_add >= item_quantity:
-				usage_inventory[item][1] += item_quantity
-				return
-			else:
-				usage_inventory[item][1] += able_to_add
-				item_quantity = item_quantity - able_to_add
-	# item doesn't exist in usage_inventory yet, so add it to an empty slot
-	for i in range(NUM_USAGE_INVENTORY_SLOTS):
-		if usage_inventory.has(i) == false:
-			usage_inventory[i] = [item_name, item_quantity, item_uniqueness]
-			return
+#func usage_add_item(item_name, item_quantity,  item_uniqueness):
+#	for item in usage_inventory:
+#		if usage_inventory[item][0] == item_name:
+#			var stack_size = int(Data.item_data[item_name]["stack_size"])
+#			var able_to_add = stack_size - usage_inventory[item][1]
+#			if able_to_add >= item_quantity:
+#				usage_inventory[item][1] += item_quantity
+#				return
+#			else:
+#				usage_inventory[item][1] += able_to_add
+#				item_quantity = item_quantity - able_to_add
+#	# item doesn't exist in usage_inventory yet, so add it to an empty slot
+#	for i in range(NUM_USAGE_INVENTORY_SLOTS):
+#		if usage_inventory.has(i) == false:
+#			usage_inventory[i] = [item_name, item_quantity, item_uniqueness]
+#			return
 
 
 func usage_remove_item(slot: SlotClass):
@@ -119,23 +117,3 @@ func usage_add_item_to_empty_slot(item: ItemClass, slot: SlotClass):
 
 func usage_add_item_quantity(slot: SlotClass, quantity_to_add: int):
 	usage_inventory[slot.usage_slot_index][1] += quantity_to_add
-
-
-######## TEMP #########
-
-func temp_add_item(item_name, item_quantity, item_uniqueness):
-	for item in temp_inventory:
-		if temp_inventory[item][0] == item_name:
-			var stack_size = int(Data.item_data[item_name]["stack_size"])
-			var able_to_add = stack_size - temp_inventory[item][1]
-			if able_to_add >= item_quantity:
-				temp_inventory[item][1] += item_quantity
-				return
-			else:
-				temp_inventory[item][1] += able_to_add
-				item_quantity = item_quantity - able_to_add
-	# item doesn't exist in temp_inventory yet, so add it to an empty slot
-	for i in range(NUM_TEMP_INVENTORY_SLOTS):
-		if temp_inventory.has(i) == false:
-			temp_inventory[i] = [item_name, item_quantity, item_uniqueness]
-			return

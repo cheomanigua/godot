@@ -2,6 +2,7 @@ extends Node
 signal enemy_hit
 var random = RandomNumberGenerator.new()
 
+
 func attack(enemy):
 	var damage = "miss"
 	var crit = false
@@ -33,4 +34,3 @@ func status(enemy, health):
 		Notification.message("%s died" % [enemy.creature_type])
 		print("%s died" % [enemy.creature_type])
 		enemy.queue_free()
-

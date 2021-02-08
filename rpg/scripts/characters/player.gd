@@ -10,7 +10,7 @@ export (Dictionary) var stats = {
 	"health" : 0,
 	"attack" : 0,
 	"defense" : 0,
-	"reach" : 0,
+	"reach" : 10,
 	"damage" : 0
 }
 
@@ -86,6 +86,7 @@ func grab_item():
 			for item in $PickupZone.get_overlapping_bodies():
 				item.fetch_item("direct")
 		else:
+			Notification.message("Not enough space in inventory. Try picking one by one.")
 			print("Alert: Not enough space in inventory. Pick one by one instead")
 
 
@@ -99,6 +100,7 @@ func pause():
 	if is_paused:
 		get_tree().paused = true
 		set_physics_process(false)
+		stop()
 	else:
 		get_tree().paused = false
 		set_physics_process(true)
@@ -108,6 +110,7 @@ func _physics_process(_delta):
 	get_input()
 	movement()
 	sprite_input()
+	$RayCast2D.cast_to = velocity.normalized() * stats.reach
 
 	if velocity != Vector2():
 		anim_switch("walk")

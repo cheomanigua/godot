@@ -12,6 +12,12 @@ script = ExtResource( 4 )
 
 [node name="Creatures" type="Node" parent="."]
 
+[node name="Doors" type="Node" parent="."]
+
+[node name="Door" parent="Doors" instance=ExtResource( 2 )]
+position = Vector2( 163.695, 103.945 )
+key = "Golden Key"
+
 [node name="Items" type="Node" parent="."]
 
 [node name="ItemObject" parent="Items" instance=ExtResource( 5 )]
@@ -34,9 +40,3 @@ item_name = "Buckler Shield"
 [node name="ItemObject5" parent="Items" instance=ExtResource( 5 )]
 position = Vector2( 36.7785, 106.452 )
 item_name = "Flail"
-
-[node name="Doors" type="Node" parent="."]
-
-[node name="Door" parent="Doors" instance=ExtResource( 2 )]
-position = Vector2( 243.245, 132.936 )
-key = "Golden Key"

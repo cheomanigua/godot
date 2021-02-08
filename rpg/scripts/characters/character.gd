@@ -4,7 +4,6 @@ var speed = 0
 var velocity = Vector2()
 
 
-
 func creature_random_movement():
 	var d = randi() % 4 + 1
 	match d:

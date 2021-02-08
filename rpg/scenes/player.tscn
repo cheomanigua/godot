@@ -179,3 +179,6 @@ script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupZone"]
 shape = SubResource( 10 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+enabled = true

@@ -1,7 +1,5 @@
 extends CanvasLayer
 
-const ItemObject = preload("res://scenes/item_object.tscn")
-
 
 func _unhandled_input(event):
 	if event.is_action_pressed("inventory"):

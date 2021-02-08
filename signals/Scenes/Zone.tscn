@@ -8,7 +8,10 @@
 radius = 266.097
 
 [node name="Zone" type="Area2D"]
+space_override = 3
 gravity_point = true
+gravity_vec = Vector2( 0, 0 )
+gravity = 566.68
 linear_damp = 0.0
 angular_damp = 0.0
 priority = 1.0
