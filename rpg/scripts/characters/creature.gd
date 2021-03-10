@@ -25,7 +25,7 @@ var movetimer = 0
 
 
 func _ready():
-	speed = 40
+	speed = 0
 #	add_child(data)
 	add_child(combat)
 	

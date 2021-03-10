@@ -13,10 +13,10 @@ __meta__ = {
 }
 
 [node name="bottom_message" type="Label" parent="Control"]
-margin_left = 0.629959
-margin_top = 218.87
-margin_right = 99.63
-margin_bottom = 232.87
+margin_left = 0.314979
+margin_top = 212.255
+margin_right = 99.315
+margin_bottom = 226.255
 rect_scale = Vector2( 0.5, 0.5 )
 __meta__ = {
 "_edit_use_anchors_": false

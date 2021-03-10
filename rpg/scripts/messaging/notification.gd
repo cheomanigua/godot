@@ -6,6 +6,7 @@ func _ready():
 	+ "Press \"C\" to show Player stats\n" \
 	+ "Press \"ARROW UP\" to pickup one item\n" \
 	+ "Press \"ARROW DOWN\" to grab all items\n" \
+	+ "Press \"HOME\" to trigger ray cast\n" \
 	+ "Press \"ESC\" to exit the game\n" \
 	+ "Press \"SPACE BAR\" or \"RETURN\" to pause the game"
 

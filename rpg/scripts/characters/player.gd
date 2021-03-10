@@ -1,6 +1,7 @@
 extends "res://scripts/characters/character.gd"
 
 var is_paused: bool = false
+var direction = Vector2(0,1)
 
 export (Dictionary) var stats = {
 	"strength" : 4,
@@ -10,7 +11,7 @@ export (Dictionary) var stats = {
 	"health" : 0,
 	"attack" : 0,
 	"defense" : 0,
-	"reach" : 10,
+	"reach" : 50,
 	"damage" : 0
 }
 
@@ -41,6 +42,25 @@ func get_input():
 	
 	velocity.x = -int(LEFT) + int(RIGHT)
 	velocity.y = -int(UP) + int(DOWN)
+	
+	if LEFT:
+		direction = Vector2.LEFT
+	if RIGHT:
+		direction = Vector2.RIGHT
+	if UP:
+		direction = Vector2.UP
+	if DOWN:
+		direction = Vector2.DOWN
+	if LEFT && UP:
+		direction = Vector2(-1,-1)
+	if LEFT && DOWN:
+		direction = Vector2(-1,1)
+	if RIGHT && UP:
+		direction = Vector2(1,-1)
+	if RIGHT && DOWN:
+		direction = Vector2(1,1)
+	
+#	$RayCast2D.cast_to = direction.normalized() * stats.reach
 
 
 func _unhandled_input(event):
@@ -52,6 +72,8 @@ func _unhandled_input(event):
 		get_tree().quit()
 	if (event.is_action_pressed("ui_accept")):
 		pause()
+	if (event.is_action_pressed("ui_home")):
+		attack()
 
 
 func show_loot():
@@ -90,6 +112,13 @@ func grab_item():
 			print("Alert: Not enough space in inventory. Pick one by one instead")
 
 
+func attack():
+	$RayCast2D.cast_to = direction.normalized() * stats.reach
+	print($RayCast2D.get_collider())
+	yield(get_tree().create_timer(.5), "timeout")
+	$RayCast2D.cast_to = Vector2()
+
+
 func reset_pickup_zone():
 	$PickupZone/CollisionShape2D.disabled = true
 	$PickupZone/CollisionShape2D.disabled = false
@@ -110,7 +139,6 @@ func _physics_process(_delta):
 	get_input()
 	movement()
 	sprite_input()
-	$RayCast2D.cast_to = velocity.normalized() * stats.reach
 
 	if velocity != Vector2():
 		anim_switch("walk")

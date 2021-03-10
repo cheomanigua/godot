@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
+[ext_resource path="res://scenes/creature.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/structure/door.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/ui/user_interface.tscn" type="PackedScene" id=3]
 [ext_resource path="res://world.gd" type="Script" id=4]
@@ -11,6 +12,9 @@ script = ExtResource( 4 )
 [node name="UserInterface" parent="." instance=ExtResource( 3 )]
 
 [node name="Creatures" type="Node" parent="."]
+
+[node name="Creature" parent="Creatures" instance=ExtResource( 1 )]
+position = Vector2( 193.04, 59.7505 )
 
 [node name="Doors" type="Node" parent="."]
 
