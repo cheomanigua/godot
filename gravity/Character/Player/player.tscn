@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://jved2ob5irk2"]
+
+[ext_resource type="Texture2D" uid="uid://b25i1qsvj33a3" path="res://Character/Player/player.png" id="1_yh8f8"]
+
+[node name="Player" type="RigidBody2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-16, 16, 0, -16, 16, 16, 0, 13)
+
+[node name="Muzzle" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -17)
+
+[node name="ShootAt" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -18)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yh8f8")
