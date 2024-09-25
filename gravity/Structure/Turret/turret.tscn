@@ -42,3 +42,10 @@ texture = ExtResource("3_ylcsl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ffcto")
+
+[node name="DamageLabel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -8.0
+offset_top = -38.0
+offset_right = 10.0
+offset_bottom = -15.0

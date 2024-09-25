@@ -20,6 +20,7 @@ const BULLET = preload("res://Projectile/Bullet/bullet.tscn")
 @onready var muzzle: Marker2D = %Muzzle
 @onready var shoot_at: Marker2D = %ShootAt
 @onready var health_label: Label = %HealthLabel
+@onready var trace: GPUParticles2D = %Trace
 @onready var ammo_label: Label = %AmmoLabel
 @onready var fuel_label: Label = %FuelLabel
 @onready var stats: Label = %Stats
@@ -31,6 +32,7 @@ func _ready() -> void:
 		stats.text += ("%s: %d\n" % [key, attributes[key]])
 	angular_damp = 20.0
 	gravity_scale = 0.2
+	trace.emitting = false
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
@@ -42,11 +44,13 @@ func _integrate_forces(state):
 	if Input.is_action_pressed("ui_up"):
 		attributes.fuel -= 0.01
 		attributes.fuel = clamp(attributes.fuel, 0, top.fuel)
+		trace.emitting = true
 		_update_gui()
 		state.apply_force(thrust.rotated(rotation))
 		if attributes.fuel <= 0:
 			thrust = Vector2(0, 0)
-#	else:
+	else:
+		trace.emitting = false
 #	state.apply_force(Vector2())
 	var rotation_direction = 0
 	if Input.is_action_pressed("ui_right"):
