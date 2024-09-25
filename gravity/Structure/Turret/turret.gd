@@ -1,7 +1,7 @@
 extends StaticBody2D
 
-const BULLET = preload("res://Projectile/Bullet/bullet.tscn")
 @export var health: int = 5
+const BULLET = preload("res://Projectile/Bullet/bullet.tscn")
 var detected: bool = false
 var locked: bool = false
 var elapse: float = 5.0
@@ -9,6 +9,7 @@ var direccion: float
 
 @onready var timer: Timer = %Timer
 @onready var radar: Area2D = %Radar
+@onready var cannon: Sprite2D = %Cannon
 @onready var muzzle: Marker2D = %Muzzle
 @onready var shoot_at: Marker2D = %ShootAt
 @onready var player: Player = %Player
@@ -44,6 +45,9 @@ func _on_player_lost():
 
 func _shoot():
 	if detected and locked:
+		var tween = get_tree().create_tween()
+		tween.tween_property(cannon, "position", Vector2(-10, 0), 0.2).as_relative().set_trans(Tween.TRANS_SINE)
+		tween.tween_property(cannon, "position", Vector2(10, 0), 0.2).as_relative().set_trans(Tween.TRANS_SINE)
 		var new_bullet = BULLET.instantiate()
 		get_tree().root.call_deferred("add_child", new_bullet)
 		new_bullet.global_position = muzzle.global_position

@@ -73,21 +73,26 @@ rotation = -2.41728
 [node name="Ammo" type="Node" parent="Item"]
 
 [node name="Item" parent="Item/Ammo" instance=ExtResource("8_o23yp")]
-position = Vector2(1037, 724)
+position = Vector2(1042, 699)
+item = "ammo"
+value = 5.0
+
+[node name="Item2" parent="Item/Ammo" instance=ExtResource("8_o23yp")]
+position = Vector2(-678, -69)
 item = "ammo"
 value = 5.0
 
 [node name="Fuel" type="Node" parent="Item"]
 
 [node name="Item" parent="Item/Fuel" instance=ExtResource("8_o23yp")]
-position = Vector2(610, 897)
+position = Vector2(609, 874)
 item = "fuel"
 value = 20.0
 
 [node name="Health" type="Node" parent="Item"]
 
 [node name="Item" parent="Item/Health" instance=ExtResource("8_o23yp")]
-position = Vector2(-475, 545)
+position = Vector2(-475, 520)
 value = 5.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
