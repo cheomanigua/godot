@@ -1,7 +1,9 @@
 extends StaticBody2D
 
 @export var health: int = 5
+@export var base_rotation: float = 0
 const BULLET = preload("res://Projectile/Bullet/bullet.tscn")
+const LABEL = preload("res://Scenes/floating_label.tscn")
 var detected: bool = false
 var locked: bool = false
 var elapse: float = 5.0
@@ -13,10 +15,13 @@ var direccion: float
 @onready var muzzle: Marker2D = %Muzzle
 @onready var shoot_at: Marker2D = %ShootAt
 @onready var player: Player = %Player
+@onready var base: StaticBody2D = %Base
+@onready var label_position: Marker2D = $LabelPosition
 
 
 func _ready():
 	direccion = global_rotation
+	base.rotation = deg_to_rad(base_rotation)
 	radar.player_detected.connect(_on_player_detected)
 	radar.player_lost.connect(_on_player_lost)
 
@@ -26,7 +31,7 @@ func _physics_process(delta: float) -> void:
 		var angle: float = (player.global_position - global_position).angle()
 		if angle_difference(direccion, angle) < PI/2 and angle_difference(direccion, angle) > -PI/2:
 			locked = true
-			global_rotation = lerp_angle(global_rotation, angle, elapse * delta)
+			base.global_rotation = lerp_angle(base.global_rotation, angle, elapse * delta)
 		else:
 			locked = false
 
@@ -45,7 +50,7 @@ func _on_player_lost():
 
 func _shoot():
 	if detected and locked:
-		var tween = get_tree().create_tween()
+		var tween = create_tween()
 		tween.tween_property(cannon, "position", Vector2(-10, 0), 0.2).as_relative().set_trans(Tween.TRANS_SINE)
 		tween.tween_property(cannon, "position", Vector2(10, 0), 0.2).as_relative().set_trans(Tween.TRANS_SINE)
 		var new_bullet = BULLET.instantiate()
@@ -55,7 +60,13 @@ func _shoot():
 
 
 func take_damage(damage):
+	var label = LABEL.instantiate()
+	label_position.add_child(label)
+	label.text = "-%d" % [damage]
+	var tween: Tween = create_tween()
+	tween.tween_property(label, "position", Vector2(0, -30), 2.0).as_relative().set_ease(Tween.EASE_IN_OUT)
+	tween.set_parallel()
+	tween.tween_property(label, "scale", Vector2.ZERO, 2.0)
 	health -= damage
-	print("Turret's health: %d" % [health])
 	if health <= 0:
 		queue_free()

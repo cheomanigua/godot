@@ -1,34 +1,43 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbi0l3hw5dgsb"]
+[gd_scene load_steps=8 format=3 uid="uid://cbi0l3hw5dgsb"]
 
 [ext_resource type="Script" path="res://Structure/Turret/turret.gd" id="1_qdpq5"]
 [ext_resource type="Script" path="res://Structure/Turret/radar.gd" id="2_8s6y3"]
 [ext_resource type="Texture2D" uid="uid://bmxsygr5h20me" path="res://Structure/Turret/cannon.png" id="2_bcfvl"]
 [ext_resource type="Texture2D" uid="uid://itaqtyf2mybe" path="res://Structure/Turret/turret.png" id="3_ylcsl"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ffcto"]
+radius = 16.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_cl0cl"]
 radius = 338.013
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ffcto"]
-radius = 16.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_vqcst"]
+radius = 16.0312
 
 [node name="Turret" type="StaticBody2D"]
 script = ExtResource("1_qdpq5")
 
-[node name="Cannon" type="Sprite2D" parent="."]
+[node name="Base" type="StaticBody2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Cannon" type="Sprite2D" parent="Base"]
 unique_name_in_owner = true
 position = Vector2(14.985, 0)
 texture = ExtResource("2_bcfvl")
 
-[node name="Muzzle" type="Marker2D" parent="Cannon"]
+[node name="Muzzle" type="Marker2D" parent="Base/Cannon"]
 unique_name_in_owner = true
 position = Vector2(16.675, 0)
 
-[node name="ShootAt" type="Marker2D" parent="Cannon"]
+[node name="ShootAt" type="Marker2D" parent="Base/Cannon"]
 unique_name_in_owner = true
 position = Vector2(17.42, 0)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="Base"]
 unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Base"]
+shape = SubResource("CircleShape2D_ffcto")
 
 [node name="Radar" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -41,11 +50,6 @@ shape = SubResource("CircleShape2D_cl0cl")
 texture = ExtResource("3_ylcsl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_ffcto")
+shape = SubResource("CircleShape2D_vqcst")
 
-[node name="DamageLabel" type="Label" parent="."]
-unique_name_in_owner = true
-offset_left = -8.0
-offset_top = -38.0
-offset_right = 10.0
-offset_bottom = -15.0
+[node name="LabelPosition" type="Marker2D" parent="."]
