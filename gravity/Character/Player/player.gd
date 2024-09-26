@@ -49,6 +49,8 @@ func _integrate_forces(state):
 		state.apply_force(thrust.rotated(rotation))
 		if attributes.fuel <= 0:
 			thrust = Vector2(0, 0)
+			trace.emitting = false
+			Signals.event.emit("Fuel depleted!")
 	else:
 		trace.emitting = false
 #	state.apply_force(Vector2())
