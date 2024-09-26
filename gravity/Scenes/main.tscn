@@ -51,6 +51,11 @@ polygon = PackedVector2Array(131, -285, 330, -288, 328, -69, 178, 62, 243, 286, 
 
 [node name="Turret" parent="Turrets" instance=ExtResource("3_typj3")]
 position = Vector2(716, 460)
+base_rotation = 270.0
+
+[node name="Turret2" parent="Turrets" instance=ExtResource("3_typj3")]
+position = Vector2(1061, 136)
+base_rotation = 180.0
 
 [node name="Item" type="Node" parent="."]
 

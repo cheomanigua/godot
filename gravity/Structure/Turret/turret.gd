@@ -16,12 +16,12 @@ var direccion: float
 @onready var shoot_at: Marker2D = %ShootAt
 @onready var player: Player = %Player
 @onready var base: StaticBody2D = %Base
-@onready var label_position: Marker2D = $LabelPosition
+@onready var label_position: Marker2D = %LabelPosition
 
 
 func _ready():
-	direccion = global_rotation
 	base.rotation = deg_to_rad(base_rotation)
+	direccion = base.rotation
 	radar.player_detected.connect(_on_player_detected)
 	radar.player_lost.connect(_on_player_lost)
 

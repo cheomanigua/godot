@@ -53,3 +53,4 @@ texture = ExtResource("3_ylcsl")
 shape = SubResource("CircleShape2D_vqcst")
 
 [node name="LabelPosition" type="Marker2D" parent="."]
+unique_name_in_owner = true
