@@ -3,7 +3,6 @@ extends StaticBody2D
 @export var health: int = 5
 @export var base_rotation: float = 0
 const BULLET = preload("res://Projectile/Bullet/bullet.tscn")
-const LABEL = preload("res://Scenes/floating_label.tscn")
 var detected: bool = false
 var locked: bool = false
 var elapse: float = 5.0
@@ -16,7 +15,6 @@ var direccion: float
 @onready var shoot_at: Marker2D = %ShootAt
 @onready var player: Player = %Player
 @onready var base: StaticBody2D = %Base
-@onready var label_position: Marker2D = %LabelPosition
 
 
 func _ready():
@@ -60,13 +58,18 @@ func _shoot():
 
 
 func take_damage(damage):
-	var label = LABEL.instantiate()
-	label_position.add_child(label)
+	var label: Label = Label.new()
+	add_child(label)
+	label.position = Vector2(-10, -30) + Vector2(randf_range(-20, 20), 0)
 	label.text = "-%d" % [damage]
+	
 	var tween: Tween = create_tween()
 	tween.tween_property(label, "position", Vector2(0, -30), 2.0).as_relative().set_ease(Tween.EASE_IN_OUT)
 	tween.set_parallel()
-	tween.tween_property(label, "scale", Vector2.ZERO, 2.0)
+	tween.tween_property(label, "modulate:a", 0, 2.0)
+	#tween.tween_property(label, "scale", Vector2.ZERO, 2.0)
+	tween.connect("finished", Callable(label, "queue_free"))
+	
 	health -= damage
 	if health <= 0:
 		queue_free()

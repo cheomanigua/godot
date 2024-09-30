@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://jved2ob5irk2"]
 
-[ext_resource type="Texture2D" uid="uid://b25i1qsvj33a3" path="res://Character/Player/player.png" id="1_yh8f8"]
+[ext_resource type="Texture2D" uid="uid://cts8nmuis2hvs" path="res://Character/Player/player.png" id="1_yh8f8"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_daiho"]
 flatness = 1.0

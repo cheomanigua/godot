@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Structure/Turret/turret.gd" id="1_qdpq5"]
 [ext_resource type="Script" path="res://Structure/Turret/radar.gd" id="2_8s6y3"]
-[ext_resource type="Texture2D" uid="uid://bmxsygr5h20me" path="res://Structure/Turret/cannon.png" id="2_bcfvl"]
-[ext_resource type="Texture2D" uid="uid://itaqtyf2mybe" path="res://Structure/Turret/turret.png" id="3_ylcsl"]
+[ext_resource type="Texture2D" uid="uid://dfv7borj7vdll" path="res://Structure/Turret/cannon.png" id="2_bcfvl"]
+[ext_resource type="Texture2D" uid="uid://dooj1gy3us0sh" path="res://Structure/Turret/turret.png" id="3_ylcsl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ffcto"]
 radius = 16.0
@@ -51,6 +51,3 @@ texture = ExtResource("3_ylcsl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vqcst")
-
-[node name="LabelPosition" type="Marker2D" parent="."]
-unique_name_in_owner = true
