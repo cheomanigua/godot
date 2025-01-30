@@ -1,15 +1,14 @@
 extends StaticBody2D
 
-@export var health: int = 10
-@export var base_rotation: float = 0
+@export var health: int = 5
 
 const BULLET = preload("res://Projectile/Bullet/bullet.tscn")
 var detected: bool = false
 var locked: bool = false
 var elapse: float = 5.0
 var direccion: float
+var timer = Timer.new()
 
-@onready var timer: Timer = %Timer
 @onready var radar: Area2D = %Radar
 @onready var cannon: Sprite2D = %Cannon
 @onready var muzzle: Marker2D = %Muzzle
@@ -19,10 +18,9 @@ var direccion: float
 
 
 func _ready():
-	# The property `rotation` is set in degrees in the editor. However, the functions below works on radians.
-	# That's the reason for the conversion.
-	base.rotation = deg_to_rad(base_rotation)
-	direccion = base.rotation
+	timer.wait_time = 1
+	add_child(timer)
+	direccion = rotation
 	radar.player_detected.connect(_on_player_detected)
 	radar.player_lost.connect(_on_player_lost)
 
@@ -37,27 +35,27 @@ func _physics_process(delta: float) -> void:
 		if angle_difference(direccion, angle) < PI/2 and angle_difference(direccion, angle) > -PI/2:
 			locked = true
 			# Rotate the turret towards the player (stored angle)
-			base.rotation = lerp_angle(base.rotation, angle, elapse * delta)
+			rotation = lerp_angle(rotation, angle, elapse * delta)
 		else:
 			locked = false
 
 
 func _on_player_detected():
-		detected = !detected
-		#var tween = get_tree().create_tween().set_loops()
-		#tween.tween_callback(_shoot).set_delay(1)
-		timer.timeout.connect(_shoot)
-		timer.start()
+	detected = !detected
+	timer.start()
+	timer.timeout.connect(_shoot)
+	#var tween = get_tree().create_tween().set_loops()
+	#tween.tween_callback(_shoot).set_delay(1)
 
 
 func _on_player_lost():
-		detected = !detected
-		timer.stop()
-		timer.timeout.disconnect(_shoot)
+	detected = !detected
+	timer.timeout.disconnect(_shoot)
+	timer.stop()
 
 
 func _shoot():
-	if detected and locked:
+	if locked:
 		var tween = create_tween()
 		tween.tween_property(cannon, "position", Vector2(-10, 0), 0.2).as_relative().set_trans(Tween.TRANS_SINE)
 		tween.tween_property(cannon, "position", Vector2(10, 0), 0.2).as_relative().set_trans(Tween.TRANS_SINE)

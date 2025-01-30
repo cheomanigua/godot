@@ -31,7 +31,6 @@ position = Vector2(0, 16.83)
 
 [node name="Trace" type="GPUParticles2D" parent="Particles"]
 unique_name_in_owner = true
-visible = false
 amount = 200
 process_material = SubResource("ParticleProcessMaterial_daiho")
 lifetime = 2.0
