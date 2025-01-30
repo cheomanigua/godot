@@ -6,7 +6,7 @@ const BULLET = preload("res://Projectile/Bullet/bullet.tscn")
 var detected: bool = false
 var locked: bool = false
 var elapse: float = 5.0
-var direccion: float
+var direction: float
 var timer = Timer.new()
 
 @onready var radar: Area2D = %Radar
@@ -20,7 +20,7 @@ var timer = Timer.new()
 func _ready():
 	timer.wait_time = 1
 	add_child(timer)
-	direccion = rotation
+	direction = rotation
 	radar.player_detected.connect(_on_player_detected)
 	radar.player_lost.connect(_on_player_lost)
 
@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 		# Calculate if the player is located within the field of view of the turret.
 		# The field of view of the turret is 90º to the left and 90º degrees to the right
 		# of the direcction the turret is facing.
-		if angle_difference(direccion, angle) < PI/2 and angle_difference(direccion, angle) > -PI/2:
+		if angle_difference(direction, angle) < PI/2 and angle_difference(direction, angle) > -PI/2:
 			locked = true
 			# Rotate the turret towards the player (stored angle)
 			rotation = lerp_angle(rotation, angle, elapse * delta)
