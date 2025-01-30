@@ -51,6 +51,7 @@ func _switch_mode():
 		print("Landing mode")
 		thrust = Vector2(0, -250)
 		fuel_consumption = thrust.y / max_thrust.y * max_thrust_consumption_value
+		torque = 3000
 		print(fuel_consumption)
 	else:
 		print("Agile mode")
