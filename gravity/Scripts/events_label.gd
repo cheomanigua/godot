@@ -2,7 +2,7 @@ extends Label
 
 
 func _ready() -> void:
-	Signals.event.connect(_on_event)
+	Signals.news.connect(_on_event)
 
 
 func _on_event(message):
