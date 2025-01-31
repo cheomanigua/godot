@@ -11,7 +11,7 @@ func _ready():
 
 func _on_body_entered(body):
 	if body is Player:
-		player_detected.emit()
+		player_detected.emit(body)
 		
 
 func _on_body_exited(body):

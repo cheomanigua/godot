@@ -29,7 +29,6 @@ const BULLET = preload("res://Projectile/Bullet/bullet.tscn")
 
 
 func _ready() -> void:
-	print(fuel_consumption)
 	for key in attributes:
 		attributes[key] = top[key]
 		stats.text += ("%s: %d\n" % [key, attributes[key]])

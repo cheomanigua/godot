@@ -24,7 +24,6 @@ color = Color(0, 0.392157, 0, 1)
 polygon = PackedVector2Array(-49, -10, 48, -10, 48, 10, -49, 10)
 
 [node name="Player" parent="World2D" instance=ExtResource("1_2c0bl")]
-unique_name_in_owner = true
 position = Vector2(683, 566)
 script = ExtResource("2_4a7vx")
 
@@ -53,7 +52,7 @@ polygon = PackedVector2Array(131, -285, 330, -288, 328, -69, 178, 62, 243, 286, 
 
 [node name="Turret" parent="World2D/Turrets" instance=ExtResource("3_typj3")]
 position = Vector2(703, 503)
-rotation = -1.5708
+cannon_rotation = -45.0
 
 [node name="Item" type="Node" parent="World2D"]
 

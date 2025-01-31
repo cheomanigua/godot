@@ -16,26 +16,27 @@ script = ExtResource("1_qdpq5")
 
 [node name="Radar" type="Area2D" parent="."]
 unique_name_in_owner = true
-visible = false
 script = ExtResource("2_8s6y3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Radar"]
 shape = SubResource("CircleShape2D_cl0cl")
 
-[node name="Cannon" type="Sprite2D" parent="."]
+[node name="CannonPivot" type="Marker2D" parent="."]
+
+[node name="Cannon" type="Sprite2D" parent="CannonPivot"]
 unique_name_in_owner = true
 position = Vector2(14.985, 0)
 texture = ExtResource("2_bcfvl")
 
-[node name="Muzzle" type="Marker2D" parent="Cannon"]
+[node name="Muzzle" type="Marker2D" parent="CannonPivot/Cannon"]
 unique_name_in_owner = true
 position = Vector2(16.675, 0)
 
-[node name="ShootAt" type="Marker2D" parent="Cannon"]
+[node name="ShootAt" type="Marker2D" parent="CannonPivot/Cannon"]
 unique_name_in_owner = true
 position = Vector2(17.42, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="CannonPivot"]
 texture = ExtResource("3_ylcsl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

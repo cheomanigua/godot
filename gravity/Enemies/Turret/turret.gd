@@ -1,6 +1,7 @@
 extends StaticBody2D
 
 @export var health: int = 5
+@export var cannon_rotation: float = 0
 
 const BULLET = preload("res://Projectile/Bullet/bullet.tscn")
 var detected: bool = false
@@ -8,19 +9,20 @@ var locked: bool = false
 var elapse: float = 5.0
 var direction: float
 var timer = Timer.new()
+var player: RigidBody2D
 
 @onready var radar: Area2D = %Radar
 @onready var cannon: Sprite2D = %Cannon
+@onready var cannon_pivot: Marker2D = $CannonPivot
 @onready var muzzle: Marker2D = %Muzzle
 @onready var shoot_at: Marker2D = %ShootAt
-@onready var player: Player = %Player
-@onready var base: StaticBody2D = %Base
 
 
 func _ready():
-	timer.wait_time = 1
 	add_child(timer)
-	direction = rotation
+	timer.wait_time = 1
+	cannon_pivot.rotation = deg_to_rad(cannon_rotation)
+	direction = cannon_pivot.rotation
 	radar.player_detected.connect(_on_player_detected)
 	radar.player_lost.connect(_on_player_lost)
 
@@ -28,19 +30,20 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	if detected:
 		# Store current angle between the player position and the turret position
-		var angle: float = (player.global_position - global_position).angle()
+		var angle: float = (player.position - position).angle()
 		# Calculate if the player is located within the field of view of the turret.
 		# The field of view of the turret is 90º to the left and 90º degrees to the right
 		# of the direcction the turret is facing.
 		if angle_difference(direction, angle) < PI/2 and angle_difference(direction, angle) > -PI/2:
 			locked = true
-			# Rotate the turret towards the player (stored angle)
-			rotation = lerp_angle(rotation, angle, elapse * delta)
+			# Rotate the cannon towards the player (stored angle)
+			cannon_pivot.rotation = lerp_angle(cannon_pivot.rotation, angle, elapse * delta)
 		else:
 			locked = false
 
 
-func _on_player_detected():
+func _on_player_detected(body):
+	player = body
 	detected = !detected
 	timer.start()
 	timer.timeout.connect(_shoot)
