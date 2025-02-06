@@ -8,7 +8,7 @@ radial_velocity_min = -2.23517e-05
 radial_velocity_max = 100.0
 gravity = Vector3(0, 98, 0)
 
-[node name="Player" type="RigidBody2D"]
+[node name="Player" type="RigidBody2D" groups=["Player"]]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-16, 16, 0, -16, 16, 16, 0, 13)

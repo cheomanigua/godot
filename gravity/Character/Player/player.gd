@@ -40,27 +40,28 @@ func _ready() -> void:
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_select"):	# SPACE
 		_shoot()
-	if event.is_action_pressed("switch_mode"):	# E
+	if event.is_action_pressed("ui_cancel"):	# ESC
 		_switch_mode()
 
 
 func _switch_mode():
 	is_mode_switched = !is_mode_switched
 	if is_mode_switched:
-		print("Landing mode")
 		thrust = Vector2(0, -250)
 		fuel_consumption = thrust.y / max_thrust.y * max_thrust_consumption_value
 		torque = 3000
-		print(fuel_consumption)
+		print("Landing mode")
+		print("Fuel consumption: ", fuel_consumption)
 	else:
-		print("Agile mode")
 		thrust = Vector2(0, max_thrust.y)
 		fuel_consumption = thrust.y / max_thrust.y * max_thrust_consumption_value
 		torque = 10000
-		print(fuel_consumption)
+		print("Agile mode")
+		print("Fuel consumption: ", fuel_consumption)
 
 
 func _integrate_forces(state):
+	# Thrust
 	if Input.is_action_pressed("ui_up"):
 		attributes.fuel -= fuel_consumption
 		attributes.fuel = clamp(attributes.fuel, 0, top.fuel)
@@ -68,18 +69,15 @@ func _integrate_forces(state):
 		_update_gui()
 		state.apply_force(thrust.rotated(rotation))
 		if attributes.fuel <= 0:
-			thrust = Vector2(0, 0)
+			thrust = Vector2.ZERO
 			trace.emitting = false
 			Signals.news.emit("Fuel depleted!")
 	else:
 		trace.emitting = false
-	#state.apply_force(Vector2())
-	var rotation_direction = 0
-	if Input.is_action_pressed("ui_right"):
-		rotation_direction += 1
-	if Input.is_action_pressed("ui_left"):
-		rotation_direction -= 1
-		
+
+	# Rotation
+	var rotation_direction = Input.get_axis("ui_left", "ui_right")
+
 	state.apply_torque(rotation_direction * torque)
 
 
@@ -89,6 +87,7 @@ func _shoot():
 		get_parent().add_child(new_bullet)
 		new_bullet.global_position = muzzle.global_position
 		new_bullet.look_at(shoot_at.global_position)
+		#new_bullet.transform = transform * Transform2D(rotation, Vector2(5, 0))
 		attributes.ammo -= 1
 		attributes.ammo = clamp(attributes.ammo, 0, top.ammo)
 		_update_gui()
@@ -119,4 +118,3 @@ func _update_gui():
 			stats.text += ("%s: %0.2f\n" % [key, attributes[key]])
 		else:
 			stats.text += ("%s: %d\n" % [key, attributes[key]])
-			
