@@ -51,7 +51,7 @@ polygon = PackedVector2Array(131, -285, 330, -288, 328, -69, 178, 62, 243, 286, 
 [node name="Turrets" type="Node" parent="World2D"]
 
 [node name="Turret" parent="World2D/Turrets" groups=["Player"] instance=ExtResource("3_typj3")]
-position = Vector2(741, 183)
+position = Vector2(804, 446)
 cannon_rotation = -90.0
 munition_type = 1
 
