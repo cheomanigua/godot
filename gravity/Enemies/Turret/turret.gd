@@ -11,7 +11,6 @@ var can_shoot: bool = true
 var elapse: float = 5.0
 var player: RigidBody2D
 
-
 @onready var timer: Timer = Timer.new()
 @onready var radar: Area2D = %Radar
 @onready var cannon: Sprite2D = %Cannon
@@ -30,29 +29,34 @@ func _ready():
 
 
 func _physics_process(delta: float) -> void:
+	print(timer.is_stopped())
 	if detected:
 		var target: Vector2 = position.direction_to(player.position)
 		var facing = Vector2(cos(cannon_pivot.rotation), sin(cannon_pivot.rotation))
 		var fov = target.dot(facing) # field of view
 		cannon_pivot.raycast.target_position = Vector2(cos(rotation), sin(rotation)) + Vector2(350, 0)
-
 		if fov > 0:
 			cannon_pivot.rotation = lerp_angle(cannon_pivot.rotation, target.angle(), elapse * delta)
-			await get_tree().create_timer(1.5).timeout
+			await get_tree().create_timer(0.5).timeout
 			cannon_pivot.look_at(player.position)
 			queue_redraw()
-
-			if cannon_pivot.raycast.is_colliding():
-				var collider = cannon_pivot.raycast.get_collider()
-				if collider != player:
-					timer.set_paused(true)
-				else:
-					timer.set_paused(false)
-					if can_shoot:
-						_shoot()
-						can_shoot = false
-						timer.start()
-
+			if can_shoot:
+				if cannon_pivot.raycast.is_colliding():
+					var collider = cannon_pivot.raycast.get_collider()
+					if collider != player:
+						timer.stop()
+						can_shoot = true
+					else:
+						if can_shoot:
+							_shoot()
+							can_shoot = false
+							timer.start()
+		else:
+			timer.stop()
+			can_shoot = true
+	else:
+		timer.stop()
+		can_shoot = true
 
 func _draw() -> void:
 	draw_line(cannon_pivot.raycast.position, cannon_pivot.raycast.target_position, Color.GREEN, 1.0)
