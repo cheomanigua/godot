@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_screen_exited() -> void:
-	await get_tree().create_timer(5.0).timeout
+	await get_tree().create_timer(3.0).timeout
 	queue_free()
 
 

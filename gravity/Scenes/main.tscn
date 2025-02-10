@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxqa16s287mlp"]
+[gd_scene load_steps=8 format=3 uid="uid://dxqa16s287mlp"]
 
 [ext_resource type="PackedScene" uid="uid://jved2ob5irk2" path="res://Character/Player/player.tscn" id="1_2c0bl"]
 [ext_resource type="Script" path="res://Character/Player/player.gd" id="2_4a7vx"]
 [ext_resource type="PackedScene" uid="uid://cbi0l3hw5dgsb" path="res://Enemies/Turret/turret.tscn" id="3_typj3"]
+[ext_resource type="PackedScene" uid="uid://hc7du41rghv1" path="res://Enemies/Donut/donut.tscn" id="6_5gf65"]
 [ext_resource type="Script" path="res://Scripts/events_label.gd" id="6_p0smp"]
 [ext_resource type="PackedScene" uid="uid://bwg5b8u3bket" path="res://Items/Item/Item.tscn" id="8_o23yp"]
 
@@ -51,8 +52,8 @@ polygon = PackedVector2Array(131, -285, 330, -288, 328, -69, 178, 62, 243, 286, 
 [node name="Turrets" type="Node" parent="World2D"]
 
 [node name="Turret" parent="World2D/Turrets" groups=["Player"] instance=ExtResource("3_typj3")]
-position = Vector2(829, 551)
-cannon_rotation = -90.0
+position = Vector2(937, 45)
+cannon_rotation = 90.0
 munition_type = 1
 
 [node name="Item" type="Node" parent="World2D"]
@@ -97,3 +98,6 @@ offset_top = 592.0
 offset_right = 206.0
 offset_bottom = 615.0
 script = ExtResource("6_p0smp")
+
+[node name="Donut" parent="." instance=ExtResource("6_5gf65")]
+position = Vector2(368, 49)
