@@ -17,6 +17,7 @@ var movement: Vector2
 
 func _ready():
 	add_child(raycast)
+	raycast.target_position = Vector2(350, 0)
 	add_child(timer)
 	timer.timeout.connect(_on_timer_timeout)
 	timer.wait_time = reload_time
@@ -25,12 +26,12 @@ func _ready():
 
 
 func _physics_process(delta: float) -> void:
-	#queue_redraw()
+	queue_redraw()
 	if detected:
 		var target: Vector2 = position.direction_to(player.position)
 		var facing = transform.x
 		var fov = target.dot(facing) # field of view
-		raycast.target_position = Vector2(350, 0)
+		
 		if fov > 0:
 			rotation = lerp_angle(rotation, target.angle(), elapsed * delta)
 			if can_shoot:
@@ -52,9 +53,9 @@ func _physics_process(delta: float) -> void:
 		can_shoot = true
 
 
-#func _draw() -> void:
-	#draw_line(raycast.position, raycast.target_position, Color.GREEN, 1.0)
-	#draw_circle(Vector2(raycast.target_position), 8.0, Color.SKY_BLUE, false, -1.0, false)
+func _draw() -> void:
+	draw_line(raycast.position, raycast.target_position, Color.GREEN, 1.0)
+	draw_circle(Vector2(raycast.target_position), 8.0, Color.SKY_BLUE, false, -1.0, false)
 
 
 func _on_player_detected(body):
@@ -77,6 +78,7 @@ func _on_timer_timeout() -> void:
 
 func _shoot():
 	var new_bullet: Bullet = Bullet.create_bullet(munition_type)
-	new_bullet.rotation = rotation
-	new_bullet.position = position
+	new_bullet.transform = Transform2D(rotation, position)
+	#new_bullet.rotation = rotation
+	#new_bullet.position = position
 	get_parent().add_child(new_bullet)

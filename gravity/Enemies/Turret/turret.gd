@@ -11,12 +11,10 @@ var can_shoot: bool = true
 var elapsed: float = 10.0
 var player: RigidBody2D
 
-
 @onready var timer: Timer = Timer.new()
 @onready var radar: Area2D = %Radar
 @onready var cannon: Sprite2D = %Cannon
 @onready var giro: Marker2D = %Giro
-@onready var raycast: RayCast2D = %RayCast2D
 
 
 func _ready():
@@ -29,17 +27,15 @@ func _ready():
 
 
 func _physics_process(delta: float) -> void:
-	#queue_redraw()
 	if detected:
 		var target: Vector2 = position.direction_to(player.position)
 		var facing = giro.transform.x
 		var fov = target.dot(facing) # field of view
-		raycast.target_position = Vector2(350, 0)
 		if fov > 0:
 			giro.rotation = lerp_angle(giro.rotation, target.angle(), elapsed * delta)
 			if can_shoot:
-				if raycast.is_colliding():
-					var collider = raycast.get_collider()
+				if giro.raycast.is_colliding():
+					var collider = giro.raycast.get_collider()
 					if collider != player:
 						timer.stop()
 						can_shoot = true
@@ -56,20 +52,16 @@ func _physics_process(delta: float) -> void:
 		can_shoot = true
 
 
-#func _draw() -> void:
-	#draw_line(raycast.position, raycast.target_position, Color.GREEN, 1.0)
-
-
 func _on_player_detected(body):
 	player = body
 	detected = !detected
-	raycast.enabled = true
+	giro.raycast.enabled = true
 	#timer.start()
 
 
 func _on_player_lost():
 	detected = !detected
-	raycast.enabled = false
+	giro.raycast.enabled = false
 	#timer.stop()
 
 
