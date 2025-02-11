@@ -4,7 +4,6 @@ enum munition { LOW_DAMAGE, MEDIUM_DAMAGE, HIGH_DAMAGE }
 @export var munition_type: munition = munition.LOW_DAMAGE
 @export var reload_time: float = 1.0
 
-var ray_length: float = 350
 var detected: bool = false
 var can_shoot: bool = true
 var elapsed: float = 10.0
@@ -21,18 +20,17 @@ func _ready():
 	add_child(timer)
 	timer.timeout.connect(_on_timer_timeout)
 	timer.wait_time = reload_time
-	rotation = deg_to_rad(rotation)
 	radar.player_detected.connect(_on_player_detected)
 	radar.player_lost.connect(_on_player_lost)
 
 
 func _physics_process(delta: float) -> void:
-	queue_redraw()
+	#queue_redraw()
 	if detected:
 		var target: Vector2 = position.direction_to(player.position)
 		var facing = transform.x
 		var fov = target.dot(facing) # field of view
-		raycast.target_position = Vector2(ray_length, 0)
+		raycast.target_position = Vector2(350, 0)
 		if fov > 0:
 			rotation = lerp_angle(rotation, target.angle(), elapsed * delta)
 			if can_shoot:
@@ -54,9 +52,9 @@ func _physics_process(delta: float) -> void:
 		can_shoot = true
 
 
-func _draw() -> void:
-	draw_line(raycast.position, raycast.target_position, Color.GREEN, 1.0)
-	draw_circle(Vector2(ray_length, 0), 8.0, Color.SKY_BLUE, false, -1.0, false)
+#func _draw() -> void:
+	#draw_line(raycast.position, raycast.target_position, Color.GREEN, 1.0)
+	#draw_circle(Vector2(raycast.target_position), 8.0, Color.SKY_BLUE, false, -1.0, false)
 
 
 func _on_player_detected(body):

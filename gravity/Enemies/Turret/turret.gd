@@ -1,27 +1,27 @@
 extends StaticBody2D
 
 @export var health: int = 5
-@export var cannon_rotation: float = 0
 enum munition { LOW_DAMAGE, MEDIUM_DAMAGE, HIGH_DAMAGE }
 @export var munition_type: munition = munition.LOW_DAMAGE
 @export var reload_time: float = 1.0
+@export var cannon_rotation: float = 0
 
 var detected: bool = false
 var can_shoot: bool = true
-var elapse: float = 10.0
+var elapsed: float = 10.0
 var player: RigidBody2D
 
-@onready var raycast: RayCast2D = RayCast2D.new()
+
 @onready var timer: Timer = Timer.new()
 @onready var radar: Area2D = %Radar
 @onready var cannon: Sprite2D = %Cannon
-@onready var muzzle: Marker2D = %Muzzle
-@onready var shoot_at: Marker2D = %ShootAt
+@onready var giro: Marker2D = %Giro
+@onready var raycast: RayCast2D = %RayCast2D
 
 
 func _ready():
-	add_child(raycast)
 	add_child(timer)
+	giro.rotation = deg_to_rad(cannon_rotation)
 	timer.timeout.connect(_on_timer_timeout)
 	timer.wait_time = reload_time
 	radar.player_detected.connect(_on_player_detected)
@@ -29,14 +29,14 @@ func _ready():
 
 
 func _physics_process(delta: float) -> void:
+	#queue_redraw()
 	if detected:
-		queue_redraw()
 		var target: Vector2 = position.direction_to(player.position)
-		var facing = transform.x
+		var facing = giro.transform.x
 		var fov = target.dot(facing) # field of view
-		raycast.target_position = transform.x + Vector2(350, 0)
+		raycast.target_position = Vector2(350, 0)
 		if fov > 0:
-			rotation = lerp_angle(rotation, target.angle(), elapse * delta)
+			giro.rotation = lerp_angle(giro.rotation, target.angle(), elapsed * delta)
 			if can_shoot:
 				if raycast.is_colliding():
 					var collider = raycast.get_collider()
@@ -56,8 +56,8 @@ func _physics_process(delta: float) -> void:
 		can_shoot = true
 
 
-func _draw() -> void:
-	draw_line(raycast.position, raycast.target_position, Color.GREEN, 1.0)
+#func _draw() -> void:
+	#draw_line(raycast.position, raycast.target_position, Color.GREEN, 1.0)
 
 
 func _on_player_detected(body):
@@ -83,14 +83,15 @@ func _shoot():
 	tween.tween_property(cannon, "position", Vector2(10, 0), 0.2 * reload_time).as_relative().set_trans(Tween.TRANS_SINE)
 	var new_bullet: Bullet = Bullet.create_bullet(munition_type)
 	get_parent().add_child(new_bullet)
-	#new_bullet.transform = transform * Transform2D(rotation, Vector2(10, 0))
-	new_bullet.global_position = muzzle.global_position
-	new_bullet.look_at(shoot_at.global_position)
+	new_bullet.transform = Transform2D(giro.rotation, position + Vector2(32, 0).rotated(giro.rotation))
+	#new_bullet.position = position + Vector2(32, 0).rotated(giro.rotation)
+	#new_bullet.rotation = giro.rotation
 
 
 func take_damage(damage):
 	var label: Label = Label.new()
 	add_child(label)
+	label.position = Vector2(0, -50) + Vector2(randf_range(-20, 20), 0)
 	label.position = Vector2(-10, -30) + Vector2(randf_range(-20, 20), 0)
 	label.text = "-%d" % [damage]
 	
