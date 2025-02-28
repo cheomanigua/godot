@@ -59,18 +59,17 @@ func _draw() -> void:
 
 
 func _on_player_detected(body):
-	if body is Player:
-		player = body
-		detected = !detected
-		raycast.set_enabled(true)
-		#timer.start()
+	player = body
+	detected = !detected
+	raycast.set_enabled(true)
+	#timer.start()
 
 
-func _on_player_lost(body):
-	if body is Player:
-		detected = !detected
-		raycast.set_enabled(false)
-		#timer.stop()
+func _on_player_lost():
+	detected = !detected
+	raycast.set_enabled(false)
+	#timer.set_paused(true)
+	#timer.stop()
 
 
 func _on_timer_timeout() -> void:

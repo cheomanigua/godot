@@ -16,4 +16,4 @@ func _on_body_entered(body):
 
 func _on_body_exited(body):
 	if body is Player:
-		player_lost.emit(body)
+		player_lost.emit()

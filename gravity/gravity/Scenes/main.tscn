@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://dxqa16s287mlp"]
 
 [ext_resource type="PackedScene" uid="uid://jved2ob5irk2" path="res://Character/Player/player.tscn" id="1_2c0bl"]
-[ext_resource type="Script" uid="uid://hak2ritifx4u" path="res://Character/Player/player.gd" id="2_4a7vx"]
+[ext_resource type="Script" path="res://Character/Player/player.gd" id="2_4a7vx"]
 [ext_resource type="PackedScene" uid="uid://cbi0l3hw5dgsb" path="res://Enemies/Turret/turret.tscn" id="3_typj3"]
 [ext_resource type="PackedScene" uid="uid://hc7du41rghv1" path="res://Enemies/Donut/donut.tscn" id="6_5gf65"]
-[ext_resource type="Script" uid="uid://c1244g7arbh2i" path="res://Scripts/events_label.gd" id="6_p0smp"]
+[ext_resource type="Script" path="res://Scripts/events_label.gd" id="6_p0smp"]
 [ext_resource type="PackedScene" uid="uid://bwg5b8u3bket" path="res://Items/Item/Item.tscn" id="8_o23yp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3yx7"]
@@ -23,6 +23,10 @@ shape = SubResource("RectangleShape2D_e3yx7")
 [node name="Polygon2D" type="Polygon2D" parent="World2D/StaticBody2D"]
 color = Color(0, 0.392157, 0, 1)
 polygon = PackedVector2Array(-49, -10, 48, -10, 48, 10, -49, 10)
+
+[node name="Player" parent="World2D" instance=ExtResource("1_2c0bl")]
+position = Vector2(683, 566)
+script = ExtResource("2_4a7vx")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="World2D"]
 position = Vector2(299, 413)
@@ -45,14 +49,10 @@ polygon = PackedVector2Array(131, -285, 330, -288, 328, -69, 178, 62, 243, 286, 
 position = Vector2(12, -22)
 polygon = PackedVector2Array(131, -285, 330, -288, 328, -69, 178, 62, 243, 286, 99, 564, -89, 654, -430, 703, -565, 815, -776, 1116, -764, 1257, -571, 1315, -425, 1466, -485, 1575, -164, 1647, -71, 1498, -116, 1341, -86, 1205, -372, 1197, -364, 1117, 2, 1118, 82, 1269, 51, 1429, 111, 1556, 397, 1635, 327, 2003, 120, 2285, 194, 2383, 410, 2409, 468, 2890, 800, 2786, 921, 3002, 1276, 2988, 1408, 2270, 1614, 2334, 1862, 1961, 1807, 1788, 1679, 1658, 1697, 1368, 1508, 1390, 1437, 1802, 1504, 1968, 1350, 1930, 1250, 1744, 1312, 1484, 1123, 1291, 979, 1790, 1242, 2122, 1259, 2350, 1038, 2418, 1006, 2158, 935, 1992, 786, 1767, 822, 1309, 955, 1145, 827, 1022, 610, 1140, 279, 923, 338, 810, 598, 937, 782, 835, 704, 605, 829, 597, 927, 760, 1131, 756, 1127, 1016, 1303, 1152, 1455, 1085, 1496, 474, 1280, 465, 1116, 385, 1065, 137, 1154, -76, 1222, -204, 1128, -285, 786, -433, 689, -569, 685, -856, 834, -942, 962, -1017, 1325, -814, 1415, -859, 1527, -1093, 1536, -1254, 1289, -1389, 944, -1371, 625, -1479, 616, -1650, 414, -1847, -228, -1829, -278, -2081, -98, -2592, 2088, -2592, 2170, 3302, -1396, 3289, -1423, -2658, -548, -2631, -885, -2446, -1154, -2174, -1098, -1963, -676, -2292, -500, -2164, -692, -1870, -722, -1643, -540, -1547, -343, -1579, 117, -1600, 338, -1509, 370, -1331, 597, -1284, 472, -1106, 20, -1101, -329, -1069, -473, -1355, -917, -1381, -919, -1000, -572, -773, -157, -832, 34, -681, -719, -444, -869, -337, -887, -25, -513, 10, -527, -204, -190, -363, -42, -198, -338, 100, -837, 287, -815, 592, -316, 570, -196, 290, -140, 55, 142, -171)
 
-[node name="Player" parent="World2D" instance=ExtResource("1_2c0bl")]
-position = Vector2(683, 566)
-script = ExtResource("2_4a7vx")
-
 [node name="Turrets" type="Node" parent="World2D"]
 
 [node name="Turret" parent="World2D/Turrets" instance=ExtResource("3_typj3")]
-position = Vector2(821, 524)
+position = Vector2(929, 145)
 cannon_rotation = -90.0
 
 [node name="Item" type="Node" parent="World2D"]
@@ -99,5 +99,4 @@ offset_bottom = 615.0
 script = ExtResource("6_p0smp")
 
 [node name="Donut" parent="." instance=ExtResource("6_5gf65")]
-position = Vector2(499, 553)
-munitionType = 1
+position = Vector2(368, 49)
