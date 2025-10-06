@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://jved2ob5irk2"]
+[gd_scene load_steps=4 format=3 uid="uid://jved2ob5irk2"]
 
-[ext_resource type="Texture2D" uid="uid://b25i1qsvj33a3" path="res://Character/Player/player.png" id="1_yh8f8"]
+[ext_resource type="Script" uid="uid://d2taxer82gxfw" path="res://Character/Player/Player.cs" id="1_vnk41"]
+[ext_resource type="Texture2D" uid="uid://q4o3ws2lej25" path="res://Character/Player/player.png" id="1_yh8f8"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_daiho"]
 flatness = 1.0
@@ -9,6 +10,7 @@ radial_velocity_max = 100.0
 gravity = Vector3(0, 98, 0)
 
 [node name="Player" type="RigidBody2D" groups=["Player"]]
+script = ExtResource("1_vnk41")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-16, 16, 0, -16, 16, 16, 0, 13)

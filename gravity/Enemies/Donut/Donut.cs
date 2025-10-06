@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Godot;
 
 public partial class Donut : Area2D
@@ -21,10 +22,13 @@ public partial class Donut : Area2D
     {
         AddChild(raycast);
         raycast.TargetPosition = new Vector2(350, 0);
+        
         AddChild(timer);
         timer.Timeout += OnTimerTimout;
         timer.Start(reloadTime);
-        Area2D radar = GetNode<Area2D>("Radar");
+
+        var radar = GetNode<Area2D>("%Radar");
+
         radar.Connect("player_detected", Callable.From<Node2D>(OnPlayerDetected));
         radar.Connect("player_lost", Callable.From<Node2D>(OnPlayerLost));
     }
@@ -33,7 +37,6 @@ public partial class Donut : Area2D
     {
         if (detected)
         {
-            GD.Print("Detected");
             Vector2 target = Position.DirectionTo(player.Position);
             var facing = Transform.X;
             var fov = target.Dot(facing);
@@ -70,31 +73,31 @@ public partial class Donut : Area2D
             }
         }
         else
-
         {
             timer.Stop();
             canShoot = true;
         }
+
+        QueueRedraw();
+    }
+
+    public override void _Draw()
+    {
+        DrawLine(raycast.Position, raycast.TargetPosition, Colors.Green, 1.0f);
+        DrawCircle(raycast.TargetPosition, 8.0f, Colors.SkyBlue, false);
     }
 
     private void OnPlayerDetected(Node2D body)
     {
-        if (body.Name == "Player")
-        {
-            player = body;
-            detected = !detected;
-            raycast.Enabled = true;
-        }
-
+        player = body;
+        detected = true;
+        raycast.Enabled = true;
     }
 
     public void OnPlayerLost(Node2D body)
     {
-        if (body.Name == "Player")
-        {
-            detected = !detected;
-            raycast.Enabled = false;
-        }
+        detected = false;
+        raycast.Enabled = false;
     }
 
     public void OnTimerTimout()
@@ -104,8 +107,8 @@ public partial class Donut : Area2D
 
     public void Shoot()
     {
-        Area2D new_bullet = (Area2D)bulletScene.Instantiate();
-        new_bullet.Set("transform", new Transform2D(Rotation, Position));
+        var new_bullet = (Area2D)bulletScene.Instantiate();
+        new_bullet.Transform = new Transform2D(Rotation, Position);
         new_bullet.Set("munition_index", (int)munitionType);
         GetParent().AddChild(new_bullet);
 

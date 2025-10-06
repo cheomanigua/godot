@@ -22,10 +22,8 @@ func _ready():
 	giro.rotation = deg_to_rad(cannon_rotation)
 	timer.timeout.connect(_on_timer_timeout)
 	timer.wait_time = reload_time
-	#radar.player_detected.connect(_on_player_detected)
-	#radar.player_lost.connect(_on_player_lost)
-	radar.body_entered.connect(_on_player_detected)
-	radar.body_exited.connect(_on_player_lost)
+	radar.player_detected.connect(_on_player_detected)
+	radar.player_lost.connect(_on_player_lost)
 
 
 func _physics_process(delta: float) -> void:
@@ -55,16 +53,14 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_player_detected(body):
-	if body is Player:
+		detected = true
 		player = body
-		detected = !detected
 		giro.raycast.enabled = true
 		#timer.start()
 
 
-func _on_player_lost(body):
-	if body is Player:
-		detected = !detected
+func _on_player_lost(_body):
+		detected = false
 		giro.raycast.enabled = false
 		#timer.stop()
 

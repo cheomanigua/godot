@@ -10,10 +10,10 @@ func _ready():
 
 
 func _on_body_entered(body):
-	if body is Player:
+	if body.name == "Player":
 		player_detected.emit(body)
 		
 
 func _on_body_exited(body):
-	if body is Player:
+	if body.name == "Player":
 		player_lost.emit(body)
