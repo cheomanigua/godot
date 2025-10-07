@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://jved2ob5irk2" path="res://Character/Player/player.tscn" id="1_2c0bl"]
 [ext_resource type="PackedScene" uid="uid://cbi0l3hw5dgsb" path="res://Enemies/Turret/turret.tscn" id="3_typj3"]
-[ext_resource type="Script" uid="uid://c1244g7arbh2i" path="res://Scripts/events_label.gd" id="6_p0smp"]
+[ext_resource type="Script" uid="uid://bci4pvy3xx4m6" path="res://Scripts/EventsLabel.cs" id="4_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://bwg5b8u3bket" path="res://Items/Item/Item.tscn" id="8_o23yp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3yx7"]
@@ -50,6 +50,7 @@ polygon = PackedVector2Array(131, -285, 330, -288, 328, -69, 178, 62, 243, 286, 
 
 [node name="Turret" parent="World2D/Turrets" instance=ExtResource("3_typj3")]
 position = Vector2(845, 530)
+Health = 5
 cannonRotation = -90.0
 
 [node name="Donuts" type="Node" parent="World2D"]
@@ -95,4 +96,4 @@ offset_left = 101.0
 offset_top = 592.0
 offset_right = 206.0
 offset_bottom = 615.0
-script = ExtResource("6_p0smp")
+script = ExtResource("4_jjvhh")

@@ -3,7 +3,7 @@ extends Area2D
 const BULLET: PackedScene = preload("res://Projectile/Bullet/bullet.tscn")
 enum munition_type { LOW_DAMAGE = 1, MEDIUM_DAMAGE, HIGH_DAMAGE }
 var munition_index: int = 0
-var speed:float = 500
+var speed:float = 500  
 var damage: int = 1
 
 @onready var vosn2d: VisibleOnScreenNotifier2D = %VisibleOnScreenNotifier2D

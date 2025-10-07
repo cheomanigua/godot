@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 	if detected:
 		var target: Vector2 = position.direction_to(player.position)
 		var facing = giro.transform.x
-		var fov = target.dot(facing) # field of view. Remove fov if you want full 360 rotation
+		var fov = target.dot(facing) # field of view
 		if fov > 0:
 			giro.rotation = lerp_angle(giro.rotation, target.angle(), elapsed * delta)
 			if can_shoot:

@@ -98,7 +98,7 @@ public partial class Player : RigidBody2D
             {
                 _thrust = Vector2.Zero;
                 _trace.Emitting = false;
-                Debug.Print("Fuel depleted"); // IMPLEMENT SIGNAL INSTEAD
+                EventManager.BroadcastMessage("Fuel depleted!");
             }
         }
         else {
@@ -121,7 +121,7 @@ public partial class Player : RigidBody2D
             UpdateGUI();
         }
         else {
-            Debug.Print("Ammo depleted!"); // IMPLEMENT SIGNAL INSTEAD
+            EventManager.BroadcastMessage("Ammo depleted!");
         }
     }
 
@@ -133,14 +133,14 @@ public partial class Player : RigidBody2D
             _thrust = new Vector2(0, -250);
             _fuelConsumption = _thrust.Y / _maxThrust.Y * _maxThrustConsumptionValue;
             _torque = 3000;
-            Debug.Print("Landing mode");
+            EventManager.BroadcastMessage("Landing Mode");
             Debug.Print($"Fuel consumption: {_fuelConsumption}");
         }
         else {
             _thrust = new Vector2(0, _maxThrust.Y);
             _fuelConsumption = _thrust.Y / _maxThrust.Y * _maxThrustConsumptionValue;
             _torque = 10000;
-            Debug.Print("Agile mode");
+            EventManager.BroadcastMessage("Agile Mode");
             Debug.Print($"Fuel consumption: {_fuelConsumption}");
         }
     }
@@ -151,11 +151,11 @@ public partial class Player : RigidBody2D
         UpdateGUI();
         if (Health == 2)
         {
-            Debug.Print("Damage critical!"); // IMPLEMENT SIGNAL INSTEAD
+            EventManager.BroadcastMessage("Damage Critical!");
         }
         if (Health == 0)
         {
-            Debug.Print("You died!"); // IMPLEMENT SIGNAL INSTEAD
+            EventManager.BroadcastMessage("You died!");
         }
     }
 

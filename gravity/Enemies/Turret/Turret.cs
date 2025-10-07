@@ -1,7 +1,5 @@
-using Godot;
 using System;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
+using Godot;
 
 public partial class Turret : StaticBody2D
 {
@@ -9,24 +7,25 @@ public partial class Turret : StaticBody2D
     public GDScript bulletGDScript = GD.Load<GDScript>("res://Projectile/Bullet/bullet.gd");
 
     enum Munition { LOW_DAMAGE, MEDIUM_DAMAGE, HIGH_DAMAGE }
-    [Export]Munition munitionType = Munition.LOW_DAMAGE;
-    [Export]float reloadTime = 1f;
+    [Export] Munition munitionType = Munition.LOW_DAMAGE;
+    [Export] int Health = 0;
+    [Export] float reloadTime = 1f;
     [Export] float cannonRotation = 0f;
 
-    bool detected = false;
-    bool canShoot = true;
-    float elapsed = 10f;
-    Node2D player;
-    private Timer timer = new();
+    private bool _detected = false;
+    private bool _canShoot = true;
+    private float _elapsed = 10f;
+    private Node2D _player;
+    private Timer _timer = new();
     private Sprite2D _cannon;
     private Marker2D _giro;
     private RayCast2D _raycast;
 
     public override void _Ready()
     {
-        AddChild(timer);
-        timer.Timeout += OnTimerTimeout;
-        timer.Start(reloadTime);
+        AddChild(_timer);
+        _timer.Timeout += OnTimerTimeout;
+        _timer.Start(reloadTime);
 
         var radar = GetNode<Area2D>("%Radar");
 
@@ -41,32 +40,32 @@ public partial class Turret : StaticBody2D
 
     public override void _PhysicsProcess(double delta)
     {
-        if (detected)
+        if (_detected)
         {
-            Vector2 target = Position.DirectionTo(player.Position);
+            Vector2 target = Position.DirectionTo(_player.Position);
             var facing = _giro.Transform.X;
-            var fov = target.Dot(facing); // Remove fov if you want full 360 rotation
+            var fov = target.Dot(facing);
 
             if (fov > 0)
             {
-                _giro.Rotation = (float)Mathf.LerpAngle(_giro.Rotation, target.Angle(), elapsed * delta);
-                if (canShoot)
+                _giro.Rotation = (float)Mathf.LerpAngle(_giro.Rotation, target.Angle(), _elapsed * delta);
+                if (_canShoot)
                 {
                     if (_raycast.IsColliding())
                     {
                         var collider = _raycast.GetCollider();
-                        if (collider != player)
+                        if (collider != _player)
                         {
-                            timer.Stop();
-                            canShoot = true;
+                            _timer.Stop();
+                            _canShoot = true;
                         }
                         else
                         {
-                            if (canShoot)
+                            if (_canShoot)
                             {
                                 Shoot();
-                                canShoot = false;
-                                timer.Start();
+                                _canShoot = false;
+                                _timer.Start();
                             }
                         }
                     }
@@ -74,33 +73,33 @@ public partial class Turret : StaticBody2D
             }
             else
             {
-                timer.Stop();
-                canShoot = true;
+                _timer.Stop();
+                _canShoot = true;
             }
         }
         else
         {
-            timer.Stop();
-            canShoot = true;
+            _timer.Stop();
+            _canShoot = true;
         }
     }
 
     private void OnPlayerDetected(Node2D body)
     {
-        player = body;
-        detected = true;
+        _player = body;
+        _detected = true;
         _raycast.Enabled = true;
     }
 
     public void OnPlayerLost(Node2D body)
     {
-        detected = false;
+        _detected = false;
         _raycast.Enabled = false;
     }
 
     public void OnTimerTimeout()
     {
-        canShoot = true;
+        _canShoot = true;
     }
     public void Shoot()
     {
@@ -117,5 +116,23 @@ public partial class Turret : StaticBody2D
         // var new_bullet = (GodotObject)bulletGDScript.New();
         // new_bullet.Call("create_bullet", (int)munitionType, Rotation, Position);
         // GetParent().AddChild((Node)new_bullet);
+    }
+
+    public void take_damage(int damage)
+    {
+        var label = new Label();
+        AddChild(label);
+        label.Position = new Vector2(0, -50) + new Vector2(GD.RandRange(-20, 20), 0);
+        label.Position = new Vector2(-10, -30) + new Vector2(GD.RandRange(-20, 20), 0);
+        label.Text = $"{damage}";
+
+        Tween tween = CreateTween();
+        tween.TweenProperty(label, "position", new Vector2(0, -30), 2.0f).AsRelative().SetEase(Tween.EaseType.InOut);
+        tween.SetParallel();
+        tween.TweenProperty(label, "modulate:a", 0, 2.0f);
+        tween.Connect("finished", Callable.From(() => label.QueueFree()));
+
+        Health -= damage;
+        if (Health <= 0) QueueFree();
     }
 }
