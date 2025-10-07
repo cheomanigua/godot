@@ -12,7 +12,7 @@ func _ready():
 func _on_body_entered(body):
 	if body.name == "Player":
 		player_detected.emit(body)
-		
+
 
 func _on_body_exited(body):
 	if body.name == "Player":

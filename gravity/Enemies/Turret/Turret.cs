@@ -1,7 +1,9 @@
-
 using Godot;
+using System;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
-public partial class Donut : Area2D
+public partial class Turret : StaticBody2D
 {
     public PackedScene bulletScene = (PackedScene)ResourceLoader.Load("res://Projectile/Bullet/bullet.tscn");
     public GDScript bulletGDScript = GD.Load<GDScript>("res://Projectile/Bullet/bullet.gd");
@@ -9,20 +11,19 @@ public partial class Donut : Area2D
     enum Munition { LOW_DAMAGE, MEDIUM_DAMAGE, HIGH_DAMAGE }
     [Export]Munition munitionType = Munition.LOW_DAMAGE;
     [Export]float reloadTime = 1f;
+    [Export] float cannonRotation = 0f;
 
     bool detected = false;
     bool canShoot = true;
     float elapsed = 10f;
     Node2D player;
-    private RayCast2D raycast = new();
     private Timer timer = new();
-  
+    private Sprite2D _cannon;
+    private Marker2D _giro;
+    private RayCast2D _raycast;
 
     public override void _Ready()
     {
-        AddChild(raycast);
-        raycast.TargetPosition = new Vector2(350, 0);
-        
         AddChild(timer);
         timer.Timeout += OnTimerTimeout;
         timer.Start(reloadTime);
@@ -31,6 +32,11 @@ public partial class Donut : Area2D
 
         radar.Connect("player_detected", Callable.From<Node2D>(OnPlayerDetected));
         radar.Connect("player_lost", Callable.From<Node2D>(OnPlayerLost));
+
+        _cannon = GetNode<Sprite2D>("%Cannon");
+
+        _giro = GetNode<Marker2D>("%Giro");
+        _raycast = (RayCast2D)_giro.Call("get_raycast");
     }
 
     public override void _PhysicsProcess(double delta)
@@ -38,17 +44,17 @@ public partial class Donut : Area2D
         if (detected)
         {
             Vector2 target = Position.DirectionTo(player.Position);
-            var facing = Transform.X;
-            var fov = target.Dot(facing);
+            var facing = _giro.Transform.X;
+            var fov = target.Dot(facing); // Remove fov if you want full 360 rotation
 
             if (fov > 0)
             {
-                Rotation = (float)Mathf.LerpAngle(Rotation, target.Angle(), elapsed * delta);
+                _giro.Rotation = (float)Mathf.LerpAngle(_giro.Rotation, target.Angle(), elapsed * delta);
                 if (canShoot)
                 {
-                    if (raycast.IsColliding())
+                    if (_raycast.IsColliding())
                     {
-                        var collider = raycast.GetCollider();
+                        var collider = _raycast.GetCollider();
                         if (collider != player)
                         {
                             timer.Stop();
@@ -77,40 +83,36 @@ public partial class Donut : Area2D
             timer.Stop();
             canShoot = true;
         }
-
-        QueueRedraw();
-    }
-
-    public override void _Draw()
-    {
-        DrawLine(raycast.Position, raycast.TargetPosition, Colors.Green, 1.0f);
-        DrawCircle(raycast.TargetPosition, 8.0f, Colors.SkyBlue, false);
     }
 
     private void OnPlayerDetected(Node2D body)
     {
         player = body;
         detected = true;
-        raycast.Enabled = true;
+        _raycast.Enabled = true;
     }
 
     public void OnPlayerLost(Node2D body)
     {
         detected = false;
-        raycast.Enabled = false;
+        _raycast.Enabled = false;
     }
 
     public void OnTimerTimeout()
     {
         canShoot = true;
     }
-
     public void Shoot()
     {
-        var new_bullet = (Area2D)bulletScene.Instantiate();
-        new_bullet.Transform = new Transform2D(Rotation, Position);
-        new_bullet.Set("munition_index", (int)munitionType);
-        GetParent().AddChild(new_bullet);
+        Tween tween = CreateTween();
+        tween.TweenProperty(_cannon, "position", new Vector2(-10, 0), 0.2f * reloadTime).AsRelative().SetTrans(Tween.TransitionType.Sine);
+        tween.TweenProperty(_cannon, "position", new Vector2(10, 0), 0.2f * reloadTime).AsRelative().SetTrans(Tween.TransitionType.Sine);
+
+
+        var bullet = (Area2D)bulletScene.Instantiate();
+        bullet.Transform = new Transform2D(_giro.Rotation, _giro.GlobalPosition + _giro.Transform.X * 32);
+        bullet.Set("munition_index", (int)munitionType);
+        GetParent().AddChild(bullet);
 
         // var new_bullet = (GodotObject)bulletGDScript.New();
         // new_bullet.Call("create_bullet", (int)munitionType, Rotation, Position);

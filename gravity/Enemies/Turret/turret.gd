@@ -19,18 +19,18 @@ var player: RigidBody2D
 
 func _ready():
 	add_child(timer)
-	giro.rotation = deg_to_rad(cannon_rotation)
 	timer.timeout.connect(_on_timer_timeout)
 	timer.wait_time = reload_time
 	radar.player_detected.connect(_on_player_detected)
 	radar.player_lost.connect(_on_player_lost)
+	giro.rotation = deg_to_rad(cannon_rotation)
 
 
 func _physics_process(delta: float) -> void:
 	if detected:
 		var target: Vector2 = position.direction_to(player.position)
 		var facing = giro.transform.x
-		var fov = target.dot(facing) # field of view
+		var fov = target.dot(facing) # field of view. Remove fov if you want full 360 rotation
 		if fov > 0:
 			giro.rotation = lerp_angle(giro.rotation, target.angle(), elapsed * delta)
 			if can_shoot:

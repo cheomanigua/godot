@@ -52,6 +52,8 @@ public partial class Player : RigidBody2D
         _shootAt = GetNode<Marker2D>("%ShootAt");
         _stats = GetNode<Label>("%Stats");
 
+        UpdateGUI();
+
         // foreach (var key in attributes.Keys)
         // {
         //     if (key == "fuel")
@@ -73,13 +75,13 @@ public partial class Player : RigidBody2D
         }
         if (@event.IsActionPressed("ui_cancel"))
         {
-            SwitchMode();
+            GetTree().Quit();
         }
         if (@event is InputEventKey keyEvent)
         {
-            if (keyEvent.Pressed && keyEvent.Keycode == Key.Escape)
+            if (keyEvent.Pressed && keyEvent.Keycode == Key.Q)
             {
-                GetTree().Quit();
+                SwitchMode();
             }                
         }
     }
@@ -177,5 +179,4 @@ public partial class Player : RigidBody2D
         _stats.Text += $"{nameof(Ammo)}: {Ammo}\n";
         _stats.Text += $"{nameof(Fuel)}: {Fuel}\n";
     }
-
 }
