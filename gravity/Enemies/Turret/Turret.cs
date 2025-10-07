@@ -3,14 +3,14 @@ using Godot;
 
 public partial class Turret : StaticBody2D
 {
-    public PackedScene bulletScene = (PackedScene)ResourceLoader.Load("res://Projectile/Bullet/bullet.tscn");
-    public GDScript bulletGDScript = GD.Load<GDScript>("res://Projectile/Bullet/bullet.gd");
+    public PackedScene BulletScene = (PackedScene)ResourceLoader.Load("res://Projectile/Bullet/bullet.tscn");
+    public GDScript BulletGDScript = GD.Load<GDScript>("res://Projectile/Bullet/bullet.gd");
 
     enum Munition { LOW_DAMAGE, MEDIUM_DAMAGE, HIGH_DAMAGE }
-    [Export] Munition munitionType = Munition.LOW_DAMAGE;
+    [Export] Munition MunitionType = Munition.LOW_DAMAGE;
     [Export] int Health = 0;
-    [Export] float reloadTime = 1f;
-    [Export] float cannonRotation = 0f;
+    [Export] float ReloadTime = 1f;
+    [Export] float CannonRotation = 0f;
 
     private bool _detected = false;
     private bool _canShoot = true;
@@ -25,17 +25,18 @@ public partial class Turret : StaticBody2D
     {
         AddChild(_timer);
         _timer.Timeout += OnTimerTimeout;
-        _timer.Start(reloadTime);
+        _timer.Start(ReloadTime);
 
         var radar = GetNode<Area2D>("%Radar");
-
         radar.Connect("player_detected", Callable.From<Node2D>(OnPlayerDetected));
         radar.Connect("player_lost", Callable.From<Node2D>(OnPlayerLost));
 
         _cannon = GetNode<Sprite2D>("%Cannon");
 
         _giro = GetNode<Giro>("%Giro");
-        _raycast = _giro.GetRaycast();
+        _giro.Rotation = Mathf.DegToRad(CannonRotation);
+
+        _raycast = _giro.Raycast;
         //_raycast = (RayCast2D)_giro.Call("get_raycast"); //if using Giro node type
     }
 
@@ -105,17 +106,17 @@ public partial class Turret : StaticBody2D
     public void Shoot()
     {
         Tween tween = CreateTween();
-        tween.TweenProperty(_cannon, "position", new Vector2(-10, 0), 0.2f * reloadTime).AsRelative().SetTrans(Tween.TransitionType.Sine);
-        tween.TweenProperty(_cannon, "position", new Vector2(10, 0), 0.2f * reloadTime).AsRelative().SetTrans(Tween.TransitionType.Sine);
+        tween.TweenProperty(_cannon, "position", new Vector2(-10, 0), 0.2f * ReloadTime).AsRelative().SetTrans(Tween.TransitionType.Sine);
+        tween.TweenProperty(_cannon, "position", new Vector2(10, 0), 0.2f * ReloadTime).AsRelative().SetTrans(Tween.TransitionType.Sine);
 
 
-        var bullet = (Area2D)bulletScene.Instantiate();
+        var bullet = (Area2D)BulletScene.Instantiate();
         bullet.Transform = new Transform2D(_giro.Rotation, _giro.GlobalPosition + _giro.Transform.X * 32);
-        bullet.Set("munition_index", (int)munitionType);
+        bullet.Set("munition_index", (int)MunitionType);
         GetParent().AddChild(bullet);
 
-        // var new_bullet = (GodotObject)bulletGDScript.New();
-        // new_bullet.Call("create_bullet", (int)munitionType, Rotation, Position);
+        // var new_bullet = (GodotObject)BulletGDScript.New();
+        // new_bullet.Call("create_bullet", (int)MunitionType, Rotation, Position);
         // GetParent().AddChild((Node)new_bullet);
     }
 

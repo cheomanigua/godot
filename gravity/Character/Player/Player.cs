@@ -1,17 +1,30 @@
 using Godot;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
 public partial class Player : RigidBody2D
 {
-    public PackedScene bulletScene = (PackedScene)ResourceLoader.Load("res://Projectile/Bullet/bullet.tscn");
+    public PackedScene BulletScene = (PackedScene)ResourceLoader.Load("res://Projectile/Bullet/bullet.tscn");
+    private int _health = 10;
 
-    private int _health;
-    public int Health { get; set; } = 10;
-    private int _ammo;
-    public int Ammo { get; set; } = 20;
-    private float _fuel;
-    public float Fuel { get; set; } = 20.0f;
+    public int Health
+    {
+        get => _health;
+        set => _health = Mathf.Clamp(value, 0, 20);
+    }
+    private int _ammo = 10;
+    public int Ammo
+    {
+        get => _ammo;
+        set => _ammo = Mathf.Clamp(value, 0, 20);
+    }
+    private float _fuel = 20.0f;
+    public float Fuel
+    {
+        get => _fuel;
+        set => _fuel = Mathf.Clamp(value, 0.0f, 20.0f);
+    }
 
     // Dictionary<string, object> attributes = new Dictionary<string, object>
     // {
@@ -90,11 +103,11 @@ public partial class Player : RigidBody2D
     {
         if (Input.IsActionPressed("ui_up"))
         {
-            Fuel = System.Math.Max(0f, Fuel - _fuelConsumption);
+            Fuel -= _fuelConsumption;
             _trace.Emitting = true;
             UpdateGUI();
             state.ApplyForce(_thrust.Rotated(Rotation));
-            if (Fuel <= 0.0f)
+            if (Mathf.IsEqualApprox(Fuel, 0.0f))
             {
                 _thrust = Vector2.Zero;
                 _trace.Emitting = false;
@@ -113,11 +126,11 @@ public partial class Player : RigidBody2D
     {
         if (Ammo > 0)
         {
-            var bullet = bulletScene.Instantiate();
+            var bullet = BulletScene.Instantiate();
             GetParent().AddChild(bullet);
             bullet.Set("global_position", _muzzle.GlobalPosition);
             bullet.Call("look_at", _shootAt.GlobalPosition);
-            Ammo = System.Math.Max(0, Ammo - 1);
+            Ammo -= 1;
             UpdateGUI();
         }
         else {
@@ -147,7 +160,7 @@ public partial class Player : RigidBody2D
 
     private void take_damage(int damage)
     {
-        Health = System.Math.Max(0, Health - damage);
+        Health -= damage;
         UpdateGUI();
         if (Health == 2)
         {

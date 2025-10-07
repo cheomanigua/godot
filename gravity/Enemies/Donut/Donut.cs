@@ -3,29 +3,29 @@ using Godot;
 
 public partial class Donut : Area2D
 {
-    public PackedScene bulletScene = (PackedScene)ResourceLoader.Load("res://Projectile/Bullet/bullet.tscn");
-    public GDScript bulletGDScript = GD.Load<GDScript>("res://Projectile/Bullet/bullet.gd");
+    public PackedScene BulletScene = (PackedScene)ResourceLoader.Load("res://Projectile/Bullet/bullet.tscn");
+    public GDScript BulletGDScript = GD.Load<GDScript>("res://Projectile/Bullet/bullet.gd");
 
     enum Munition { LOW_DAMAGE, MEDIUM_DAMAGE, HIGH_DAMAGE }
-    [Export]Munition munitionType = Munition.LOW_DAMAGE;
-    [Export]float reloadTime = 1f;
+    [Export] Munition MunitionType = Munition.LOW_DAMAGE;
+    [Export] float ReloadTime = 1f;
 
-    bool detected = false;
-    bool canShoot = true;
-    float elapsed = 10f;
-    Node2D player;
-    private RayCast2D raycast = new();
-    private Timer timer = new();
+    bool _detected = false;
+    bool _canShoot = true;
+    float _elapsed = 10f;
+    Node2D _player;
+    private RayCast2D _raycast = new();
+    private Timer _timer = new();
   
 
     public override void _Ready()
     {
-        AddChild(raycast);
-        raycast.TargetPosition = new Vector2(350, 0);
+        AddChild(_raycast);
+        _raycast.TargetPosition = new Vector2(350, 0);
         
-        AddChild(timer);
-        timer.Timeout += OnTimerTimeout;
-        timer.Start(reloadTime);
+        AddChild(_timer);
+        _timer.Timeout += OnTimerTimeout;
+        _timer.Start(ReloadTime);
 
         var radar = GetNode<Area2D>("%Radar");
 
@@ -35,32 +35,32 @@ public partial class Donut : Area2D
 
     public override void _PhysicsProcess(double delta)
     {
-        if (detected)
+        if (_detected)
         {
-            Vector2 target = Position.DirectionTo(player.Position);
+            Vector2 target = Position.DirectionTo(_player.Position);
             var facing = Transform.X;
             var fov = target.Dot(facing);
 
             if (fov > 0)
             {
-                Rotation = (float)Mathf.LerpAngle(Rotation, target.Angle(), elapsed * delta);
-                if (canShoot)
+                Rotation = (float)Mathf.LerpAngle(Rotation, target.Angle(), _elapsed * delta);
+                if (_canShoot)
                 {
-                    if (raycast.IsColliding())
+                    if (_raycast.IsColliding())
                     {
-                        var collider = raycast.GetCollider();
-                        if (collider != player)
+                        var collider = _raycast.GetCollider();
+                        if (collider != _player)
                         {
-                            timer.Stop();
-                            canShoot = true;
+                            _timer.Stop();
+                            _canShoot = true;
                         }
                         else
                         {
-                            if (canShoot)
+                            if (_canShoot)
                             {
                                 Shoot();
-                                canShoot = false;
-                                timer.Start();
+                                _canShoot = false;
+                                _timer.Start();
                             }
                         }
                     }
@@ -68,14 +68,14 @@ public partial class Donut : Area2D
             }
             else
             {
-                timer.Stop();
-                canShoot = true;
+                _timer.Stop();
+                _canShoot = true;
             }
         }
         else
         {
-            timer.Stop();
-            canShoot = true;
+            _timer.Stop();
+            _canShoot = true;
         }
 
         QueueRedraw();
@@ -83,37 +83,37 @@ public partial class Donut : Area2D
 
     public override void _Draw()
     {
-        DrawLine(raycast.Position, raycast.TargetPosition, Colors.Green, 1.0f);
-        DrawCircle(raycast.TargetPosition, 8.0f, Colors.SkyBlue, false);
+        DrawLine(_raycast.Position, _raycast.TargetPosition, Colors.Green, 1.0f);
+        DrawCircle(_raycast.TargetPosition, 8.0f, Colors.SkyBlue, false);
     }
 
     private void OnPlayerDetected(Node2D body)
     {
-        player = body;
-        detected = true;
-        raycast.Enabled = true;
+        _player = body;
+        _detected = true;
+        _raycast.Enabled = true;
     }
 
     public void OnPlayerLost(Node2D body)
     {
-        detected = false;
-        raycast.Enabled = false;
+        _detected = false;
+        _raycast.Enabled = false;
     }
 
     public void OnTimerTimeout()
     {
-        canShoot = true;
+        _canShoot = true;
     }
 
     public void Shoot()
     {
-        var new_bullet = (Area2D)bulletScene.Instantiate();
-        new_bullet.Transform = new Transform2D(Rotation, Position);
-        new_bullet.Set("munition_index", (int)munitionType);
-        GetParent().AddChild(new_bullet);
+        var bullet = (Area2D)BulletScene.Instantiate();
+        bullet.Transform = new Transform2D(Rotation, Position);
+        bullet.Set("munition_index", (int)MunitionType);
+        GetParent().AddChild(bullet);
 
-        // var new_bullet = (GodotObject)bulletGDScript.New();
-        // new_bullet.Call("create_bullet", (int)munitionType, Rotation, Position);
-        // GetParent().AddChild((Node)new_bullet);
+        // var bullet = (GodotObject)BulletGDSCript.New();
+        // bullet.Call("create_bullet", (int)MunitionType, Rotation, Position);
+        // GetParent().AddChild((Node)bullet);
     }
 }
