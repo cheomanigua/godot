@@ -18,7 +18,7 @@ public partial class Turret : StaticBody2D
     private Node2D _player;
     private Timer _timer = new();
     private Sprite2D _cannon;
-    private Marker2D _giro;
+    private Giro _giro;
     private RayCast2D _raycast;
 
     public override void _Ready()
@@ -34,8 +34,9 @@ public partial class Turret : StaticBody2D
 
         _cannon = GetNode<Sprite2D>("%Cannon");
 
-        _giro = GetNode<Marker2D>("%Giro");
-        _raycast = (RayCast2D)_giro.Call("get_raycast");
+        _giro = GetNode<Giro>("%Giro");
+        _raycast = _giro.GetRaycast();
+        //_raycast = (RayCast2D)_giro.Call("get_raycast"); //if using Giro node type
     }
 
     public override void _PhysicsProcess(double delta)

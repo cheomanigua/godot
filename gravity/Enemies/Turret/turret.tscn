@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c613gdvkdkwiq" path="res://Enemies/Turret/Turret.cs" id="1_60dkh"]
 [ext_resource type="Script" uid="uid://b15l831gm1f0k" path="res://Enemies/Turret/radar.gd" id="2_8s6y3"]
 [ext_resource type="Texture2D" uid="uid://dj2ibvmqkhu0t" path="res://Enemies/Turret/cannon.png" id="2_bcfvl"]
-[ext_resource type="Script" uid="uid://c5nf1j34ue2wx" path="res://Enemies/Turret/giro.gd" id="3_q1sp7"]
+[ext_resource type="Script" uid="uid://d2qkqslcgrm13" path="res://Enemies/Turret/Giro.cs" id="3_60dkh"]
 [ext_resource type="Texture2D" uid="uid://c21idbma6pmt0" path="res://Enemies/Turret/turret.png" id="3_ylcsl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vqcst"]
@@ -27,7 +27,7 @@ shape = SubResource("CircleShape2D_cl0cl")
 
 [node name="Giro" type="Marker2D" parent="."]
 unique_name_in_owner = true
-script = ExtResource("3_q1sp7")
+script = ExtResource("3_60dkh")
 
 [node name="Cannon" type="Sprite2D" parent="Giro"]
 unique_name_in_owner = true

@@ -159,6 +159,23 @@ public partial class Player : RigidBody2D
         }
     }
 
+    private void take_item(string itemName, int itemValue)
+    {
+        switch (itemName)
+        {
+            case "health":
+                Health += itemValue;
+                break;
+            case "ammo":
+                Ammo += itemValue;
+                break;
+            case "fuel":
+                Fuel += itemValue;
+                break;
+        }
+        UpdateGUI();
+    }
+
     private void UpdateGUI()
     {
         _stats.Text = "";
@@ -177,6 +194,6 @@ public partial class Player : RigidBody2D
         // }
         _stats.Text += $"{nameof(Health)}: {Health}\n";
         _stats.Text += $"{nameof(Ammo)}: {Ammo}\n";
-        _stats.Text += $"{nameof(Fuel)}: {Fuel}\n";
+        _stats.Text += $"{nameof(Fuel)}: {Fuel:F2}\n";
     }
 }

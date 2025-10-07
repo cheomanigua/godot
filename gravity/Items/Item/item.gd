@@ -1,7 +1,7 @@
 extends Area2D
 
 @export_enum("health", "ammo", "fuel") var item_name: String = "health"
-@export var item_value: float = 0
+@export var item_value: int = 0
 @onready var sprite_2d: Sprite2D = %Sprite2D
 
 
@@ -16,7 +16,6 @@ func _ready() -> void:
 
 
 func _on_body_entered(body):
-	if body is Player:
-		if item_value > 0:
-			body.take_item(item_name, item_value)
-			queue_free()
+	if body.name == "Player":
+		body.take_item(item_name, item_value)
+		queue_free()

@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxqa16s287mlp"]
+[gd_scene load_steps=7 format=3 uid="uid://dxqa16s287mlp"]
 
 [ext_resource type="PackedScene" uid="uid://jved2ob5irk2" path="res://Character/Player/player.tscn" id="1_2c0bl"]
+[ext_resource type="PackedScene" uid="uid://hc7du41rghv1" path="res://Enemies/Donut/donut.tscn" id="3_kry3j"]
 [ext_resource type="PackedScene" uid="uid://cbi0l3hw5dgsb" path="res://Enemies/Turret/turret.tscn" id="3_typj3"]
 [ext_resource type="Script" uid="uid://bci4pvy3xx4m6" path="res://Scripts/EventsLabel.cs" id="4_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://bwg5b8u3bket" path="res://Items/Item/Item.tscn" id="8_o23yp"]
@@ -55,6 +56,9 @@ cannonRotation = -90.0
 
 [node name="Donuts" type="Node" parent="World2D"]
 
+[node name="Donut" parent="World2D/Donuts" instance=ExtResource("3_kry3j")]
+position = Vector2(439, 482)
+
 [node name="Item" type="Node" parent="World2D"]
 
 [node name="Ammo" type="Node" parent="World2D/Item"]
@@ -62,25 +66,25 @@ cannonRotation = -90.0
 [node name="Item" parent="World2D/Item/Ammo" instance=ExtResource("8_o23yp")]
 position = Vector2(1042, 699)
 item_name = "ammo"
-item_value = 5.0
+item_value = 5
 
 [node name="Item2" parent="World2D/Item/Ammo" instance=ExtResource("8_o23yp")]
 position = Vector2(-678, -69)
 item_name = "ammo"
-item_value = 10.0
+item_value = 10
 
 [node name="Fuel" type="Node" parent="World2D/Item"]
 
 [node name="Item" parent="World2D/Item/Fuel" instance=ExtResource("8_o23yp")]
 position = Vector2(609, 874)
 item_name = "fuel"
-item_value = 10.0
+item_value = 10
 
 [node name="Health" type="Node" parent="World2D/Item"]
 
 [node name="Item" parent="World2D/Item/Health" instance=ExtResource("8_o23yp")]
 position = Vector2(-475, 520)
-item_value = 5.0
+item_value = 5
 
 [node name="GUI" type="Node" parent="."]
 
