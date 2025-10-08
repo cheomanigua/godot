@@ -37,7 +37,6 @@ public partial class Turret : StaticBody2D
         _giro.Rotation = Mathf.DegToRad(CannonRotation);
 
         _raycast = _giro.Raycast;
-        //_raycast = (RayCast2D)_giro.Call("get_raycast"); //if using Giro node type
     }
 
     public override void _PhysicsProcess(double delta)
@@ -120,7 +119,7 @@ public partial class Turret : StaticBody2D
         // GetParent().AddChild((Node)new_bullet);
     }
 
-    public void take_damage(int damage)
+    public void TakeDamage(int damage)
     {
         var label = new Label();
         AddChild(label);

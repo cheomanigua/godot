@@ -50,14 +50,14 @@ polygon = PackedVector2Array(131, -285, 330, -288, 328, -69, 178, 62, 243, 286, 
 [node name="Turrets" type="Node" parent="World2D"]
 
 [node name="Turret" parent="World2D/Turrets" instance=ExtResource("3_typj3")]
-position = Vector2(845, 530)
+position = Vector2(885, 111)
 Health = 5
 CannonRotation = -90.0
 
 [node name="Donuts" type="Node" parent="World2D"]
 
 [node name="Donut" parent="World2D/Donuts" instance=ExtResource("3_kry3j")]
-position = Vector2(439, 482)
+position = Vector2(439, 28)
 
 [node name="Item" type="Node" parent="World2D"]
 

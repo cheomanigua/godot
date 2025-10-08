@@ -43,6 +43,5 @@ public partial class EventsLabel : Label
         {
             Debug.Print("Cancelling gracefully");
         }
-
     }
 }

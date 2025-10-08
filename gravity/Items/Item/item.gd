@@ -17,5 +17,5 @@ func _ready() -> void:
 
 func _on_body_entered(body):
 	if body.name == "Player":
-		body.take_item(item_name, item_value)
+		body.TakeItem(item_name, item_value)
 		queue_free()

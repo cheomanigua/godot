@@ -26,12 +26,12 @@ func _physics_process(delta: float) -> void:
 	global_position += transform.x * speed * delta
 
 
-func _on_screen_exited() -> void:
+func _on_screen_exited() ->  void:
 	await get_tree().create_timer(3.0).timeout
 	queue_free()
 
 
 func _on_body_entered(body):
 	queue_free()
-	if body.has_method("take_damage"):
-		body.take_damage(damage)
+	if body.has_method("TakeDamage"):
+		body.TakeDamage(damage)
