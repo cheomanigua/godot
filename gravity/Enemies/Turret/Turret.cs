@@ -1,4 +1,3 @@
-using System;
 using Godot;
 
 public partial class Turret : StaticBody2D
@@ -50,24 +49,21 @@ public partial class Turret : StaticBody2D
             if (fov > 0)
             {
                 _giro.Rotation = (float)Mathf.LerpAngle(_giro.Rotation, target.Angle(), _elapsed * delta);
-                if (_canShoot)
+                if (_canShoot && _raycast.IsColliding())
                 {
-                    if (_raycast.IsColliding())
+                    var collider = _raycast.GetCollider();
+                    if (collider != _player)
                     {
-                        var collider = _raycast.GetCollider();
-                        if (collider != _player)
+                        _timer.Stop();
+                        _canShoot = true;
+                    }
+                    else
+                    {
+                        if (_canShoot)
                         {
-                            _timer.Stop();
-                            _canShoot = true;
-                        }
-                        else
-                        {
-                            if (_canShoot)
-                            {
-                                Shoot();
-                                _canShoot = false;
-                                _timer.Start();
-                            }
+                            Shoot();
+                            _canShoot = false;
+                            _timer.Start();
                         }
                     }
                 }

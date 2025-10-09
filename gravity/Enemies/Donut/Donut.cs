@@ -1,7 +1,6 @@
-
 using Godot;
 
-public partial class Donut : Area2D
+public partial class Donut : StaticBody2D
 {
     public PackedScene BulletScene = (PackedScene)ResourceLoader.Load("res://Projectile/Bullet/bullet.tscn");
     public GDScript BulletGDScript = GD.Load<GDScript>("res://Projectile/Bullet/bullet.gd");
@@ -10,10 +9,10 @@ public partial class Donut : Area2D
     [Export] Munition MunitionType = Munition.LOW_DAMAGE;
     [Export] float ReloadTime = 1f;
 
-    bool _detected = false;
-    bool _canShoot = true;
-    float _elapsed = 10f;
-    Node2D _player;
+    private bool _detected = false;
+    private bool _canShoot = true;
+    private float _elapsed = 10f;
+    private Node2D _player;
     private RayCast2D _raycast = new();
     private Timer _timer = new();
   
@@ -28,7 +27,6 @@ public partial class Donut : Area2D
         _timer.Start(ReloadTime);
 
         var radar = GetNode<Area2D>("%Radar");
-
         radar.Connect("player_detected", Callable.From<Node2D>(OnPlayerDetected));
         radar.Connect("player_lost", Callable.From<Node2D>(OnPlayerLost));
     }
@@ -44,24 +42,21 @@ public partial class Donut : Area2D
             if (fov > 0)
             {
                 Rotation = (float)Mathf.LerpAngle(Rotation, target.Angle(), _elapsed * delta);
-                if (_canShoot)
+                if (_canShoot && _raycast.IsColliding())
                 {
-                    if (_raycast.IsColliding())
+                    var collider = _raycast.GetCollider();
+                    if (collider != _player)
                     {
-                        var collider = _raycast.GetCollider();
-                        if (collider != _player)
+                        _timer.Stop();
+                        _canShoot = true;
+                    }
+                    else
+                    {
+                        if (_canShoot)
                         {
-                            _timer.Stop();
-                            _canShoot = true;
-                        }
-                        else
-                        {
-                            if (_canShoot)
-                            {
-                                Shoot();
-                                _canShoot = false;
-                                _timer.Start();
-                            }
+                            Shoot();
+                            _canShoot = false;
+                            _timer.Start();
                         }
                     }
                 }
@@ -108,7 +103,7 @@ public partial class Donut : Area2D
     public void Shoot()
     {
         var bullet = (Area2D)BulletScene.Instantiate();
-        bullet.Transform = new Transform2D(Rotation, Position);
+        bullet.Transform = new Transform2D(Rotation, Position + Transform.X * 20);
         bullet.Set("munition_index", (int)MunitionType);
         GetParent().AddChild(bullet);
 

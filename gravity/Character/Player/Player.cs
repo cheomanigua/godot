@@ -72,7 +72,7 @@ public partial class Player : RigidBody2D
     private Vector2 _thrustMode;
     private float _maxThrustConsumptionValue = 0.01f;
     private float _fuelConsumption;
-    private int _torque = 10000;
+    private int _torque = 10_000;
     private bool _isModeSwitched = false;
     private GpuParticles2D _trace;
     private Marker2D _muzzle;
@@ -186,6 +186,7 @@ public partial class Player : RigidBody2D
     private void TakeDamage(int damage)
     {
         Health -= damage;
+        EventManager.BroadcastMessage($"-{damage} Health");
     }
 
     private void TakeItem(string itemName, int itemValue)
@@ -202,6 +203,7 @@ public partial class Player : RigidBody2D
                 Fuel += itemValue;
                 break;
         }
+        EventManager.BroadcastMessage($"+{itemValue} {itemName.Capitalize()}");
     }
 
     // private void UpdateGUI()

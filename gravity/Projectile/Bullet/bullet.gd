@@ -10,14 +10,13 @@ var damage: int = 1
 
 # static method created to instantiate bullets with parameters in other scenes
 static func create_bullet(_munition_index: int) -> Bullet:
-	var new_bullet: Bullet = BULLET.instantiate()
-	new_bullet.munition_index = _munition_index
-	return new_bullet
+	var bullet: Bullet = BULLET.instantiate()
+	bullet.munition_index = _munition_index
+	return bullet
 
 
 func _ready() -> void:
 	damage = munition_type.values()[munition_index]
-
 	body_entered.connect(_on_body_entered)
 	vosn2d.screen_exited.connect(_on_screen_exited)
 

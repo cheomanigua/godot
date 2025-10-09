@@ -1,4 +1,4 @@
-extends Area2D
+extends StaticBody2D
 
 enum munition { LOW_DAMAGE, MEDIUM_DAMAGE, HIGH_DAMAGE }
 @export var munition_type: munition = munition.LOW_DAMAGE
